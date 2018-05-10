@@ -4,4 +4,4 @@
 
 Javascript porting of the book &lt;Mazes For Programmers>, Jamis Buck. Not Official.
 
-No need server, just download and open html files in your web browser.
+For execution, you don't need server, just download and open html files in your web browser.
