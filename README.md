@@ -4,7 +4,7 @@
 
 Javascript porting of the source code(Ruby) of the book [&lt;Mazes For Programmers>, Jamis Buck](https://pragprog.com/book/jbmaze/mazes-for-programmers). Not Official.
 
-For execution, you don't need server, just download and open html files in your web browser.
+For execution, **you don't need server**, just download and open html files in your web browser.
 
 Like this ↓↓↓
 
