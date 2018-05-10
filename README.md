@@ -9,3 +9,8 @@ For execution, you don't need server, just download and open html files in your 
 Like this ↓↓↓
 
 ![alt text](https://raw.githubusercontent.com/greentec/mazes-for-programmers-js/master/screenshot0.png)
+
+And you can check console outputs in modern browsers (Chrome, Firefox, IE) by hitting F12. 
+
+![alt text](https://raw.githubusercontent.com/greentec/mazes-for-programmers-js/master/screenshot1.png)
+
