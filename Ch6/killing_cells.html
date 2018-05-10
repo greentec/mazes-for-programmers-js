@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mazes For Programmers - Chapter 6</title>
+	<style>
+		canvas {
+			image-rendering: pixelated;
+		}
+	</style>
+</head>
+<body>
+	<canvas id='output'></canvas>
+	<script src='Cell.js'></script>
+	<script src='Grid.js'></script>
+	<script src='Distances.js'></script>
+	<script src='ColoredGrid.js'></script>
+	<script src='RecursiveBacktracker.js'></script>
+	<script>
+		let maze = new RecursiveBacktracker();
+		let h = 5;
+		let w = 5;
+		let grid = new ColoredGrid(h, w);
+
+		let cell;
+		cell = grid.get_cell(0, 0);
+		cell.east = null;
+		cell.west = null;
+		cell.south = null;
+		cell.north = null;
+
+		cell = grid.get_cell(4, 4);
+		cell.east = null;
+		cell.west = null;
+		cell.south = null;
+		cell.north = null;
+
+		maze.on(grid, grid.get_cell(1, 1));
+
+		console.log(grid.toString());
+
+		let start = grid.get_cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2));
+		grid.set_distances(start.distances());
+
+		let cellSize = 10;
+		let output = document.getElementById('output');
+		output.width = cellSize * w + 1;
+		output.height = cellSize * h + 1;
+		let ctx = output.getContext('2d');
+		grid.to_img(ctx, cellSize);
+
+	</script>
+</body>
+</html>

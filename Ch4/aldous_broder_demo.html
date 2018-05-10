@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mazes For Programmers - Chapter 4</title>
+	<style>
+		canvas {
+			image-rendering: pixelated;
+		}
+	</style>
+</head>
+<body>
+	<canvas id='output'></canvas>
+	<script src='Cell.js'></script>
+	<script src='Grid.js'></script>
+	<script src='Distances.js'></script>
+	<script src='ColoredGrid.js'></script>
+	<script src='AldousBroder.js'></script>
+	<script>
+		let maze = new AldousBroder();
+		let h = 20;
+		let w = 20;
+		let grid = new ColoredGrid(h, w);
+		maze.on(grid);
+
+		console.log(grid.toString());
+
+		let start = grid.get_cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2));
+		grid.set_distances(start.distances());
+
+		let cellSize = 10;
+		let output = document.getElementById('output');
+		output.width = cellSize * w + 1;
+		output.height = cellSize * h + 1;
+		let ctx = output.getContext('2d');
+		grid.to_img(ctx, cellSize);
+
+	</script>
+</body>
+</html>

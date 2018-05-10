@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mazes For Programmers - Chapter 3</title>
+	<style>
+		canvas {
+			image-rendering: pixelated;
+		}
+	</style>
+</head>
+<body>
+	<canvas id='output'></canvas>
+	<script src='Distances.js'></script>
+	<script src='Cell.js'></script>
+	<script src='Grid.js'></script>
+	<script src='DistanceGrid.js'></script>
+	<script src='BinaryTree.js'></script>
+	<script src='SideWinder.js'></script>
+	<script>
+		// var maze = new BinaryTree();
+		let maze = new SideWinder();
+		let h = 8;
+		let w = 8;
+		let grid = new DistanceGrid(h, w);
+		maze.on(grid);
+
+		console.log(grid.toString());
+
+		let start = grid.get_cell(0, 0);
+		let distances = start.distances();
+		let new_start_id;
+		let distance;
+		let goal_id;
+		[new_start_id, distance] = distances.max();
+
+		let new_start_split = new_start_id.split('#');
+		let new_start = grid.get_cell(new_start_split[0], new_start_split[1]);
+		
+		let new_distances = new_start.distances();
+		[goal_id, distance] = new_distances.max();
+
+		let goal_split = goal_id.split('#');
+		let goal = grid.get_cell(goal_split[0], goal_split[1]);
+		grid.distances = new_distances.path_to(goal);
+
+		console.log(grid.toString());
+
+		
+		// let cellSize = 20;
+		// let output = document.getElementById('output');
+		// output.width = cellSize * w + 1;
+		// output.height = cellSize * h + 1;
+		// let ctx = output.getContext('2d');
+		// grid.to_img(ctx, cellSize);
+
+	</script>
+</body>
+</html>
