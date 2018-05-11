@@ -36,7 +36,7 @@ class Grid {
 
 	get_cell(row, column) {
 		if (row < 0 || row > this.rows - 1) 		 return null
-		if (column < 0 || column > this.columns - 1) return null
+		if (column < 0 || column > this.grid[row].length - 1) return null
 		return this.grid[row][column]
 	}
 
@@ -136,5 +136,20 @@ class Grid {
 				ctx.stroke()
 			}
 		}
+	}
+
+	deadends() {
+		let list = []
+
+		let cell_gen = this.each_cell()
+		while (true) {
+			let cell = cell_gen.next().value
+			if (!cell) break
+			if (cell.get_links().length == 1) {
+				list.push(cell)
+			}
+		}
+
+		return list
 	}
 }

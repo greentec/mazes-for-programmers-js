@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mazes For Programmers - Chapter 8</title>
+	<style>
+		canvas {
+			image-rendering: pixelated;
+		}
+	</style>
+</head>
+<body>
+	<canvas id='output'></canvas>
+	<script src='Cell.js'></script>
+	<script src='TriangleCell.js'></script>
+	<script src='Grid.js'></script>
+	<script src='TriangleGrid.js'></script>
+	<script src='RecursiveBacktracker.js'></script>
+	<script>
+		let rows = 10
+		let columns = 17
+		let grid = new TriangleGrid(rows, columns);
+		let cellSize = 16
+		let half_width = cellSize / 2.0
+		let height = cellSize * Math.sqrt(3) / 2.0
+		let half_height = height / 2.0
+
+		let img_width = Math.floor(cellSize * (columns + 1) / 2.0) + 1
+		let img_height = Math.floor(height * rows) + 1
+
+		let maze = new RecursiveBacktracker()
+		maze.on(grid)
+		
+		let output = document.getElementById('output');
+		output.width = img_width;
+		output.height = img_height;
+		let ctx = output.getContext('2d');
+		grid.to_img(ctx, cellSize);
+	</script>
+</body>
+</html>

@@ -35,8 +35,8 @@ class Grid {
 	}
 
 	get_cell(row, column) {
-		if (row < 0 || row > this.rows) 		 return null
-		if (column < 0 || column > this.columns) return null
+		if (row < 0 || row > this.rows - 1) 		 return null
+		if (column < 0 || column > this.columns - 1) return null
 		return this.grid[row][column]
 	}
 
@@ -62,7 +62,7 @@ class Grid {
 		for (let i = 0; i < this.rows; i += 1) {
 			let row = row_gen.next().value;
 			for (let j = 0; j < row.length; j += 1) {
-				yield row[j]
+				if (row[j]) yield row[j]
 			}
 		}
 		

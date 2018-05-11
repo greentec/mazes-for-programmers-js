@@ -6,23 +6,28 @@
 		canvas {
 			image-rendering: pixelated;
 		}
+
+		img {
+			display: none;
+		}
 	</style>
 </head>
 <body>
 	<canvas id='output'></canvas>
+	<img id='maze_img' src='maze_text.png'></img>
 	<script src='Cell.js'></script>
 	<script src='Grid.js'></script>
-	<script src='Distances.js'></script>
-	<script src='ColoredGrid.js'></script>
 	<script src='RecursiveBacktracker.js'></script>
 	<script src='Mask.js'></script>
 	<script src='MaskedGrid.js'></script>
 	<script>
 		let maze = new RecursiveBacktracker();
-		let s = 
-		`X........X ....XX.... ...XXXX... ....XX.... X........X X........X ....XX.... ...XXXX... ....XX.... X........X`;
+		let c = document.createElement('canvas');
+		let ctx = c.getContext('2d');
+		let image = document.getElementById('maze_img');
+		ctx.drawImage(image, 0, 0)
 
-		let mask = Mask.from_txt(s);
+		let mask = Mask.from_img(ctx.getImageData(0, 0, image.width, image.height));
 		let grid = new MaskedGrid(mask);
 		maze.on(grid);
 
@@ -31,13 +36,12 @@
 		// let start = grid.get_cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2));
 		// grid.set_distances(start.distances());
 
-		// let cellSize = 10;
-		// let output = document.getElementById('output');
-		// output.width = cellSize * w + 1;
-		// output.height = cellSize * h + 1;
-		// let ctx = output.getContext('2d');
-		// grid.to_img(ctx, cellSize);
-
+		let cellSize = 5;
+		let output = document.getElementById('output');
+		output.width = cellSize * image.width + 1;
+		output.height = cellSize * image.height + 1;
+		let ctx2 = output.getContext('2d');
+		grid.to_img(ctx2, cellSize);
 	</script>
 </body>
 </html>

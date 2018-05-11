@@ -44,7 +44,7 @@ class Mask {
 	}
 
 	static from_txt(string) {
-		let lines 	= string.split('\n')
+		let lines 	= string.split(' ')
 		let rows 	= lines.length
 		let columns	= lines[0].length
 		let mask 	= new Mask(rows, columns)
@@ -61,5 +61,25 @@ class Mask {
 		}
 
 		return mask
+	}
+
+	static from_img(imageData) {
+		let rows 	= imageData.height
+		let columns = imageData.width
+		let mask 	= new Mask(rows, columns)
+
+		for (let i = 0; i < rows; i += 1) {
+			for (let j = 0; j < columns; j += 1) {
+				let image_index = (i * imageData.width + j) * 4
+				if (imageData.data[image_index] == 0) {
+					mask.set_bits(i, j, false)
+				}
+				else {
+					mask.set_bits(i, j, true)
+				}
+			}
+		}
+
+		return mask	
 	}
 }
