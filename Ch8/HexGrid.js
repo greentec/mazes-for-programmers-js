@@ -50,6 +50,20 @@ class HexGrid extends Grid {
 		return this.grid[row][column]
 	}
 
+	set_distances(distances) {
+		this.distances = distances
+		let farthest_id
+		[farthest_id, this.maximum] = distances.max()
+	}
+
+	background_color_for(cell) {
+		let distance = this.distances.get_cell(cell)
+		let intensity = (this.maximum - distance) * 1.0 / this.maximum
+		let dark = Math.floor(255 * intensity)
+		let bright = Math.floor(128 + 127 * intensity)
+		return `rgb(${dark},${bright},${dark})`
+	}
+
 	to_img(ctx, cellSize) {
 		ctx.strokeStyle = 'black'
 
@@ -78,6 +92,14 @@ class HexGrid extends Grid {
 			let y_n = Math.floor(cy - b_size)
 			let y_m = Math.floor(cy)
 			let y_s = Math.floor(cy + b_size)
+
+			if (this.distances) {
+				ctx.beginPath()
+				ctx.fillStyle = this.background_color_for(cell)
+				let p = new Path2D(`M ${x_fw} ${y_m} L ${x_nw} ${y_n} L ${x_ne} ${y_n} L ${x_fe} ${y_m} L ${x_ne} ${y_s} L ${x_nw} ${y_s} Z`)
+				ctx.fill(p)
+				ctx.closePath()
+			}
 
 			if (!cell.southwest) {
 				ctx.moveTo(x_fw, y_m)

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mazes For Programmers - Chapter 9</title>
+	<style>
+		canvas {
+			image-rendering: pixelated;
+		}
+	</style>
+</head>
+<body>
+	<canvas id='output'></canvas>
+	<canvas id='output2'></canvas>
+	<script src='Cell.js'></script>
+	<script src='WeightedCell.js'></script>
+	<script src='Grid.js'></script>
+	<script src='WeightedGrid.js'></script>
+	<script src='Distances.js'></script>
+	<script src='RecursiveBacktracker.js'></script>
+	<script>
+		let maze = new RecursiveBacktracker();
+		let h = 20;
+		let w = 20;
+		let grid = new WeightedGrid(h, w);
+		maze.on(grid);
+		grid.braid(1);
+		
+		console.log(grid.toString());
+
+		let start = grid.get_cell(0, 0);
+		let finish = grid.get_cell(grid.rows-1, grid.columns-1)
+		grid.set_distances(start.distances().path_to(finish));
+
+		let cellSize = 10;
+		let output = document.getElementById('output');
+		output.width = cellSize * w + 1;
+		output.height = cellSize * h + 1;
+		let ctx = output.getContext('2d');
+		grid.to_img(ctx, cellSize);
+
+		let cells = grid.distances.get_cells()
+		let row, col
+		[row, col] = cells[Math.floor(Math.random() * cells.length)].split('#')
+		let lava = grid.get_cell(row, col)
+		lava.weight = 50
+
+		grid.set_distances(start.distances().path_to(finish));
+		
+		let output2 = document.getElementById('output2');
+		output2.width = cellSize * w + 1;
+		output2.height = cellSize * h + 1;
+		let ctx2 = output2.getContext('2d');
+		grid.to_img(ctx2, cellSize);
+
+	</script>
+</body>
+</html>

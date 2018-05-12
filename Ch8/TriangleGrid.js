@@ -35,6 +35,20 @@ class TriangleGrid extends Grid {
 		}
 	}
 
+	set_distances(distances) {
+		this.distances = distances
+		let farthest_id
+		[farthest_id, this.maximum] = distances.max()
+	}
+
+	background_color_for(cell) {
+		let distance = this.distances.get_cell(cell)
+		let intensity = (this.maximum - distance) * 1.0 / this.maximum
+		let dark = Math.floor(255 * intensity)
+		let bright = Math.floor(128 + 127 * intensity)
+		return `rgb(${dark},${bright},${dark})`
+	}
+
 	to_img(ctx, cellSize=16) {
 		ctx.strokeStyle = 'black'
 
@@ -67,6 +81,14 @@ class TriangleGrid extends Grid {
 			else {
 				apex_y = Math.floor(cy + half_height)
 				base_y = Math.floor(cy - half_height)
+			}
+
+			if (this.distances) {
+				ctx.beginPath()
+				ctx.fillStyle = this.background_color_for(cell)
+				let p = new Path2D(`M ${west_x} ${base_y} L ${mid_x} ${apex_y} L ${east_x} ${base_y} Z`)
+				ctx.fill(p)
+				ctx.closePath()
 			}
 
 			if (!cell.west) {
