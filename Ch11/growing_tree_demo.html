@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mazes For Programmers - Chapter 11</title>
+	<style>
+		canvas {
+			image-rendering: pixelated;
+		}
+	</style>
+</head>
+<body>
+	<canvas id='output'></canvas>
+	<canvas id='output2'></canvas>
+	<canvas id='output3'></canvas>
+	<script src='Cell.js'></script>
+	<script src='Grid.js'></script>
+	<script src='ColoredGrid.js'></script>
+	<script src='Distances.js'></script>
+	<script src='GrowingTree.js'></script>
+	<script>
+		let maze = new GrowingTree();
+		let h = 20;
+		let w = 20;
+		let grid;
+		let start_at;
+		let start;
+		grid = new ColoredGrid(h, w);
+		start_at = grid.get_random_cell();
+		maze.on(grid, start_at, (c => c[Math.floor(Math.random()*c.length)]));
+		
+		console.log(grid.toString());
+
+		start = grid.get_cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2));
+		grid.set_distances(start.distances());
+
+		let cellSize = 10;
+		let output = document.getElementById('output');
+		output.width = cellSize * w + 1;
+		output.height = cellSize * h + 1;
+		let ctx = output.getContext('2d');
+		grid.to_img(ctx, cellSize);
+
+
+		grid = new ColoredGrid(h, w);
+		start_at = grid.get_random_cell();
+		maze.on(grid, start_at, (c => c[c.length-1]));
+		
+		console.log(grid.toString());
+
+		start = grid.get_cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2));
+		grid.set_distances(start.distances());
+
+		let output2 = document.getElementById('output2');
+		output2.width = cellSize * w + 1;
+		output2.height = cellSize * h + 1;
+		let ctx2 = output2.getContext('2d');
+		grid.to_img(ctx2, cellSize);
+
+
+		grid = new ColoredGrid(h, w);
+		start_at = grid.get_random_cell();
+		maze.on(grid, start_at, (c => Math.random() < 0.5 ? c[c.length-1] : c[Math.floor(Math.random()*c.length)]));
+		
+		console.log(grid.toString());
+
+		start = grid.get_cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2));
+		grid.set_distances(start.distances());
+
+		let output3 = document.getElementById('output3');
+		output3.width = cellSize * w + 1;
+		output3.height = cellSize * h + 1;
+		let ctx3 = output3.getContext('2d');
+		grid.to_img(ctx3, cellSize);
+
+	</script>
+</body>
+</html>
