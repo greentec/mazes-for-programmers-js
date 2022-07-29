@@ -1,5 +1,5 @@
 export default class SideWinder {
-  on(grid) {
+  static on(grid) {
     for (const row of grid.each_row()) {
       let run = []
       for (const cell of row) {

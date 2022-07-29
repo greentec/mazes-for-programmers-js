@@ -2,12 +2,10 @@ import BinaryTree from '../../mazes/BinaryTree.js'
 import SideWinder from '../../mazes/SideWinder.js'
 import DistanceGrid from '../../mazes/DistanceGrid.js'
 
-// var maze = new BinaryTree();
-const maze = new SideWinder()
 const h = 8
 const w = 8
 const grid = new DistanceGrid(h, w)
-maze.on(grid)
+SideWinder.on(grid)
 
 console.log(grid.toString())
 

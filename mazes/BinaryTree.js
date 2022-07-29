@@ -1,5 +1,5 @@
 export default class BinaryTree {
-  on(grid) {
+  static on(grid) {
     for (const cell of grid.each_cell()) {
       const neighbors = []
       if (cell.north) neighbors.push(cell.north)

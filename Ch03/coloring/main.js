@@ -1,12 +1,10 @@
 import BinaryTree from '../../mazes/BinaryTree.js'
 import ColoredGrid from '../../mazes/ColoredGrid.js'
 
-const maze = new BinaryTree()
-// let maze = new SideWinder();
 const h = 25
 const w = 25
 const grid = new ColoredGrid(h, w)
-maze.on(grid)
+BinaryTree.on(grid)
 
 console.log(grid.toString())
 
