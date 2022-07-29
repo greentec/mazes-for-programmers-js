@@ -7,7 +7,7 @@ const ctx = output.getContext('2d')
 export default class WeightedGrid extends Grid {
   set_distances(distances) {
     this.distances = distances
-    const [farthest_id, maximum] = distances.max()
+    const [_, maximum] = distances.max()
     this.maximum = maximum
   }
 

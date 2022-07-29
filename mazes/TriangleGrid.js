@@ -36,7 +36,7 @@ export default class TriangleGrid extends Grid {
 
   set_distances(distances) {
     this.distances = distances
-    const [farthest_id, maximum] = distances.max()
+    const [_, maximum] = distances.max()
     this.maximum = maximum
   }
 
