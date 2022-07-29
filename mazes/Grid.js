@@ -84,7 +84,7 @@ export default class Grid {
     return output
   }
 
-  to_img(cellSize = 10, inset = 0, ctx = context) {
+  to_img(cellSize = 20, inset = 0, ctx = context) {
     output.width = cellSize * this.rows + 1
     output.height = cellSize * this.columns + 1
     ctx.strokeStyle = 'black'
