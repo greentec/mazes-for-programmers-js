@@ -86,20 +86,13 @@ export default class Grid {
   to_img(ctx, cellSize = 10, inset = 0) {
     ctx.strokeStyle = 'black'
     inset = Math.floor(cellSize * inset)
-    const cell_gen = this.each_cell()
-
-    while (true) {
-      const cell = cell_gen.next().value
-      if (!cell) break
-
+    for (const cell of this.each_cell()) {
       const x = cell.column * cellSize
       const y = cell.row * cellSize
-
       if (inset > 0)
         this.to_img_with_inset(ctx, cell, cellSize, x, y, inset)
       else
         this.to_img_without_inset(ctx, cell, cellSize, x, y)
-
     }
   }
 
@@ -119,12 +112,12 @@ export default class Grid {
       ctx.lineTo(x1, y2)
       ctx.stroke()
     }
-    if ((cell.east && !cell.isLinked(cell.east)) || !cell.east) {
+    if (!cell.isLinked(cell.east)) {
       ctx.moveTo(x2, y1)
       ctx.lineTo(x2, y2)
       ctx.stroke()
     }
-    if ((cell.south && !cell.isLinked(cell.south)) || !cell.south) {
+    if (!cell.isLinked(cell.south)) {
       ctx.moveTo(x1, y2)
       ctx.lineTo(x2, y2)
       ctx.stroke()
@@ -149,7 +142,7 @@ export default class Grid {
     let x1, x2, x3, x4, y1, y2, y3, y4;
     [x1, x2, x3, x4, y1, y2, y3, y4] = this.cell_coordinates_with_inset(x, y, cellSize, inset)
 
-    if (cell.north && cell.isLinked(cell.north)) {
+    if (cell.isLinked(cell.north)) {
       ctx.moveTo(x2, y1)
       ctx.lineTo(x2, y2)
       ctx.moveTo(x3, y1)
@@ -160,7 +153,7 @@ export default class Grid {
       ctx.lineTo(x3, y2)
       ctx.stroke()
     }
-    if (cell.south && cell.isLinked(cell.south)) {
+    if (cell.isLinked(cell.south)) {
       ctx.moveTo(x2, y3)
       ctx.lineTo(x2, y4)
       ctx.moveTo(x3, y3)
@@ -171,7 +164,7 @@ export default class Grid {
       ctx.lineTo(x3, y3)
       ctx.stroke()
     }
-    if (cell.west && cell.isLinked(cell.west)) {
+    if (cell.isLinked(cell.west)) {
       ctx.moveTo(x1, y2)
       ctx.lineTo(x2, y2)
       ctx.moveTo(x1, y3)
@@ -182,7 +175,7 @@ export default class Grid {
       ctx.lineTo(x2, y3)
       ctx.stroke()
     }
-    if (cell.east && cell.isLinked(cell.east)) {
+    if (cell.isLinked(cell.east)) {
       ctx.moveTo(x3, y2)
       ctx.lineTo(x4, y2)
       ctx.moveTo(x3, y3)
@@ -197,13 +190,9 @@ export default class Grid {
 
   deadends() {
     const list = []
-    const cell_gen = this.each_cell()
-    while (true) {
-      const cell = cell_gen.next().value
-      if (!cell) break
+    for (const cell of this.each_cell())
       if (cell.get_links().length == 1)
         list.push(cell)
-    }
     return list
   }
 

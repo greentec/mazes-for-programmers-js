@@ -36,7 +36,7 @@ module.exports = {
     'no-invalid-this': 'error',
     'no-multi-spaces': ['warn', { 'ignoreEOLComments': true }],
     'no-multiple-empty-lines': ['warn', { 'max': 1, 'maxEOF': 1 }],
-    'no-param-reassign': 'error',
+    'no-param-reassign': 'warn',
     'no-redeclare': 'error',
     'no-return-assign': ['warn', 'always'],
     'no-shadow-restricted-names': 'error',
