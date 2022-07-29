@@ -66,7 +66,15 @@ export default class Grid {
         if (cell) yield cell
   }
 
+  set_distances(distances) {
+    this.distances = distances
+    const [_, maximum] = distances.max()
+    this.maximum = maximum
+  }
+
   contents_of(cell) {
+    if (this.distances && this.distances.get(cell))
+      return this.distances.get(cell).toString(36) // base-36 int, because we’re limited to one character
     return ' '
   }
 

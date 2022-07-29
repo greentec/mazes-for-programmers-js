@@ -1,7 +1,7 @@
 import SideWinder from '../../mazes/SideWinder.js'
-import DistanceGrid from '../../mazes/DistanceGrid.js'
+import Grid from '../../mazes/Grid.js'
 
-const grid = new DistanceGrid(8, 8)
+const grid = new Grid(8, 8)
 SideWinder.on(grid)
 
 grid.draw(30)

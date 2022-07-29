@@ -1,7 +1,7 @@
 import BinaryTree from '../../mazes/BinaryTree.js'
-import DistanceGrid from '../../mazes/DistanceGrid.js'
+import Grid from '../../mazes/Grid.js'
 
-const grid = new DistanceGrid(8, 8)
+const grid = new Grid(8, 8)
 BinaryTree.on(grid)
 
 console.log(grid.toString())

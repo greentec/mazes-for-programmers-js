@@ -5,12 +5,6 @@ const ctx = output.getContext('2d')
 
 export default class ColoredGrid extends Grid {
 
-  set_distances(distances) {
-    this.distances = distances
-    const [_, maximum] = distances.max()
-    this.maximum = maximum
-  }
-
   background_color_for(cell) {
     const distance = this.distances.get(cell)
     const intensity = (this.maximum - distance) / this.maximum
