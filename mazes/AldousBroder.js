@@ -1,6 +1,6 @@
 export default class AldousBroder {
   on(grid) {
-    let cell = grid.get_random_cell()
+    let cell = grid.random_cell()
     let unvisited = grid.size() - 1
 
     while (unvisited > 0) {

@@ -40,7 +40,7 @@ export default class Grid {
     return this.grid[row][column]
   }
 
-  get_random_cell() {
+  random_cell() {
     const row = Math.floor(Math.random() * this.rows)
     const column = Math.floor(Math.random() * this.grid[row].length)
     return this.cell(row, column)
