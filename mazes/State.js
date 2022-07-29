@@ -4,7 +4,6 @@ export default class State {
     this.neighbors = []
     this.set_for_cell = {}
     this.cells_in_set = {}
-
     const cell_gen = grid.each_cell()
 
     while (true) {
@@ -26,7 +25,6 @@ export default class State {
 
   merge(left, right) {
     left.link(right)
-
     const winner = this.set_for_cell[left.get_id()]
     const loser = this.set_for_cell[right.get_id()]
     const losers = this.cells_in_set[loser] || [right]
@@ -43,17 +41,15 @@ export default class State {
 
   add_crossing(cell) {
     if (cell.get_links().length > 0 ||
-			!this.can_merge(cell.east, cell.west) ||
-			!this.can_merge(cell.north, cell.south))
+      !this.can_merge(cell.east, cell.west) ||
+      !this.can_merge(cell.north, cell.south))
       return false
-
-    // this.neighbors = this.neighbors.filter(c => c[0].get_id() != cell.get_id() && c[1].get_id() != cell.get_id() )
 
     if (Math.random() < 0.5) {
       if (cell.west.get_id() == cell.get_id() ||
-				cell.get_id() == cell.east.get_id() ||
-				cell.north.get_id() == cell.north.south.get_id() ||
-				cell.south.get_id() == cell.south.north.get_id())
+        cell.get_id() == cell.east.get_id() ||
+        cell.north.get_id() == cell.north.south.get_id() ||
+        cell.south.get_id() == cell.south.north.get_id())
         return false
 
       this.neighbors = this.neighbors.filter(c => c[0].get_id() != cell.get_id() && c[1].get_id() != cell.get_id())
@@ -66,9 +62,9 @@ export default class State {
       this.merge(cell.south, cell.south.north)
     } else {
       if (cell.north.get_id() == cell.get_id() ||
-				cell.get_id() == cell.south.get_id() ||
-				cell.west.get_id() == cell.west.east.get_id() ||
-				cell.east.get_id() == cell.east.west.get_id())
+        cell.get_id() == cell.south.get_id() ||
+        cell.west.get_id() == cell.west.east.get_id() ||
+        cell.east.get_id() == cell.east.west.get_id())
         return false
 
       this.neighbors = this.neighbors.filter(c => c[0].get_id() != cell.get_id() && c[1].get_id() != cell.get_id())

@@ -14,7 +14,6 @@ export default class GrowingTree {
         active.push(neighbor)
       } else
         active = active.filter(c => c.get_id() != cell.get_id())
-
     }
   }
 }

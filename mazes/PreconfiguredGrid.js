@@ -8,7 +8,6 @@ export default class PreconfiguredGrid extends WeaveGrid {
       this.grid[i] = new Array(this.columns)
       for (let j = 0; j < this.columns; j += 1)
         this.grid[i][j] = new SimpleOverCell(i, j, this)
-
     }
   }
 }

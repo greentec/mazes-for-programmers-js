@@ -13,8 +13,8 @@ export default class HuntAndKill {
         current = neighbor
       } else {
         current = null
-
         const cell_gen = grid.each_cell()
+
         while (true) {
           const cell = cell_gen.next().value
           if (!cell) break
@@ -23,7 +23,6 @@ export default class HuntAndKill {
             current = cell
             neighbor = visited_neighbors[Math.floor(Math.random() * visited_neighbors.length)]
             current.link(neighbor)
-
             break
           }
         }

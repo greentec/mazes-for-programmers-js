@@ -1,8 +1,8 @@
 export default class RecursiveDivision {
   on(grid) {
     this.grid = grid
-
     const cell_gen = this.grid.each_cell()
+
     while (true) {
       const cell = cell_gen.next().value
       if (!cell) break
@@ -13,14 +13,12 @@ export default class RecursiveDivision {
   }
 
   divide(row, column, height, width) {
-    // if (height <= 1 || width <= 1) return
     if (height <= 1 || width <= 1 || height < 5 && width < 5 && Math.random() < 0.25) return
 
     if (height > width)
       this.divide_horizontally(row, column, height, width)
     else
       this.divide_vertically(row, column, height, width)
-
   }
 
   divide_horizontally(row, column, height, width) {

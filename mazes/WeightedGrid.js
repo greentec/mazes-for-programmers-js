@@ -14,7 +14,6 @@ export default class WeightedGrid extends Grid {
       this.grid[i] = new Array(this.columns)
       for (let j = 0; j < this.columns; j += 1)
         this.grid[i][j] = new WeightedCell(i, j)
-
     }
   }
 
@@ -29,8 +28,8 @@ export default class WeightedGrid extends Grid {
 
   to_img(ctx, cellSize) {
     ctx.strokeStyle = 'black'
-
     const cell_gen = this.each_cell()
+
     while (true) {
       const cell = cell_gen.next().value
       if (!cell) break

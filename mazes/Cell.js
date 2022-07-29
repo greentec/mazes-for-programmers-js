@@ -1,4 +1,4 @@
-import Distances from './Distances.js';
+import Distances from './Distances.js'
 
 export default class Cell {
   constructor(row, column) {

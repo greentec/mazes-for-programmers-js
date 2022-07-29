@@ -21,7 +21,6 @@ export class OverCell extends Cell {
       this.grid.tunnel_under(neighbor)
     else
       super.link(cell, bidi)
-
   }
 
   neighbors() {
@@ -96,7 +95,7 @@ export class UnderCell extends Cell {
 
 export class SimpleOverCell extends OverCell {
   neighbors() {
-    list = []
+    const list = []
     if (this.north) list.push(this.north)
     if (this.south) list.push(this.south)
     if (this.east) list.push(this.east)

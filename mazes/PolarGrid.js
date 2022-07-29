@@ -8,7 +8,6 @@ export default class PolarGrid extends Grid {
 
   prepare_grid() {
     const rows = new Array(this.rows)
-
     const row_height = 1.0 / this.rows
     rows[0] = [new PolarCell(0, 0)]
 
@@ -24,7 +23,6 @@ export default class PolarGrid extends Grid {
       rows[i] = new Array(cells)
       for (let j = 0; j < cells; j += 1)
         rows[i][j] = new PolarCell(i, j)
-
     }
 
     this.grid = rows
@@ -48,20 +46,17 @@ export default class PolarGrid extends Grid {
         parent.outward.push(cell)
         cell.inward = parent
       }
-
     }
   }
 
   get_cell(row, column) {
-    if (row < 0 || row > this.rows - 1) 		 return null
-    // if (column < 0 || column > this.grid[row].length) return null
+    if (row < 0 || row > this.rows - 1) return null
     return this.grid[row][column % this.grid[row].length]
   }
 
   get_random_cell() {
     const row = Math.floor(Math.random() * this.rows)
     const col = Math.floor(Math.random() * this.grid[row].length)
-
     return this.get_cell(row, col)
   }
 
@@ -77,11 +72,11 @@ export default class PolarGrid extends Grid {
       if (!cell) break
       if (cell.row == 0) continue
 
-      const theta 		 = 2 * Math.PI / this.grid[cell.row].length
+      const theta = 2 * Math.PI / this.grid[cell.row].length
       const inner_radius = cell.row * cellSize
       const outer_radius = (cell.row + 1) * cellSize
-      const theta_ccw	 = cell.column * theta
-      const theta_cw	 = (cell.column + 1) * theta
+      const theta_ccw = cell.column * theta
+      const theta_cw = (cell.column + 1) * theta
 
       const ax = center + Math.floor(inner_radius * Math.cos(theta_ccw))
       const ay = center + Math.floor(inner_radius * Math.sin(theta_ccw))

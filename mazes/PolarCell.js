@@ -4,7 +4,6 @@ export default class PolarCell extends Cell {
   constructor(row, column) {
     super(row, column)
     this.outward = []
-
     this.cw = null
     this.ccw = null
     this.inward = null

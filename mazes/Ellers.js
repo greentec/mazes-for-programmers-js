@@ -3,8 +3,8 @@ import RowState from './RowState.js'
 export default class Ellers {
   on(grid) {
     let row_state = new RowState()
-
     const row_gen = grid.each_row()
+
     for (let i = 0; i < grid.rows; i += 1) {
       const row = row_gen.next().value
       for (let j = 0; j < row.length; j += 1) {
@@ -23,8 +23,8 @@ export default class Ellers {
 
       if (row[0].south) {
         const next_row = row_state.next()
-
         const each_set_gen = row_state.each_set()
+
         while (true) {
           let set, list
           const next = each_set_gen.next()
@@ -42,7 +42,6 @@ export default class Ellers {
             }
           }
         }
-
         row_state = next_row
       }
     }

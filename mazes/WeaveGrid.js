@@ -13,7 +13,6 @@ export default class WeaveGrid extends Grid {
       this.grid[i] = new Array(this.columns)
       for (let j = 0; j < this.columns; j += 1)
         this.grid[i][j] = new OverCell(i, j, this)
-
     }
   }
 
@@ -28,7 +27,6 @@ export default class WeaveGrid extends Grid {
       const row = row_gen.next().value
       for (let j = 0; j < row.length; j += 1)
         if (row[j]) yield row[j]
-
     }
 
     for (let i = 0; i < this.under_cells.length; i += 1)

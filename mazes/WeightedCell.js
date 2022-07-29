@@ -26,7 +26,6 @@ export default class WeightedCell extends Cell {
     }
 
     weights.set_cell(this, 0)
-
     return weights
   }
 }

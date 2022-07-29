@@ -4,7 +4,6 @@ export default class Grid {
   constructor(rows, columns) {
     this.rows = rows
     this.columns = columns
-
     this.prepare_grid()
     this.configure_cells()
   }
@@ -15,7 +14,6 @@ export default class Grid {
       this.grid[i] = new Array(this.columns)
       for (let j = 0; j < this.columns; j += 1)
         this.grid[i][j] = new Cell(i, j)
-
     }
   }
 
@@ -31,7 +29,6 @@ export default class Grid {
         if (col > 0) cell.west = this.get_cell(row, col - 1)
         if (col < this.columns - 1) cell.east = this.get_cell(row, col + 1)
       }
-
   }
 
   get_cell(row, column) {
@@ -43,7 +40,6 @@ export default class Grid {
   get_random_cell() {
     const row = Math.floor(Math.random() * this.rows)
     const column = Math.floor(Math.random() * this.grid[row].length)
-
     return this.get_cell(row, column)
   }
 
@@ -63,9 +59,7 @@ export default class Grid {
       const row = row_gen.next().value
       for (let j = 0; j < row.length; j += 1)
         if (row[j]) yield row[j]
-
     }
-
   }
 
   contents_of(cell) {
@@ -86,16 +80,13 @@ export default class Grid {
       for (let j = 0; j < row.length; j += 1) {
         let cell = row[j]
         if (!cell) cell = new Cell(-1, -1)
-
         const body = '   '
         const east_boundary = (cell.east && cell.isLinked(cell.east)) ? ' ' : '|'
         top += body + east_boundary
-
         const south_boundary = (cell.south && cell.isLinked(cell.south)) ? '   ' : '---'
         const corner = '+'
         bottom += south_boundary + corner
       }
-
       output += top + '\n'
       output += bottom + '\n'
     }
@@ -104,10 +95,9 @@ export default class Grid {
 
   to_img(ctx, cellSize = 10, inset = 0) {
     ctx.strokeStyle = 'black'
-
     inset = Math.floor(cellSize * inset)
-
     const cell_gen = this.each_cell()
+
     while (true) {
       const cell = cell_gen.next().value
       if (!cell) break
@@ -217,16 +207,13 @@ export default class Grid {
 
   deadends() {
     const list = []
-
     const cell_gen = this.each_cell()
     while (true) {
       const cell = cell_gen.next().value
       if (!cell) break
       if (cell.get_links().length == 1)
         list.push(cell)
-
     }
-
     return list
   }
 

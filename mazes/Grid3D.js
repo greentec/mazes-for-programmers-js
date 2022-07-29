@@ -5,7 +5,6 @@ export default class Grid3D extends Grid {
   constructor(levels, rows, columns) {
     super(rows, columns)
     this.levels = levels
-
     this.prepare_grid()
     this.configure_cells()
   }
@@ -20,7 +19,6 @@ export default class Grid3D extends Grid {
         this.grid[h][i] = new Array(this.columns)
         for (let j = 0; j < this.columns; j += 1)
           this.grid[h][i][j] = new Cell3D(h, i, j)
-
       }
     }
   }
@@ -44,7 +42,6 @@ export default class Grid3D extends Grid {
           cell.down = this.get_cell(level - 1, row, col)
           cell.up = this.get_cell(level + 1, row, col)
         }
-
   }
 
   get_cell(level, row, column) {
@@ -58,7 +55,6 @@ export default class Grid3D extends Grid {
     const level = Math.floor(Math.random() * this.levels)
     const row = Math.floor(Math.random() * this.grid[level].length)
     const column = Math.floor(Math.random() * this.grid[level][row].length)
-
     return this.get_cell(level, row, column)
   }
 
@@ -78,7 +74,6 @@ export default class Grid3D extends Grid {
       const level = level_gen.next().value
       for (let i = 0; i < this.rows; i += 1)
         if (level[i]) yield level[i]
-
     }
   }
 
@@ -90,14 +85,12 @@ export default class Grid3D extends Grid {
         const row = level[i]
         for (let j = 0; j < row.length; j += 1)
           if (row[j]) yield row[j]
-
       }
     }
   }
 
   to_img(ctx, cellSize = 10, inset = 0, margin = cellSize / 2) {
     ctx.strokeStyle = 'black'
-
     inset = Math.floor(cellSize * inset)
 
     const grid_width = cellSize * this.columns
@@ -116,7 +109,7 @@ export default class Grid3D extends Grid {
 
       if (inset > 0)
         this.to_img_with_inset(ctx, cell, cellSize, x, y, inset)
-			 else
+      else
         this.to_img_without_inset(ctx, cell, cellSize, x, y)
 
       const mid_x = x + cellSize / 2

@@ -12,7 +12,6 @@ export default class SideWinder {
 
         const at_eastern_boundary = cell.east == null
         const at_northern_boundary = cell.north == null
-
         const should_close_out = at_eastern_boundary || (!at_northern_boundary && Math.random() < 0.5)
 
         if (should_close_out) {
@@ -21,7 +20,6 @@ export default class SideWinder {
           run = []
         } else
           cell.link(cell.east)
-
       }
     }
   }

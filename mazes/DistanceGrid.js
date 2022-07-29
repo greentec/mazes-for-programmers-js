@@ -3,21 +3,13 @@ import Grid from './Grid.js'
 export default class DistanceGrid extends Grid {
   constructor(rows, columns) {
     super(rows, columns)
-
-    // this.rows = rows
-    // this.columns = columns
-
-    // this.prepare_grid()
-    // this.configure_cells()
     this.distances = null
   }
 
   contents_of(cell) {
     if (this.distances && this.distances.get_cell(cell))
       return this.distances.get_cell(cell).toString(36)
-
     return super.contents_of(cell)
-
   }
 
   toString() {
@@ -33,8 +25,6 @@ export default class DistanceGrid extends Grid {
 
       for (let j = 0; j < row.length; j += 1) {
         const cell = row[j]
-
-        // let body = '   '
         const body = ` ${this.contents_of(cell)} `
         const east_boundary = (cell.east && cell.isLinked(cell.east)) ? ' ' : '|'
         top += body + east_boundary
@@ -49,5 +39,4 @@ export default class DistanceGrid extends Grid {
     }
     return output
   }
-
 }

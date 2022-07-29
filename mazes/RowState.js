@@ -27,7 +27,6 @@ export default class RowState {
       this.set_for_cell[cell.column] = winner
       this.cells_in_set[winner].push(cell)
     }
-
     delete this.cells_in_set[loser]
   }
 
@@ -38,6 +37,5 @@ export default class RowState {
   * each_set() {
     for (const [set, cells] of Object.entries(this.cells_in_set))
       yield [set, cells]
-
   }
 }

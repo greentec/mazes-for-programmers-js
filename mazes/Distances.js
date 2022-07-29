@@ -19,7 +19,6 @@ export default class Distances {
 
   path_to(goal) {
     let current = goal
-
     const breadcrumbs = new Distances(this.root)
     breadcrumbs.set_cell(current, this.get_cell(current))
 

@@ -8,7 +8,6 @@ export default class HexGrid extends Grid {
       this.grid[i] = new Array(this.columns)
       for (let j = 0; j < this.columns; j += 1)
         this.grid[i][j] = new HexCell(i, j)
-
     }
   }
 
@@ -19,9 +18,9 @@ export default class HexGrid extends Grid {
         if (cell == null) continue
         const { row } = cell
         const col = cell.column
-
         let north_diagonal
         let south_diagonal
+
         if (col % 2 == 0) {
           north_diagonal = row - 1
           south_diagonal = row
@@ -37,7 +36,6 @@ export default class HexGrid extends Grid {
         cell.south = this.get_cell(row + 1, col)
         cell.southeast = this.get_cell(south_diagonal, col + 1)
       }
-
   }
 
   get_cell(row, column) {
@@ -67,11 +65,10 @@ export default class HexGrid extends Grid {
     const b_size = cellSize * Math.sqrt(3) / 2.0
     const width = cellSize * 2
     const height = b_size * 2
-
     const img_width = Math.floor(3 * a_size * this.columns + a_size + 0.5)
     const img_height = Math.floor(height * this.rows + b_size + 0.5)
-
     const cell_gen = this.each_cell()
+
     while (true) {
       const cell = cell_gen.next().value
       if (!cell) break

@@ -7,14 +7,12 @@ export default class Mask {
       this.bits[i] = new Array(this.columns)
       for (let j = 0; j < this.columns; j += 1)
         this.bits[i][j] = true
-
     }
   }
 
   get_bits(row, column) {
     if (row >= 0 && row < this.rows && column >= 0 && column < this.columns)
       return this.bits[row][column]
-
     return false
   }
 
@@ -24,11 +22,9 @@ export default class Mask {
 
   count() {
     let count = 0
-
     for (let i = 0; i < this.rows; i += 1)
       for (let j = 0; j < this.columns; j += 1)
         if (this.bits[i][j]) count += 1
-
     return count
   }
 
@@ -36,7 +32,6 @@ export default class Mask {
     while (true) {
       const row = Math.floor(Math.random() * this.rows)
       const col = Math.floor(Math.random() * this.columns)
-
       if (this.get_bits(row, col)) return [row, col]
     }
   }
@@ -51,7 +46,6 @@ export default class Mask {
       for (let j = 0; j < columns; j += 1)
         if (lines[i][j] == 'X')
           mask.set_bits(i, j, false)
-
         else
           mask.set_bits(i, j, true)
 
@@ -68,12 +62,9 @@ export default class Mask {
         const image_index = (i * imageData.width + j) * 4
         if (imageData.data[image_index] == 0)
           mask.set_bits(i, j, false)
-
         else
           mask.set_bits(i, j, true)
-
       }
-
     return mask
   }
 }

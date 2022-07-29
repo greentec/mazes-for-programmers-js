@@ -9,7 +9,6 @@ export default class TriangleGrid extends Grid {
       this.grid[i] = new Array(this.columns)
       for (let j = 0; j < this.columns; j += 1)
         this.grid[i][j] = new TriangleCell(i, j)
-
     }
   }
 
@@ -28,7 +27,6 @@ export default class TriangleGrid extends Grid {
 
         else
           cell.north = this.get_cell(row - 1, col)
-
       }
 
   }
