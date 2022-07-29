@@ -37,13 +37,11 @@ export default class Distances {
     let max_distance = 0
     let max_cell_id = this.root.id
 
-    for (const cell_id in this.cells) {
-      const distance = this.cells[cell_id]
+    for (const [id, distance] of Object.entries(this.cells))
       if (distance > max_distance) {
-        max_cell_id = cell_id
+        max_cell_id = id
         max_distance = distance
       }
-    }
 
     return [max_cell_id, max_distance]
   }
