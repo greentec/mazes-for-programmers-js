@@ -72,16 +72,14 @@ export default class Grid {
       let top = '|'
       let bottom = '+'
       for (const cell of row) {
-        if (!cell) cell = new Cell(-1, -1)
-        const body = '   '
+        const body = ` ${this.contents_of(cell)} `
         const east_boundary = cell.isLinked(cell.east) ? ' ' : '|'
         top += body + east_boundary
         const south_boundary = cell.isLinked(cell.south) ? '   ' : '---'
         const corner = '+'
         bottom += south_boundary + corner
       }
-      output += top + '\n'
-      output += bottom + '\n'
+      output += top + '\n' + bottom + '\n'
     }
     return output
   }

@@ -47,23 +47,19 @@ export default class Cell {
     const distances = new Distances(this)
     let frontier = [this]
 
-    while (frontier.length > 0) {
+    while (frontier.length) {
       const new_frontier = []
-
-      for (let i = 0; i < frontier.length; i += 1) {
-        const cell = frontier[i]
+      frontier.forEach(cell => {
         for (const link in cell.links) {
-          const linkedCell = cell.links[link]
-          if (linkedCell && distances.get_cell(linkedCell) == undefined) {
-            distances.set_cell(linkedCell, distances.get_cell(cell) + 1)
-            new_frontier.push(linkedCell)
+          const linked = cell.links[link]
+          if (distances.get_cell(linked) === undefined) { // 0 is valid
+            distances.set_cell(linked, distances.get_cell(cell) + 1)
+            new_frontier.push(linked)
           }
         }
-      }
-
+      })
       frontier = new_frontier
     }
-
     return distances
   }
 }
