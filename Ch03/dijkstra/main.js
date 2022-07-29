@@ -10,8 +10,9 @@ const start = grid.get_cell(0, 0)
 const distances = start.distances()
 
 grid.distances = distances
-// grid.distances = distances.path_to(grid.get_cell(grid.rows - 1, 0))
+console.log(grid.toString())
 
+grid.distances = distances.path_to(grid.get_cell(grid.rows - 1, 0))
 console.log(grid.toString())
 
 grid.to_img()
