@@ -1,8 +1,6 @@
-import BinaryTree from '../../mazes/BinaryTree.js'
 import SideWinder from '../../mazes/SideWinder.js'
 import DistanceGrid from '../../mazes/DistanceGrid.js'
 
-// var maze = new BinaryTree();
 const maze = new SideWinder()
 const h = 8
 const w = 8
@@ -21,10 +19,5 @@ grid.distances = distances.path_to(grid.get_cell(grid.rows - 1, 0))
 
 console.log(grid.toString())
 
-// let cellSize = 20;
-// let output = document.getElementById('output');
-// output.width = cellSize * w + 1;
-// output.height = cellSize * h + 1;
-// let ctx = output.getContext('2d');
-// grid.to_img(cellSize);
-
+const cellSize = 20
+grid.to_img(cellSize)

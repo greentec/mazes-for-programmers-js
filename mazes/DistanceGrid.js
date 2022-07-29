@@ -15,25 +15,17 @@ export default class DistanceGrid extends Grid {
   toString() {
     let output = ''
     output += '+' + '---+'.repeat(this.columns) + '\n'
-    const row_gen = this.each_row()
-    while (true) {
-      const row = row_gen.next().value
-      if (!row) break
-
+    for (const row of this.grid) {
       let top = '|'
       let bottom = '+'
-
-      for (let j = 0; j < row.length; j += 1) {
-        const cell = row[j]
+      for (const cell of row) {
         const body = ` ${this.contents_of(cell)} `
         const east_boundary = (cell.east && cell.isLinked(cell.east)) ? ' ' : '|'
         top += body + east_boundary
-
         const south_boundary = (cell.south && cell.isLinked(cell.south)) ? '   ' : '---'
         const corner = '+'
         bottom += south_boundary + corner
       }
-
       output += top + '\n'
       output += bottom + '\n'
     }

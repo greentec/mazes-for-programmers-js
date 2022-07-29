@@ -11,8 +11,4 @@ maze.on(grid)
 console.log(grid.toString())
 
 const cellSize = 20
-const output = document.getElementById('output')
-output.width = cellSize * w + 1
-output.height = cellSize * h + 1
-const ctx = output.getContext('2d')
 grid.to_img(cellSize)
