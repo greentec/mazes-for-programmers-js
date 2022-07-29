@@ -7,17 +7,13 @@ SideWinder.on(grid)
 console.log(grid.to_img(30))
 
 const start = grid.cell(0, 0)
-const distances = start.distances()
-const [new_start_id] = distances.max()
+const [new_start_id] = start.distances().max()
 
-const new_start_coord = new_start_id.split('#')
-const new_start = grid.cell(new_start_coord[0], new_start_coord[1])
-
+const new_start = grid.cell_by_id(new_start_id)
 const new_distances = new_start.distances()
 const [goal_id] = new_distances.max()
 
-const goal_coord = goal_id.split('#').map(Number)
-const goal = grid.cell(goal_coord[0], goal_coord[1])
+const goal = grid.cell_by_id(goal_id)
 grid.distances = new_distances.path_to(goal)
 
 console.log(grid.toString())

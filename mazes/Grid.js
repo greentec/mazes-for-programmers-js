@@ -40,6 +40,11 @@ export default class Grid {
     return this.grid[row][column]
   }
 
+  cell_by_id(id) {
+    const [row, col] = id.split('#').map(Number)
+    return this.cell(row, col)
+  }
+
   random_cell() {
     const row = Math.floor(Math.random() * this.rows)
     const column = Math.floor(Math.random() * this.grid[row].length)
