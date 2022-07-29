@@ -52,8 +52,8 @@ export default class Cell {
       frontier.forEach(cell => {
         for (const link in cell.links) {
           const linked = cell.links[link]
-          if (distances.get_cell(linked) === undefined) { // 0 is valid
-            distances.set_cell(linked, distances.get_cell(cell) + 1)
+          if (distances.get(linked) === undefined) { // 0 is valid
+            distances.set(linked, distances.get(cell) + 1)
             new_frontier.push(linked)
           }
         }

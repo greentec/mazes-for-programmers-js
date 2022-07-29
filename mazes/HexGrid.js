@@ -54,7 +54,7 @@ export default class HexGrid extends Grid {
   }
 
   background_color_for(cell) {
-    const distance = this.distances.get_cell(cell)
+    const distance = this.distances.get(cell)
     const intensity = (this.maximum - distance) * 1.0 / this.maximum
     const dark = Math.floor(255 * intensity)
     const bright = Math.floor(128 + 127 * intensity)

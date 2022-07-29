@@ -5,11 +5,11 @@ export default class Distances {
     this.cells[this.root.id] = 0
   }
 
-  get_cell(cell) {
+  get(cell) {
     return this.cells[cell.id]
   }
 
-  set_cell(cell, distance) {
+  set(cell, distance) {
     this.cells[cell.id] = distance
   }
 

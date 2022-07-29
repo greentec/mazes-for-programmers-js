@@ -23,7 +23,7 @@ export default class WeightedGrid extends Grid {
   background_color_for(cell) {
     if (cell.weight > 1) return 'rgb(255,0,0)'
     if (!this.distances) return 'rgb(255,255,255)'
-    const distance = this.distances.get_cell(cell)
+    const distance = this.distances.get(cell)
     if (!distance) return 'rgb(255,255,255)'
     const intensity = 64 + 191 * (this.maximum - distance) * 1.0 / this.maximum
     return `rgb(${intensity},${intensity},0)`
