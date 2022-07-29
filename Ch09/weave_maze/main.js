@@ -9,7 +9,7 @@ maze.on(grid)
 
 console.log(grid.toString())
 
-// let start = grid.get_cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2));
+// let start = grid.cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2));
 // grid.set_distances(start.distances());
 
 const cellSize = 20

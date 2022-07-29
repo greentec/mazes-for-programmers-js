@@ -10,8 +10,8 @@ grid.braid(1)
 
 console.log(grid.toString())
 
-const start = grid.get_cell(0, 0)
-const finish = grid.get_cell(grid.rows - 1, grid.columns - 1)
+const start = grid.cell(0, 0)
+const finish = grid.cell(grid.rows - 1, grid.columns - 1)
 grid.set_distances(start.distances().path_to(finish))
 
 const cellSize = 10
@@ -24,7 +24,7 @@ grid.to_img(cellSize)
 const cells = grid.distances.get_cells()
 let row, col;
 [row, col] = cells[Math.floor(Math.random() * cells.length)].split('#')
-const lava = grid.get_cell(row, col)
+const lava = grid.cell(row, col)
 lava.weight = 50
 
 grid.set_distances(start.distances().path_to(finish))

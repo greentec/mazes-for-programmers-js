@@ -11,7 +11,7 @@ maze.on(grid, start_at)
 
 console.log(grid.toString())
 
-const start = grid.get_cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2))
+const start = grid.cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2))
 grid.set_distances(start.distances())
 
 const cellSize = 10

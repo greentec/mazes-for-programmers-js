@@ -16,7 +16,7 @@ const img_height = Math.floor(height * rows + b_size + 0.5)
 const maze = new RecursiveBacktracker()
 maze.on(grid)
 
-const start = grid.get_cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2))
+const start = grid.cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2))
 grid.set_distances(start.distances())
 
 const output = document.getElementById('output')

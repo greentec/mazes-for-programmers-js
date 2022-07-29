@@ -7,23 +7,23 @@ const w = 5
 const grid = new ColoredGrid(h, w)
 
 let cell
-cell = grid.get_cell(0, 0)
+cell = grid.cell(0, 0)
 cell.east = null
 cell.west = null
 cell.south = null
 cell.north = null
 
-cell = grid.get_cell(4, 4)
+cell = grid.cell(4, 4)
 cell.east = null
 cell.west = null
 cell.south = null
 cell.north = null
 
-maze.on(grid, grid.get_cell(1, 1))
+maze.on(grid, grid.cell(1, 1))
 
 console.log(grid.toString())
 
-const start = grid.get_cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2))
+const start = grid.cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2))
 grid.set_distances(start.distances())
 
 const cellSize = 10

@@ -23,18 +23,18 @@ export default class Grid {
   configure_cells() {
     for (let i = 0; i < this.rows; i += 1)
       for (let j = 0; j < this.columns; j += 1) {
-        const cell = this.get_cell(i, j)
+        const cell = this.cell(i, j)
         if (cell == null) continue
         const { row } = cell
         const col = cell.column
-        if (row > 0) cell.north = this.get_cell(row - 1, col)
-        if (row < this.rows - 1) cell.south = this.get_cell(row + 1, col)
-        if (col > 0) cell.west = this.get_cell(row, col - 1)
-        if (col < this.columns - 1) cell.east = this.get_cell(row, col + 1)
+        if (row > 0) cell.north = this.cell(row - 1, col)
+        if (row < this.rows - 1) cell.south = this.cell(row + 1, col)
+        if (col > 0) cell.west = this.cell(row, col - 1)
+        if (col < this.columns - 1) cell.east = this.cell(row, col + 1)
       }
   }
 
-  get_cell(row, column) {
+  cell(row, column) {
     if (row < 0 || row > this.rows - 1) return null
     if (column < 0 || column > this.grid[row].length - 1) return null
     return this.grid[row][column]
@@ -43,7 +43,7 @@ export default class Grid {
   get_random_cell() {
     const row = Math.floor(Math.random() * this.rows)
     const column = Math.floor(Math.random() * this.grid[row].length)
-    return this.get_cell(row, column)
+    return this.cell(row, column)
   }
 
   size() {

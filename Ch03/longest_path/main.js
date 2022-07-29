@@ -1,36 +1,23 @@
-import BinaryTree from '../../mazes/BinaryTree.js'
 import SideWinder from '../../mazes/SideWinder.js'
 import DistanceGrid from '../../mazes/DistanceGrid.js'
 
-const h = 8
-const w = 8
-const grid = new DistanceGrid(h, w)
+const grid = new DistanceGrid(8, 8)
 SideWinder.on(grid)
 
-console.log(grid.toString())
+console.log(grid.to_img(30))
 
-const start = grid.get_cell(0, 0)
+const start = grid.cell(0, 0)
 const distances = start.distances()
-let new_start_id
-let distance
-let goal_id;
-[new_start_id, distance] = distances.max()
+const [new_start_id] = distances.max()
 
-const new_start_split = new_start_id.split('#')
-const new_start = grid.get_cell(new_start_split[0], new_start_split[1])
+const new_start_coord = new_start_id.split('#')
+const new_start = grid.cell(new_start_coord[0], new_start_coord[1])
 
-const new_distances = new_start.distances();
-[goal_id, distance] = new_distances.max()
+const new_distances = new_start.distances()
+const [goal_id] = new_distances.max()
 
-const goal_split = goal_id.split('#')
-const goal = grid.get_cell(goal_split[0], goal_split[1])
+const goal_coord = goal_id.split('#').map(Number)
+const goal = grid.cell(goal_coord[0], goal_coord[1])
 grid.distances = new_distances.path_to(goal)
 
 console.log(grid.toString())
-
-// let cellSize = 20;
-// let output = document.getElementById('output');
-// output.width = cellSize * w + 1;
-// output.height = cellSize * h + 1;
-// let ctx = output.getContext('2d');
-// grid.to_img(cellSize);

@@ -28,7 +28,7 @@ export default class RecursiveDivision {
     for (let x = 0; x < width; x += 1) {
       if (passage_at == x) continue
 
-      const cell = this.grid.get_cell(row + divide_south_of, column + x)
+      const cell = this.grid.cell(row + divide_south_of, column + x)
       cell.unlink(cell.south)
     }
 
@@ -43,7 +43,7 @@ export default class RecursiveDivision {
     for (let y = 0; y < height; y += 1) {
       if (passage_at == y) continue
 
-      const cell = this.grid.get_cell(row + y, column + divide_east_of)
+      const cell = this.grid.cell(row + y, column + divide_east_of)
       cell.unlink(cell.east)
     }
 

@@ -11,7 +11,7 @@ const state = new State(grid)
 for (let i = 0; i < grid.size(); i += 1) {
   const row = 1 + Math.floor(Math.random() * (grid.rows - 2))
   const column = 1 + Math.floor(Math.random() * (grid.columns - 2))
-  state.add_crossing(grid.get_cell(row, column))
+  state.add_crossing(grid.cell(row, column))
 }
 
 // console.log(grid)
@@ -21,7 +21,7 @@ maze.on(grid, state)
 
 console.log(grid.toString())
 
-// let start = grid.get_cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2));
+// let start = grid.cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2));
 // grid.set_distances(start.distances());
 
 const cellSize = 30
