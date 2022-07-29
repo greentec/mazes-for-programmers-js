@@ -36,8 +36,8 @@ export default class TriangleGrid extends Grid {
 
   set_distances(distances) {
     this.distances = distances
-    let farthest_id;
-    [farthest_id, this.maximum] = distances.max()
+    const [farthest_id, maximum] = distances.max()
+    this.maximum = maximum
   }
 
   background_color_for(cell) {

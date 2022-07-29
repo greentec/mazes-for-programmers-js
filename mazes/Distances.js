@@ -5,8 +5,8 @@ export default class Distances {
     this.cells[this.root.id] = 0
   }
 
-  get(cell) {
-    return this.cells[cell.id]
+  get({ id }) {
+    return this.cells[id]
   }
 
   set(cell, distance) {
