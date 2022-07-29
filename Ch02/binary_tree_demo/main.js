@@ -10,4 +10,4 @@ console.log(grid.toString())
 
 const cellSize = 20
 
-grid.to_img(cellSize)
+grid.draw(cellSize)

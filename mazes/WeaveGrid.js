@@ -34,9 +34,9 @@ export default class WeaveGrid extends Grid {
 
   }
 
-  to_img(cellSize = 10, inset = 0) {
+  draw(cellSize = 10, inset = 0) {
     inset = (inset || 0.1)
-    super.to_img(cellSize, inset)
+    super.draw(cellSize, inset)
   }
 
   to_img_with_inset(ctx, cell, cellSize, x, y, inset) {

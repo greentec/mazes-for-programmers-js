@@ -18,7 +18,7 @@ export default class ColoredGrid extends Grid {
     return `rgb(${dark},${bright},${dark})`
   }
 
-  to_img(cellSize) {
+  draw(cellSize) {
     ctx.strokeStyle = 'black'
 
     const cell_gen = this.each_cell()

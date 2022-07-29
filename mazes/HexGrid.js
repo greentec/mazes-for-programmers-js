@@ -61,7 +61,7 @@ export default class HexGrid extends Grid {
     return `rgb(${dark},${bright},${dark})`
   }
 
-  to_img(cellSize) {
+  draw(cellSize) {
     ctx.strokeStyle = 'black'
 
     const a_size = cellSize / 2.0

@@ -4,7 +4,7 @@ import DistanceGrid from '../../mazes/DistanceGrid.js'
 const grid = new DistanceGrid(8, 8)
 SideWinder.on(grid)
 
-console.log(grid.to_img(30))
+grid.draw(30)
 
 const start = grid.cell(0, 0)
 const [new_start_id] = start.distances().max()

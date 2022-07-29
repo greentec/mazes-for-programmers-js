@@ -13,4 +13,4 @@ const output = document.getElementById('output')
 output.width = img_size
 output.height = img_size
 const ctx = output.getContext('2d')
-grid.to_img(cellSize)
+grid.draw(cellSize)

@@ -48,7 +48,7 @@ export default class TriangleGrid extends Grid {
     return `rgb(${dark},${bright},${dark})`
   }
 
-  to_img(cellSize = 16) {
+  draw(cellSize = 16) {
     ctx.strokeStyle = 'black'
 
     const half_width = cellSize / 2.0

@@ -92,7 +92,7 @@ export default class Grid3D extends Grid {
     }
   }
 
-  to_img(cellSize = 10, inset = 0, margin = cellSize / 2) {
+  draw(cellSize = 10, inset = 0, margin = cellSize / 2) {
     ctx.strokeStyle = 'black'
     inset = Math.floor(cellSize * inset)
 

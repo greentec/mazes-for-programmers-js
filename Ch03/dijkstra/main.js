@@ -15,4 +15,4 @@ console.log(grid.toString())
 grid.distances = distances.path_to(grid.cell(grid.rows - 1, 0))
 console.log(grid.toString())
 
-grid.to_img()
+grid.draw()

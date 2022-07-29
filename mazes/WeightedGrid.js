@@ -29,7 +29,7 @@ export default class WeightedGrid extends Grid {
     return `rgb(${intensity},${intensity},0)`
   }
 
-  to_img(cellSize) {
+  draw(cellSize) {
     ctx.strokeStyle = 'black'
     const cell_gen = this.each_cell()
 
