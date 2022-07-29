@@ -2,7 +2,7 @@ import Grid from '../mazes/Grid.js'
 import BinaryTree from '../mazes/BinaryTree.js'
 import SideWinder from '../mazes/SideWinder.js'
 
-// var maze = new BinaryTree();
+// const maze = new BinaryTree()
 const maze = new SideWinder()
 
 const h = 8

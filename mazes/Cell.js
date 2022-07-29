@@ -26,6 +26,7 @@ export default class Cell {
   }
 
   isLinked(cell) {
+    if (!cell) return false
     return this.links.hasOwnProperty(cell.get_id())
   }
 

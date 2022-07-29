@@ -48,18 +48,14 @@ export default class Grid {
   }
 
   * each_row() {
-    for (let i = 0; i < this.rows; i += 1)
-      yield this.grid[i]
-
+    for (const row of this.grid)
+      yield row
   }
 
   * each_cell() {
-    const row_gen = this.each_row()
-    for (let i = 0; i < this.rows; i += 1) {
-      const row = row_gen.next().value
-      for (let j = 0; j < row.length; j += 1)
-        if (row[j]) yield row[j]
-    }
+    for (const row of this.grid)
+      for (const cell of row)
+        if (cell) yield cell
   }
 
   contents_of(cell) {
@@ -69,21 +65,15 @@ export default class Grid {
   toString() {
     let output = ''
     output += '+' + '---+'.repeat(this.columns) + '\n'
-    const row_gen = this.each_row()
-    while (true) {
-      const row = row_gen.next().value
-      if (!row) break
-
+    for (const row of this.grid) {
       let top = '|'
       let bottom = '+'
-
-      for (let j = 0; j < row.length; j += 1) {
-        let cell = row[j]
+      for (const cell of row) {
         if (!cell) cell = new Cell(-1, -1)
         const body = '   '
-        const east_boundary = (cell.east && cell.isLinked(cell.east)) ? ' ' : '|'
+        const east_boundary = cell.isLinked(cell.east) ? ' ' : '|'
         top += body + east_boundary
-        const south_boundary = (cell.south && cell.isLinked(cell.south)) ? '   ' : '---'
+        const south_boundary = cell.isLinked(cell.south) ? '   ' : '---'
         const corner = '+'
         bottom += south_boundary + corner
       }
