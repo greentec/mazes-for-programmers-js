@@ -1,6 +1,9 @@
 import Grid from './Grid.js'
 import PolarCell from './PolarCell.js'
 
+const output = document.getElementById('output')
+const ctx = output.getContext('2d')
+
 export default class PolarGrid extends Grid {
   constructor(rows, columns) {
     super(rows, 1)
@@ -60,7 +63,7 @@ export default class PolarGrid extends Grid {
     return this.get_cell(row, col)
   }
 
-  to_img(ctx, cellSize = 10) {
+  to_img(cellSize = 10) {
     ctx.strokeStyle = 'black'
 
     const img_size = 2 * this.rows * cellSize

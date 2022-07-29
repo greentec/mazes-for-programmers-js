@@ -19,7 +19,7 @@ const output = document.getElementById('output')
 output.width = cellSize * w + 1
 output.height = cellSize * h + 1
 const ctx = output.getContext('2d')
-grid.to_img(ctx, cellSize)
+grid.to_img(cellSize)
 
 const cells = grid.distances.get_cells()
 let row, col;
@@ -33,4 +33,4 @@ const output2 = document.getElementById('output2')
 output2.width = cellSize * w + 1
 output2.height = cellSize * h + 1
 const ctx2 = output2.getContext('2d')
-grid.to_img(ctx2, cellSize)
+grid.to_img(cellSize, 0, ctx2)

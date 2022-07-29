@@ -1,5 +1,8 @@
 import Cell from './Cell.js'
 
+const output = document.getElementById('output')
+const context = output.getContext('2d')
+
 export default class Grid {
   constructor(rows, columns) {
     this.rows = rows
@@ -83,7 +86,9 @@ export default class Grid {
     return output
   }
 
-  to_img(ctx, cellSize = 10, inset = 0) {
+  to_img(cellSize = 10, inset = 0, ctx = context) {
+    output.width = cellSize * this.rows + 1
+    output.height = cellSize * this.columns + 1
     ctx.strokeStyle = 'black'
     inset = Math.floor(cellSize * inset)
     for (const cell of this.each_cell()) {

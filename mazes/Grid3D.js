@@ -1,6 +1,9 @@
 import Grid from './Grid.js'
 import Cell3D from './Cell3D.js'
 
+const output = document.getElementById('output')
+const ctx = output.getContext('2d')
+
 export default class Grid3D extends Grid {
   constructor(levels, rows, columns) {
     super(rows, columns)
@@ -89,7 +92,7 @@ export default class Grid3D extends Grid {
     }
   }
 
-  to_img(ctx, cellSize = 10, inset = 0, margin = cellSize / 2) {
+  to_img(cellSize = 10, inset = 0, margin = cellSize / 2) {
     ctx.strokeStyle = 'black'
     inset = Math.floor(cellSize * inset)
 

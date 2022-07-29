@@ -1,6 +1,9 @@
 import Grid from './Grid.js'
 import HexCell from './HexCell.js'
 
+const output = document.getElementById('output')
+const ctx = output.getContext('2d')
+
 export default class HexGrid extends Grid {
   prepare_grid() {
     this.grid = new Array(this.rows)
@@ -58,7 +61,7 @@ export default class HexGrid extends Grid {
     return `rgb(${dark},${bright},${dark})`
   }
 
-  to_img(ctx, cellSize) {
+  to_img(cellSize) {
     ctx.strokeStyle = 'black'
 
     const a_size = cellSize / 2.0

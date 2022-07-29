@@ -21,7 +21,7 @@ const output = document.getElementById('output')
 output.width = cellSize * w + 1
 output.height = cellSize * h + 1
 const ctx = output.getContext('2d')
-grid.to_img(ctx, cellSize)
+grid.to_img(cellSize)
 
 grid = new ColoredGrid(h, w)
 start_at = grid.get_random_cell()
@@ -36,7 +36,7 @@ const output2 = document.getElementById('output2')
 output2.width = cellSize * w + 1
 output2.height = cellSize * h + 1
 const ctx2 = output2.getContext('2d')
-grid.to_img(ctx2, cellSize)
+grid.to_img(cellSize, 0, ctx2)
 
 grid = new ColoredGrid(h, w)
 start_at = grid.get_random_cell()
@@ -51,4 +51,4 @@ const output3 = document.getElementById('output3')
 output3.width = cellSize * w + 1
 output3.height = cellSize * h + 1
 const ctx3 = output3.getContext('2d')
-grid.to_img(ctx3, cellSize)
+grid.to_img(cellSize, 0, ctx3)

@@ -1,6 +1,9 @@
 import Grid from './Grid.js'
 import TriangleCell from './TriangleCell.js'
 
+const output = document.getElementById('output')
+const ctx = output.getContext('2d')
+
 export default class TriangleGrid extends Grid {
 
   prepare_grid() {
@@ -45,7 +48,7 @@ export default class TriangleGrid extends Grid {
     return `rgb(${dark},${bright},${dark})`
   }
 
-  to_img(ctx, cellSize = 16) {
+  to_img(cellSize = 16) {
     ctx.strokeStyle = 'black'
 
     const half_width = cellSize / 2.0

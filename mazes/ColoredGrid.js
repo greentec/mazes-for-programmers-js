@@ -1,5 +1,8 @@
 import Grid from './Grid.js'
 
+const output = document.getElementById('output')
+const ctx = output.getContext('2d')
+
 export default class ColoredGrid extends Grid {
   set_distances(distances) {
     this.distances = distances
@@ -15,7 +18,7 @@ export default class ColoredGrid extends Grid {
     return `rgb(${dark},${bright},${dark})`
   }
 
-  to_img(ctx, cellSize) {
+  to_img(cellSize) {
     ctx.strokeStyle = 'black'
 
     const cell_gen = this.each_cell()
