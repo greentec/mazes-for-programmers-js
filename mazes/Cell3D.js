@@ -13,7 +13,7 @@ export default class Cell3D extends Cell {
     return list
   }
 
-  get_id() {
+  get id() {
     return this.level + '#' + this.row + '#' + this.column
   }
 }

@@ -18,7 +18,7 @@ export default class PolarCell extends Cell {
     return list
   }
 
-  get_id() {
+  get id() {
     return this.row + '#' + this.column
   }
 }

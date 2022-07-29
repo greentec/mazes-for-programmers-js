@@ -13,7 +13,7 @@ export default class GrowingTree {
         cell.link(neighbor)
         active.push(neighbor)
       } else
-        active = active.filter(c => c.get_id() != cell.get_id())
+        active = active.filter(c => c.id != cell.id)
     }
   }
 }

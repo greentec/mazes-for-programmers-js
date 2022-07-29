@@ -20,7 +20,7 @@ export default class HexCell extends Cell {
     return list
   }
 
-  get_id() {
+  get id() {
     return this.row + '#' + this.column
   }
 }
