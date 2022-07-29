@@ -4,7 +4,7 @@ const output = document.getElementById('output')
 const context = output.getContext('2d')
 
 export default class Grid {
-  constructor(rows, columns) {
+  constructor(rows, columns = rows) {
     this.rows = rows
     this.columns = columns
     this.prepare_grid()
@@ -66,22 +66,8 @@ export default class Grid {
         if (cell) yield cell
   }
 
-  set_distances(distances) {
-    this.distances = distances
-    const [_, maximum] = distances.max()
-    this.maximum = maximum
-  }
-
   contents_of(cell) {
     return ' '
-  }
-
-  background_color_for(cell) {
-    const distance = this.distances.get(cell)
-    const intensity = (this.maximum - distance) * 1.0 / this.maximum
-    const dark = Math.floor(255 * intensity)
-    const bright = Math.floor(128 + 127 * intensity)
-    return `rgb(${dark},${bright},${dark})`
   }
 
   toString() {

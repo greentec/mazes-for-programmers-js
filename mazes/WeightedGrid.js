@@ -5,12 +5,6 @@ const output = document.getElementById('output')
 const ctx = output.getContext('2d')
 
 export default class WeightedGrid extends Grid {
-  set_distances(distances) {
-    this.distances = distances
-    const [_, maximum] = distances.max()
-    this.maximum = maximum
-  }
-
   prepare_grid() {
     this.grid = new Array(this.rows)
     for (let i = 0; i < this.rows; i += 1) {
