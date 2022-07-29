@@ -12,13 +12,13 @@ export default class WeightedCell extends Cell {
     const pending = [this]
 
     while (pending.length > 0) {
-      pending.sort((a, b) => weights.get_cell(a) - weights.get_cell(b))
+      pending.sort((a, b) => weights.get(a) - weights.get(b))
       const cell = pending.shift()
 
       for (const link in cell.links) {
         const neighbor = cell.links[link]
-        const total_weight = weights.get_cell(cell) + neighbor.weight
-        if (!weights.get_cell(neighbor) || total_weight < weights.get_cell(neighbor)) {
+        const total_weight = weights.get(cell) + neighbor.weight
+        if (!weights.get(neighbor) || total_weight < weights.get(neighbor)) {
           pending.push(neighbor)
           weights.set_cell(neighbor, total_weight)
         }

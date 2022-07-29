@@ -41,8 +41,8 @@ export default class PolarGrid extends Grid {
       const col = cell.column
 
       if (row > 0) {
-        cell.cw = this.get_cell(row, col + 1)
-        cell.ccw = this.get_cell(row, col - 1)
+        cell.cw = this.cell(row, col + 1)
+        cell.ccw = this.cell(row, col - 1)
 
         const ratio = this.grid[row].length / this.grid[row - 1].length
         const parent = this.grid[row - 1][Math.floor(col / ratio)]
@@ -52,7 +52,7 @@ export default class PolarGrid extends Grid {
     }
   }
 
-  get_cell(row, column) {
+  cell(row, column) {
     if (row < 0 || row > this.rows - 1) return null
     return this.grid[row][column % this.grid[row].length]
   }
@@ -60,7 +60,7 @@ export default class PolarGrid extends Grid {
   random_cell() {
     const row = Math.floor(Math.random() * this.rows)
     const col = Math.floor(Math.random() * this.grid[row].length)
-    return this.get_cell(row, col)
+    return this.cell(row, col)
   }
 
   draw(cellSize = 10) {

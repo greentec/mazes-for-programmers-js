@@ -32,22 +32,22 @@ export default class Grid3D extends Grid {
     for (let h = 0; h < this.levels; h += 1)
       for (let i = 0; i < this.rows; i += 1)
         for (let j = 0; j < this.columns; j += 1) {
-          const cell = this.get_cell(h, i, j)
+          const cell = this.cell(h, i, j)
           if (cell == null) continue
           const { level } = cell
           const { row } = cell
           const col = cell.column
 
-          cell.north = this.get_cell(level, row - 1, col)
-          cell.south = this.get_cell(level, row + 1, col)
-          cell.west = this.get_cell(level, row, col - 1)
-          cell.east = this.get_cell(level, row, col + 1)
-          cell.down = this.get_cell(level - 1, row, col)
-          cell.up = this.get_cell(level + 1, row, col)
+          cell.north = this.cell(level, row - 1, col)
+          cell.south = this.cell(level, row + 1, col)
+          cell.west = this.cell(level, row, col - 1)
+          cell.east = this.cell(level, row, col + 1)
+          cell.down = this.cell(level - 1, row, col)
+          cell.up = this.cell(level + 1, row, col)
         }
   }
 
-  get_cell(level, row, column) {
+  cell(level, row, column) {
     if (level < 0 || level > this.levels - 1) return null
     if (row < 0 || row > this.grid[level].length - 1) return null
     if (column < 0 || column > this.grid[level][row].length - 1) return null
@@ -58,7 +58,7 @@ export default class Grid3D extends Grid {
     const level = Math.floor(Math.random() * this.levels)
     const row = Math.floor(Math.random() * this.grid[level].length)
     const column = Math.floor(Math.random() * this.grid[level][row].length)
-    return this.get_cell(level, row, column)
+    return this.cell(level, row, column)
   }
 
   size() {

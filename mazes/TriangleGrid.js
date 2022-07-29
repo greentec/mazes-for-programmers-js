@@ -18,34 +18,19 @@ export default class TriangleGrid extends Grid {
   configure_cells() {
     for (let i = 0; i < this.rows; i += 1)
       for (let j = 0; j < this.columns; j += 1) {
-        const cell = this.get_cell(i, j)
+        const cell = this.cell(i, j)
         if (cell == null) continue
         const { row } = cell
         const col = cell.column
 
-        cell.west = this.get_cell(row, col - 1)
-        cell.east = this.get_cell(row, col + 1)
+        cell.west = this.cell(row, col - 1)
+        cell.east = this.cell(row, col + 1)
         if (cell.isUpright())
-          cell.south = this.get_cell(row + 1, col)
+          cell.south = this.cell(row + 1, col)
 
         else
-          cell.north = this.get_cell(row - 1, col)
+          cell.north = this.cell(row - 1, col)
       }
-
-  }
-
-  set_distances(distances) {
-    this.distances = distances
-    const [_, maximum] = distances.max()
-    this.maximum = maximum
-  }
-
-  background_color_for(cell) {
-    const distance = this.distances.get(cell)
-    const intensity = (this.maximum - distance) * 1.0 / this.maximum
-    const dark = Math.floor(255 * intensity)
-    const bright = Math.floor(128 + 127 * intensity)
-    return `rgb(${dark},${bright},${dark})`
   }
 
   draw(cellSize = 16) {

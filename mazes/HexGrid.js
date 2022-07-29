@@ -17,7 +17,7 @@ export default class HexGrid extends Grid {
   configure_cells() {
     for (let i = 0; i < this.rows; i += 1)
       for (let j = 0; j < this.columns; j += 1) {
-        const cell = this.get_cell(i, j)
+        const cell = this.cell(i, j)
         if (cell == null) continue
         const { row } = cell
         const col = cell.column
@@ -32,33 +32,19 @@ export default class HexGrid extends Grid {
           south_diagonal = row + 1
         }
 
-        cell.northwest = this.get_cell(north_diagonal, col - 1)
-        cell.north = this.get_cell(row - 1, col)
-        cell.northeast = this.get_cell(north_diagonal, col + 1)
-        cell.southwest = this.get_cell(south_diagonal, col - 1)
-        cell.south = this.get_cell(row + 1, col)
-        cell.southeast = this.get_cell(south_diagonal, col + 1)
+        cell.northwest = this.cell(north_diagonal, col - 1)
+        cell.north = this.cell(row - 1, col)
+        cell.northeast = this.cell(north_diagonal, col + 1)
+        cell.southwest = this.cell(south_diagonal, col - 1)
+        cell.south = this.cell(row + 1, col)
+        cell.southeast = this.cell(south_diagonal, col + 1)
       }
   }
 
-  get_cell(row, column) {
+  cell(row, column) {
     if (row < 0 || row > this.rows - 1) 		 return null
     if (column < 0 || column > this.columns - 1) return null
     return this.grid[row][column]
-  }
-
-  set_distances(distances) {
-    this.distances = distances
-    const [_, maximum] = distances.max()
-    this.maximum = maximum
-  }
-
-  background_color_for(cell) {
-    const distance = this.distances.get(cell)
-    const intensity = (this.maximum - distance) * 1.0 / this.maximum
-    const dark = Math.floor(255 * intensity)
-    const bright = Math.floor(128 + 127 * intensity)
-    return `rgb(${dark},${bright},${dark})`
   }
 
   draw(cellSize) {
