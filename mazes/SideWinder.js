@@ -1,13 +1,8 @@
 export default class SideWinder {
   on(grid) {
-    const row_gen = grid.each_row()
-    while (true) {
-      const row = row_gen.next().value
-      if (!row) break
-
+    for (const row of grid.each_row()) {
       let run = []
-      for (let j = 0; j < row.length; j += 1) {
-        const cell = row[j]
+      for (const cell of row) {
         run.push(cell)
 
         const at_eastern_boundary = cell.east == null
