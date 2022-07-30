@@ -6,7 +6,7 @@ export default class AldousBroder {
     while (unvisited > 0) {
       const { neighbors } = cell
       const neighbor = neighbors[Math.floor(Math.random() * neighbors.length)]
-      if (neighbor.get_links().length == 0) {
+      if (neighbor.links_length == 0) {
         cell.link(neighbor)
         unvisited -= 1
       }

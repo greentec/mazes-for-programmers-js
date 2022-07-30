@@ -5,7 +5,7 @@ export class SimplifiedPrims {
 
     while (active.length > 0) {
       const cell = active[Math.floor(Math.random() * active.length)]
-      const available_neighbors = cell.neighbors.filter(c => c.get_links().length == 0)
+      const available_neighbors = cell.neighbors.filter(c => c.links_length == 0)
 
       if (available_neighbors.length > 0) {
         const neighbor = available_neighbors[Math.floor(Math.random() * available_neighbors.length)]
@@ -33,7 +33,7 @@ export class TruePrims {
     while (active.length > 0) {
       active.sort((a, b) => costs[a.id] - costs[b.id])
       const cell = active[0]
-      const available_neighbors = cell.neighbors.filter(c => c.get_links().length == 0)
+      const available_neighbors = cell.neighbors.filter(c => c.links_length == 0)
       if (available_neighbors.length > 0) {
         available_neighbors.sort((a, b) => costs[a.id] - costs[b.id])
         const neighbor = available_neighbors[0]

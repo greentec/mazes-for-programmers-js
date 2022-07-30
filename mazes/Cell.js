@@ -21,8 +21,8 @@ export default class Cell {
     if (bidi) cell.unlink(this, false)
   }
 
-  get_links() {
-    return Object.keys(this.links)
+  get links_length() {
+    return Object.keys(this.links).length
   }
 
   isLinked(cell) {
