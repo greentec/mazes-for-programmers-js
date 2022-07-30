@@ -6,6 +6,7 @@ const ctx = output.getContext('2d')
 export default class ColoredGrid extends Grid {
 
   background_color_for(cell) {
+    if (!this.distances) return 'white'
     const distance = this.distances.get(cell)
     const intensity = (this.maximum - distance) / this.maximum
     const dark = Math.floor(255 * intensity)

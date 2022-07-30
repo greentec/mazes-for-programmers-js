@@ -212,7 +212,7 @@ export default class Grid {
     }
   }
 
-  deadends() {
+  get deadends() {
     const list = []
     for (const cell of this.each_cell())
       if (cell.links_length == 1)
@@ -230,8 +230,8 @@ export default class Grid {
   }
 
   braid(p = 1.0) {
-    const deadends = this.deadends()
-    this.shuffle(deadends)
+    const { deadends } = this
+    this.shuffle(deadends) // maybe could not mutate getter??
 
     deadends.forEach(cell => {
       if (cell.links_length != 1 || Math.random() > p)
