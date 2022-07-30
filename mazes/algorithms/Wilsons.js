@@ -12,7 +12,7 @@ export default class Wilsons {
       let path = [cell]
 
       while (unvisited.some(x => x.id === cell.id)) {
-        const neighbors = cell.neighbors()
+        const { neighbors } = cell
         cell = neighbors[Math.floor(Math.random() * neighbors.length)]
         const position = path.findIndex(x => x.id === cell.id)
         if (position != -1)

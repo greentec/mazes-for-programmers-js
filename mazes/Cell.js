@@ -30,7 +30,7 @@ export default class Cell {
     return this.links.hasOwnProperty(cell.id)
   }
 
-  neighbors() {
+  get neighbors() {
     const list = []
     if (this.north) list.push(this.north)
     if (this.south) list.push(this.south)

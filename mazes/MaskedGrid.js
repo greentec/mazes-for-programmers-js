@@ -26,12 +26,11 @@ export default class MaskedGrid extends Grid {
   }
 
   random_cell() {
-    let row, column;
-    [row, column] = this.mask.random_location()
+    const [row, column] = this.mask.random_location()
     return this.cell(row, column)
   }
 
-  size() {
+  get size() {
     return this.mask.count()
   }
 }

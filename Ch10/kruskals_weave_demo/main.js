@@ -8,7 +8,7 @@ const w = 20
 const grid = new PreconfiguredGrid(h, w)
 const state = new State(grid)
 
-for (let i = 0; i < grid.size(); i += 1) {
+for (let i = 0; i < grid.size; i += 1) {
   const row = 1 + Math.floor(Math.random() * (grid.rows - 2))
   const column = 1 + Math.floor(Math.random() * (grid.columns - 2))
   state.add_crossing(grid.cell(row, column))

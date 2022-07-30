@@ -51,7 +51,7 @@ export default class Grid {
     return this.cell(row, column)
   }
 
-  size() {
+  get size() {
     return this.rows * this.columns
   }
 
@@ -233,7 +233,7 @@ export default class Grid {
       if (cell.get_links().length != 1 || Math.random() > p)
         return
 
-      const neighbors = cell.neighbors().filter(c => !c.isLinked(cell))
+      const neighbors = cell.neighbors.filter(c => !c.isLinked(cell))
       let best = neighbors.filter(c => c.get_links().length == 1)
       if (best.length == 0) best = neighbors
 

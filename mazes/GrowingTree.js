@@ -6,7 +6,7 @@ export default class GrowingTree {
 
     while (active.length > 0) {
       const cell = select_fn(active)
-      const available_neighbors = cell.neighbors().filter(c => c.get_links().length == 0)
+      const available_neighbors = cell.neighbors.filter(c => c.get_links().length == 0)
 
       if (available_neighbors.length > 0) {
         const neighbor = available_neighbors[Math.floor(Math.random() * available_neighbors.length)]

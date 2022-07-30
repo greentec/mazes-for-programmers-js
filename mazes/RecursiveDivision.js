@@ -6,7 +6,7 @@ export default class RecursiveDivision {
     while (true) {
       const cell = cell_gen.next().value
       if (!cell) break
-      cell.neighbors().forEach(c => cell.link(c, false))
+      cell.neighbors.forEach(c => cell.link(c, false))
     }
 
     this.divide(0, 0, this.grid.rows, this.grid.columns)

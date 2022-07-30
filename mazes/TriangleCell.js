@@ -5,7 +5,7 @@ export default class TriangleCell extends Cell {
     return (this.row + this.column) % 2 == 0
   }
 
-  neighbors() {
+  get neighbors() {
     const list = []
     if (this.west) list.push(this.west)
     if (this.east) list.push(this.east)

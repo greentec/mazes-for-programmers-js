@@ -61,7 +61,7 @@ export default class Grid3D extends Grid {
     return this.cell(level, row, column)
   }
 
-  size() {
+  get size() {
     return this.levels * this.rows * this.columns
   }
 

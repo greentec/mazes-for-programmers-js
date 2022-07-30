@@ -6,8 +6,8 @@ export default class Cell3D extends Cell {
     this.level = level
   }
 
-  neighbors() {
-    const list = super.neighbors()
+  get neighbors() {
+    const list = super.neighbors
     if (this.up) list.push(this.up)
     if (this.down) list.push(this.down)
     return list
