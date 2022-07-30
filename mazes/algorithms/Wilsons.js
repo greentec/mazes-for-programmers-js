@@ -1,22 +1,23 @@
+const sample = arr => arr[Math.floor(Math.random() * arr.length)]
+
 export default class Wilsons {
   static on(grid) {
     let unvisited = []
-    for (const cell of grid.each_cell())
-      unvisited.push(cell)
+    for (const cell of grid.each_cell()) unvisited.push(cell)
 
-    const first = unvisited[Math.floor(Math.random() * unvisited.length)]
+    const first = sample(unvisited)
     unvisited = unvisited.filter(cell => cell.id !== first.id)
 
-    while (unvisited.length > 0) {
-      let cell = unvisited[Math.floor(Math.random() * unvisited.length)]
+    while (unvisited.length) {
+      let cell = sample(unvisited)
       let path = [cell]
 
       while (unvisited.some(x => x.id === cell.id)) {
         const { neighbors } = cell
-        cell = neighbors[Math.floor(Math.random() * neighbors.length)]
-        const position = path.findIndex(x => x.id === cell.id)
-        if (position != -1)
-          path = path.slice(0, position + 1)
+        cell = sample(neighbors)
+        const index = path.findIndex(x => x.id === cell.id)
+        if (index != -1)
+          path = path.slice(0, index + 1)
         else
           path.push(cell)
       }
