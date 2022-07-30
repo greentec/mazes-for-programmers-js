@@ -4,7 +4,7 @@ import SideWinder from '../../mazes/algorithms/SideWinder.js'
 import AldousBroder from '../../mazes/algorithms/AldousBroder.js'
 import Wilsons from '../../mazes/algorithms/Wilsons.js'
 import HuntAndKill from '../../mazes/HuntAndKill.js'
-import RecursiveBacktracker from '../../mazes/RecursiveBacktracker.js'
+import RecursiveBacktracker from '../../mazes/algorithms/RecursiveBacktracker.js'
 
 const algorithms = [BinaryTree, SideWinder, AldousBroder, Wilsons, HuntAndKill, RecursiveBacktracker]
 const tries = 100

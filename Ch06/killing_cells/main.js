@@ -1,5 +1,5 @@
 import ColoredGrid from '../../mazes/ColoredGrid.js'
-import RecursiveBacktracker from '../../mazes/RecursiveBacktracker.js'
+import RecursiveBacktracker from '../../mazes/algorithms/RecursiveBacktracker.js'
 
 const h = 5
 const w = 5

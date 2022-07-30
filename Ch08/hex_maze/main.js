@@ -1,5 +1,5 @@
 import HexGrid from '../../mazes/HexGrid.js'
-import RecursiveBacktracker from '../../mazes/RecursiveBacktracker.js'
+import RecursiveBacktracker from '../../mazes/algorithms/RecursiveBacktracker.js'
 
 const rows = 10
 const columns = 10
