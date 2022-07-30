@@ -16,7 +16,7 @@ export default class MaskedGrid extends Grid {
     for (let i = 0; i < this.rows; i += 1) {
       this.grid[i] = new Array(this.columns)
       for (let j = 0; j < this.columns; j += 1)
-        if (this.mask.get_bits(i, j)) this.grid[i][j] = new Cell(i, j)
+        if (this.mask.get(i, j)) this.grid[i][j] = new Cell(i, j)
     }
   }
 
@@ -26,11 +26,11 @@ export default class MaskedGrid extends Grid {
   }
 
   get random_cell() {
-    const [row, column] = this.mask.random_location()
+    const [row, column] = this.mask.random_location
     return this.cell(row, column)
   }
 
   get size() {
-    return this.mask.count()
+    return this.mask.count
   }
 }

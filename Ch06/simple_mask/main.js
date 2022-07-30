@@ -6,9 +6,9 @@ const h = 10
 const w = 10
 
 const mask = new Mask(h, w)
-mask.set_bits(0, 0, false)
-mask.set_bits(4, 4, false)
-mask.set_bits(9, 9, false)
+mask.set(0, 0, false)
+mask.set(4, 4, false)
+mask.set(9, 9, false)
 
 const grid = new MaskedGrid(mask)
 RecursiveBacktracker.on(grid)

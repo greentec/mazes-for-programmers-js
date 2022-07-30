@@ -11,17 +11,17 @@ export default class Mask {
     }
   }
 
-  get_bits(row, column) {
+  get(row, column) {
     if (row >= 0 && row < this.rows && column >= 0 && column < this.columns)
       return this.bits[row][column]
     return false
   }
 
-  set_bits(row, column, is_on) {
+  set(row, column, is_on) {
     this.bits[row][column] = is_on
   }
 
-  count() {
+  get count() {
     let count = 0
     for (let i = 0; i < this.rows; i += 1)
       for (let j = 0; j < this.columns; j += 1)
@@ -29,11 +29,11 @@ export default class Mask {
     return count
   }
 
-  random_location() {
+  get random_location() {
     while (true) {
       const row = Math.floor(Math.random() * this.rows)
       const col = Math.floor(Math.random() * this.columns)
-      if (this.get_bits(row, col)) return [row, col]
+      if (this.get(row, col)) return [row, col]
     }
   }
 
@@ -46,9 +46,9 @@ export default class Mask {
     for (let i = 0; i < rows; i += 1)
       for (let j = 0; j < columns; j += 1)
         if (lines[i][j] == 'X')
-          mask.set_bits(i, j, false)
+          mask.set(i, j, false)
         else
-          mask.set_bits(i, j, true)
+          mask.set(i, j, true)
 
     return mask
   }
@@ -62,9 +62,9 @@ export default class Mask {
       for (let j = 0; j < columns; j += 1) {
         const image_index = (i * imageData.width + j) * 4
         if (imageData.data[image_index] == 0)
-          mask.set_bits(i, j, false)
+          mask.set(i, j, false)
         else
-          mask.set_bits(i, j, true)
+          mask.set(i, j, true)
       }
     return mask
   }
