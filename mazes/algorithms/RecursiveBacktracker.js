@@ -4,7 +4,7 @@ export default class RecursiveBacktracker {
 
     while (stack.length > 0) {
       const current = stack[stack.length - 1]
-      const neighbors = current.neighbors.filter(cell => cell.links_length == 0)
+      const neighbors = current.neighbors.filter(cell => cell.unvisited)
       if (neighbors.length == 0)
         stack.pop()
       else {

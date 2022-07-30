@@ -25,6 +25,10 @@ export default class Cell {
     return Object.keys(this.links).length
   }
 
+  get unvisited() {
+    return this.links_length === 0
+  }
+
   isLinked(cell) {
     if (!cell) return false
     return this.links.hasOwnProperty(cell.id)
