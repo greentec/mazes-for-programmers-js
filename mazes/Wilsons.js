@@ -1,5 +1,5 @@
 export default class Wilsons {
-  on(grid) {
+  static on(grid) {
     let unvisited = []
     const cell_gen = grid.each_cell()
     while (true) {

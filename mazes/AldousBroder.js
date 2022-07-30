@@ -1,5 +1,5 @@
 export default class AldousBroder {
-  on(grid) {
+  static on(grid) {
     let cell = grid.random_cell()
     let unvisited = grid.size() - 1
 
