@@ -45,16 +45,6 @@ export default class Grid {
     return this.cell(row, col)
   }
 
-  get random_cell() {
-    const row = Math.floor(Math.random() * this.rows)
-    const column = Math.floor(Math.random() * this.grid[row].length)
-    return this.cell(row, column)
-  }
-
-  get size() {
-    return this.rows * this.columns
-  }
-
   * each_row() {
     for (const row of this.grid)
       yield row
@@ -66,6 +56,16 @@ export default class Grid {
         if (cell) yield cell
   }
 
+  get random_cell() {
+    const row = Math.floor(Math.random() * this.rows)
+    const column = Math.floor(Math.random() * this.grid[row].length)
+    return this.cell(row, column)
+  }
+
+  get size() {
+    return this.rows * this.columns
+  }
+
   set distances(distances) {
     this._distances = distances
     const [_, maximum] = distances.max()
@@ -74,6 +74,10 @@ export default class Grid {
 
   get distances() {
     return this._distances
+  }
+
+  get middle_cell() {
+    return this.cell(Math.floor(this.rows / 2), Math.floor(this.columns / 2))
   }
 
   contents_of(cell) {

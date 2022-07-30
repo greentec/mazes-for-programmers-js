@@ -4,7 +4,7 @@ import Wilsons from '../../mazes/algorithms/Wilsons.js'
 const grid = new ColoredGrid(20)
 Wilsons.on(grid)
 
-const start = grid.cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2))
-grid.distances = start.distances
+const cell = grid.middle_cell
+grid.distances = cell.distances
 
 grid.draw()

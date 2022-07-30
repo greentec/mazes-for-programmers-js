@@ -8,7 +8,7 @@ RecursiveBacktracker.on(grid)
 
 console.log(grid.toString())
 
-const start = grid.cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2))
+const start = grid.middle_cell
 grid.distances = start.distances
 
 const cellSize = 10
