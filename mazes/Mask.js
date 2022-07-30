@@ -2,7 +2,7 @@ export default class Mask {
   constructor(rows, columns = rows) {
     this.rows = rows
     this.columns = columns
-    //  matrix of Boolean values indicating which cells are on/off
+    //  matrix of Boolean values indicating cells on/off
     this.bits = new Array(this.rows)
     for (let i = 0; i < this.rows; i += 1) {
       this.bits[i] = new Array(this.columns)
@@ -30,11 +30,12 @@ export default class Mask {
   }
 
   get random_location() {
-    while (true) {
-      const row = Math.floor(Math.random() * this.rows)
-      const col = Math.floor(Math.random() * this.columns)
-      if (this.get(row, col)) return [row, col]
-    }
+    let row, col
+    do {
+      row = Math.floor(Math.random() * this.rows)
+      col = Math.floor(Math.random() * this.columns)
+    } while (!this.get(row, col))
+    return [row, col]
   }
 
   static from_txt(string) {
