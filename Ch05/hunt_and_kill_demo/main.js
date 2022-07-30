@@ -1,11 +1,10 @@
 import ColoredGrid from '../../mazes/ColoredGrid.js'
 import HuntAndKill from '../../mazes/HuntAndKill.js'
 
-const maze = new HuntAndKill()
 const h = 20
 const w = 20
 const grid = new ColoredGrid(h, w)
-maze.on(grid)
+HuntAndKill.on(grid)
 
 console.log(grid.toString())
 

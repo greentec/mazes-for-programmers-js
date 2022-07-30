@@ -1,5 +1,5 @@
 export default class HuntAndKill {
-  on(grid) {
+  static on(grid) {
     let current = grid.random_cell
 
     while (current) {

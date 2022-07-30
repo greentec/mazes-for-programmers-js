@@ -3,7 +3,7 @@ export default class AldousBroder {
     let cell = grid.random_cell
     let unvisited = grid.size - 1
 
-    while (unvisited > 0) {
+    while (unvisited) {
       const { neighbors } = cell
       const neighbor = neighbors[Math.floor(Math.random() * neighbors.length)]
       if (!neighbor.links_length) {

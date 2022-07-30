@@ -38,11 +38,10 @@ sorted_algorithms.forEach(algorithm => {
   console.log(`${algorithm.constructor.name} : ${averages[algorithm.constructor.name]}/${total_cells} (${Math.floor(percentage)}%)`)
 })
 
-// let maze = new HuntAndKill();
 // let h = 20;
 // let w = 20;
 // let grid = new ColoredGrid(h, w);
-// maze.on(grid);
+// HuntAndKill.on(grid);
 
 // console.log(grid.toString());
 
