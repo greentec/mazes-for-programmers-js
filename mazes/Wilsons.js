@@ -1,12 +1,8 @@
 export default class Wilsons {
   static on(grid) {
     let unvisited = []
-    const cell_gen = grid.each_cell()
-    while (true) {
-      const cell = cell_gen.next().value
-      if (!cell) break
+    for (const cell of grid.each_cell())
       unvisited.push(cell)
-    }
 
     const first = unvisited[Math.floor(Math.random() * unvisited.length)]
     unvisited = unvisited.filter(cell => cell.id !== first.id)
