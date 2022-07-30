@@ -1,7 +1,8 @@
 export default class Mask {
-  constructor(rows, columns) {
+  constructor(rows, columns = rows) {
     this.rows = rows
     this.columns = columns
+    //  matrix of Boolean values indicating which cells are on/off
     this.bits = new Array(this.rows)
     for (let i = 0; i < this.rows; i += 1) {
       this.bits[i] = new Array(this.columns)

@@ -93,6 +93,7 @@ export default class Grid {
       let top = '|'
       let bottom = '+'
       for (const cell of row) {
+        if (!cell) continue
         const body = ` ${this.contents_of(cell)} `
         const east_boundary = cell.isLinked(cell.east) ? ' ' : '|'
         top += body + east_boundary

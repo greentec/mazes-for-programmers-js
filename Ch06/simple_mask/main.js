@@ -2,25 +2,19 @@ import Mask from '../../mazes/Mask.js'
 import MaskedGrid from '../../mazes/MaskedGrid.js'
 import RecursiveBacktracker from '../../mazes/algorithms/RecursiveBacktracker.js'
 
-const h = 5
-const w = 5
+const h = 10
+const w = 10
 
 const mask = new Mask(h, w)
 mask.set_bits(0, 0, false)
-mask.set_bits(2, 2, false)
 mask.set_bits(4, 4, false)
+mask.set_bits(9, 9, false)
 
 const grid = new MaskedGrid(mask)
 RecursiveBacktracker.on(grid)
 
-console.log(grid.toString())
+// not working in this class
+// const start = grid.middle_cell
+// grid.distances = start.distances
 
-// let start = grid.middle_cell;
-// grid.distances = start.distances;
-
-// let cellSize = 10;
-// let output = document.getElementById('output');
-// output.width = cellSize * w + 1;
-// output.height = cellSize * h + 1;
-// let ctx = output.getContext('2d');
-// grid.draw(cellSize);
+grid.draw()
