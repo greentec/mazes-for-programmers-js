@@ -12,7 +12,7 @@ console.log(grid.toString())
 
 const start = grid.cell(0, 0)
 const finish = grid.cell(grid.rows - 1, grid.columns - 1)
-grid.set_distances(start.distances().path_to(finish))
+grid.distances = start.distances().path_to(finish)
 
 const cellSize = 10
 const output = document.getElementById('output')
@@ -27,7 +27,7 @@ let row, col;
 const lava = grid.cell(row, col)
 lava.weight = 50
 
-grid.set_distances(start.distances().path_to(finish))
+grid.distances = start.distances().path_to(finish)
 
 const output2 = document.getElementById('output2')
 output2.width = cellSize * w + 1

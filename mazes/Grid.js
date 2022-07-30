@@ -66,10 +66,14 @@ export default class Grid {
         if (cell) yield cell
   }
 
-  set_distances(distances) {
-    this.distances = distances
+  set distances(distances) {
+    this._distances = distances
     const [_, maximum] = distances.max()
     this.maximum = maximum
+  }
+
+  get distances() {
+    return this._distances
   }
 
   contents_of(cell) {

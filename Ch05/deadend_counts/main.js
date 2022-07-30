@@ -47,7 +47,7 @@ sorted_algorithms.forEach(algorithm => {
 // console.log(grid.toString());
 
 // let start = grid.cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2));
-// grid.set_distances(start.distances());
+// grid.distances = start.distances();
 
 // let cellSize = 10;
 // let output = document.getElementById('output');

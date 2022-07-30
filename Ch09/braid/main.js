@@ -11,7 +11,7 @@ grid.braid(0.5)
 console.log(grid.toString())
 
 const start = grid.cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2))
-grid.set_distances(start.distances())
+grid.distances = start.distances()
 
 const cellSize = 10
 const output = document.getElementById('output')

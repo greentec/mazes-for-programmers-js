@@ -14,7 +14,7 @@ maze.on(grid, start_at, (c => c[Math.floor(Math.random() * c.length)]))
 console.log(grid.toString())
 
 start = grid.cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2))
-grid.set_distances(start.distances())
+grid.distances = start.distances()
 
 const cellSize = 10
 const output = document.getElementById('output')
@@ -30,7 +30,7 @@ maze.on(grid, start_at, (c => c[c.length - 1]))
 console.log(grid.toString())
 
 start = grid.cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2))
-grid.set_distances(start.distances())
+grid.distances = start.distances()
 
 const output2 = document.getElementById('output2')
 output2.width = cellSize * w + 1
@@ -45,7 +45,7 @@ maze.on(grid, start_at, (c => Math.random() < 0.5 ? c[c.length - 1] : c[Math.flo
 console.log(grid.toString())
 
 start = grid.cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2))
-grid.set_distances(start.distances())
+grid.distances = start.distances()
 
 const output3 = document.getElementById('output3')
 output3.width = cellSize * w + 1
