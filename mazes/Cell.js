@@ -43,7 +43,7 @@ export default class Cell {
     return this.row + '#' + this.column
   }
 
-  distances() {
+  get distances() {
     const distances = new Distances(this)
     let frontier = [this]
 

@@ -14,7 +14,7 @@ RecursiveBacktracker.on(grid)
 console.log(grid.toString())
 
 // let start = grid.cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2));
-// grid.distances = start.distances();
+// grid.distances = start.distances;
 
 const cellSize = 5
 const output = document.getElementById('output')

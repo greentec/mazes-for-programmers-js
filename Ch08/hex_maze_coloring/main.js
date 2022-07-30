@@ -16,7 +16,7 @@ const img_height = Math.floor(height * rows + b_size + 0.5)
 RecursiveBacktracker.on(grid)
 
 const start = grid.cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2))
-grid.distances = start.distances()
+grid.distances = start.distances
 
 const output = document.getElementById('output')
 output.width = img_width

@@ -7,7 +7,7 @@ BinaryTree.on(grid)
 console.log(grid.toString())
 
 const start = grid.cell(0, 0)
-const distances = start.distances()
+const distances = start.distances
 
 grid.distances = distances
 console.log(grid.toString())

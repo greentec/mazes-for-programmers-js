@@ -12,7 +12,7 @@ maze.on(grid, start_at)
 console.log(grid.toString())
 
 const start = grid.cell(Math.floor(grid.rows / 2), Math.floor(grid.columns / 2))
-grid.distances = start.distances()
+grid.distances = start.distances
 
 const cellSize = 10
 const output = document.getElementById('output')

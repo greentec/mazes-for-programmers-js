@@ -7,10 +7,10 @@ SideWinder.on(grid)
 grid.draw(30)
 
 const start = grid.cell(0, 0)
-const [new_start_id] = start.distances().max()
+const [new_start_id] = start.distances.max()
 
 const new_start = grid.cell_by_id(new_start_id)
-const new_distances = new_start.distances()
+const new_distances = new_start.distances
 const [goal_id] = new_distances.max()
 
 const goal = grid.cell_by_id(goal_id)

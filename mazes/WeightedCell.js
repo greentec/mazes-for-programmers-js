@@ -7,7 +7,7 @@ export default class WeightedCell extends Cell {
     this.weight = 1
   }
 
-  distances() {
+  get distances() {
     const weights = new Distances(this)
     const pending = [this]
 
