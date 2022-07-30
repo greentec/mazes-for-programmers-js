@@ -1,5 +1,5 @@
 export default class GrowingTree {
-  on(grid, start_at = grid.random_cell(), select_fn = null) {
+  on(grid, start_at = grid.random_cell, select_fn = null) {
     let active = []
     active.push(start_at)
     select_fn = select_fn || (c => c[Math.floor(Math.random() * c.length)])

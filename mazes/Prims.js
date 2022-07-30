@@ -1,5 +1,5 @@
 export class SimplifiedPrims {
-  on(grid, start_at = grid.random_cell()) {
+  on(grid, start_at = grid.random_cell) {
     let active = []
     active.push(start_at)
 
@@ -18,7 +18,7 @@ export class SimplifiedPrims {
 }
 
 export class TruePrims {
-  on(grid, start_at = grid.random_cell()) {
+  on(grid, start_at = grid.random_cell) {
     let active = []
     active.push(start_at)
     const costs = {}

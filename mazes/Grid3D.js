@@ -54,7 +54,7 @@ export default class Grid3D extends Grid {
     return this.grid[level][row][column]
   }
 
-  random_cell() {
+  get random_cell() {
     const level = Math.floor(Math.random() * this.levels)
     const row = Math.floor(Math.random() * this.grid[level].length)
     const column = Math.floor(Math.random() * this.grid[level][row].length)

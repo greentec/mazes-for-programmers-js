@@ -1,6 +1,6 @@
 export default class HuntAndKill {
   on(grid) {
-    let current = grid.random_cell()
+    let current = grid.random_cell
 
     while (current) {
       const unvisited_neighbors = current.neighbors.filter(cell => cell.links_length == 0)

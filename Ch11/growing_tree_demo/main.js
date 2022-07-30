@@ -8,7 +8,7 @@ let grid
 let start_at
 let start
 grid = new ColoredGrid(h, w)
-start_at = grid.random_cell()
+start_at = grid.random_cell
 maze.on(grid, start_at, (c => c[Math.floor(Math.random() * c.length)]))
 
 console.log(grid.toString())
@@ -24,7 +24,7 @@ const ctx = output.getContext('2d')
 grid.draw(cellSize)
 
 grid = new ColoredGrid(h, w)
-start_at = grid.random_cell()
+start_at = grid.random_cell
 maze.on(grid, start_at, (c => c[c.length - 1]))
 
 console.log(grid.toString())
@@ -39,7 +39,7 @@ const ctx2 = output2.getContext('2d')
 grid.draw(cellSize, 0, ctx2)
 
 grid = new ColoredGrid(h, w)
-start_at = grid.random_cell()
+start_at = grid.random_cell
 maze.on(grid, start_at, (c => Math.random() < 0.5 ? c[c.length - 1] : c[Math.floor(Math.random() * c.length)]))
 
 console.log(grid.toString())

@@ -5,7 +5,7 @@ const maze = new TruePrims()
 const h = 20
 const w = 20
 const grid = new ColoredGrid(h, w)
-const start_at = grid.random_cell()
+const start_at = grid.random_cell
 maze.on(grid, start_at)
 // grid.braid(0.5);
 

@@ -57,7 +57,7 @@ export default class PolarGrid extends Grid {
     return this.grid[row][column % this.grid[row].length]
   }
 
-  random_cell() {
+  get random_cell() {
     const row = Math.floor(Math.random() * this.rows)
     const col = Math.floor(Math.random() * this.grid[row].length)
     return this.cell(row, col)

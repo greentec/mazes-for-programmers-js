@@ -25,7 +25,7 @@ export default class MaskedGrid extends Grid {
     super.configure_cells()
   }
 
-  random_cell() {
+  get random_cell() {
     const [row, column] = this.mask.random_location()
     return this.cell(row, column)
   }
