@@ -1,11 +1,10 @@
 import ColoredGrid from '../../mazes/ColoredGrid.js'
 import RecursiveBacktracker from '../../mazes/RecursiveBacktracker.js'
 
-const maze = new RecursiveBacktracker()
 const h = 20
 const w = 20
 const grid = new ColoredGrid(h, w)
-maze.on(grid)
+RecursiveBacktracker.on(grid)
 grid.braid(0.5)
 
 console.log(grid.toString())

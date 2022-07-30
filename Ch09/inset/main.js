@@ -1,11 +1,10 @@
 import Grid from '../../mazes/Grid.js'
 import RecursiveBacktracker from '../../mazes/RecursiveBacktracker.js'
 
-const maze = new RecursiveBacktracker()
 const h = 20
 const w = 20
 const grid = new Grid(h, w)
-maze.on(grid)
+RecursiveBacktracker.on(grid)
 
 console.log(grid.toString())
 

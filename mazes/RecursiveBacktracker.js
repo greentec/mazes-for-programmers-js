@@ -1,5 +1,5 @@
 export default class RecursiveBacktracker {
-  on(grid, start_at = grid.random_cell()) {
+  static on(grid, start_at = grid.random_cell()) {
     const stack = [start_at]
 
     while (stack.length > 0) {

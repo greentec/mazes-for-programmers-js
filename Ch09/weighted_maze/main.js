@@ -1,11 +1,10 @@
 import WeightedGrid from '../../mazes/WeightedGrid.js'
 import RecursiveBacktracker from '../../mazes/RecursiveBacktracker.js'
 
-const maze = new RecursiveBacktracker()
 const h = 20
 const w = 20
 const grid = new WeightedGrid(h, w)
-maze.on(grid)
+RecursiveBacktracker.on(grid)
 grid.braid(1)
 
 console.log(grid.toString())
@@ -22,8 +21,7 @@ const ctx = output.getContext('2d')
 grid.draw(cellSize)
 
 const cells = grid.distances.get_cells()
-let row, col;
-[row, col] = cells[Math.floor(Math.random() * cells.length)].split('#')
+const [row, col] = cells[Math.floor(Math.random() * cells.length)].split('#')
 const lava = grid.cell(row, col)
 lava.weight = 50
 

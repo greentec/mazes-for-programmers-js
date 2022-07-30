@@ -1,5 +1,5 @@
-import BinaryTree from '../../mazes/BinaryTree.js'
 import ColoredGrid from '../../mazes/ColoredGrid.js'
+import BinaryTree from '../../mazes/BinaryTree.js'
 
 const grid = new ColoredGrid(25)
 BinaryTree.on(grid)

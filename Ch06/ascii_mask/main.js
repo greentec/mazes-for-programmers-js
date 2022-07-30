@@ -2,13 +2,12 @@ import Mask from '../../mazes/Mask.js'
 import MaskedGrid from '../../mazes/MaskedGrid.js'
 import RecursiveBacktracker from '../../mazes/RecursiveBacktracker.js'
 
-const maze = new RecursiveBacktracker()
 const s =
 'X........X ....XX.... ...XXXX... ....XX.... X........X X........X ....XX.... ...XXXX... ....XX.... X........X'
 
 const mask = Mask.from_txt(s)
 const grid = new MaskedGrid(mask)
-maze.on(grid)
+RecursiveBacktracker.on(grid)
 
 console.log(grid.toString())
 

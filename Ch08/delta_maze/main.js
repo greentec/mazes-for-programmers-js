@@ -12,8 +12,7 @@ const half_height = height / 2.0
 const img_width = Math.floor(cellSize * (columns + 1) / 2.0) + 1
 const img_height = Math.floor(height * rows) + 1
 
-const maze = new RecursiveBacktracker()
-maze.on(grid)
+RecursiveBacktracker.on(grid)
 
 const output = document.getElementById('output')
 output.width = img_width

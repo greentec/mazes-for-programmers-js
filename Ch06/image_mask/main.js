@@ -2,7 +2,6 @@ import Mask from '../../mazes/Mask.js'
 import MaskedGrid from '../../mazes/MaskedGrid.js'
 import RecursiveBacktracker from '../../mazes/RecursiveBacktracker.js'
 
-const maze = new RecursiveBacktracker()
 const c = document.createElement('canvas')
 const ctx = c.getContext('2d')
 const image = document.getElementById('maze_img')
@@ -10,7 +9,7 @@ ctx.drawImage(image, 0, 0)
 
 const mask = Mask.from_img(ctx.getImageData(0, 0, image.width, image.height))
 const grid = new MaskedGrid(mask)
-maze.on(grid)
+RecursiveBacktracker.on(grid)
 
 console.log(grid.toString())
 

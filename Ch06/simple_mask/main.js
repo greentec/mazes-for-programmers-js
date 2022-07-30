@@ -2,7 +2,6 @@ import Mask from '../../mazes/Mask.js'
 import MaskedGrid from '../../mazes/MaskedGrid.js'
 import RecursiveBacktracker from '../../mazes/RecursiveBacktracker.js'
 
-const maze = new RecursiveBacktracker()
 const h = 5
 const w = 5
 
@@ -12,7 +11,7 @@ mask.set_bits(2, 2, false)
 mask.set_bits(4, 4, false)
 
 const grid = new MaskedGrid(mask)
-maze.on(grid)
+RecursiveBacktracker.on(grid)
 
 console.log(grid.toString())
 

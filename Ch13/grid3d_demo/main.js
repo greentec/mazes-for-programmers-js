@@ -1,12 +1,11 @@
 import RecursiveBacktracker from '../../mazes/RecursiveBacktracker.js'
 import Grid3D from '../../mazes/Grid3D.js'
 
-const maze = new RecursiveBacktracker()
 const level = 3
 const h = 3
 const w = 3
 const grid = new Grid3D(level, h, w)
-maze.on(grid)
+RecursiveBacktracker.on(grid)
 // grid.braid(0.5);
 
 // console.log(grid.toString());

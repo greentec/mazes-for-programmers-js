@@ -1,11 +1,10 @@
 import WeaveGrid from '../../mazes/WeaveGrid.js'
 import RecursiveBacktracker from '../../mazes/RecursiveBacktracker.js'
 
-const maze = new RecursiveBacktracker()
 const h = 20
 const w = 20
 const grid = new WeaveGrid(h, w)
-maze.on(grid)
+RecursiveBacktracker.on(grid)
 
 console.log(grid.toString())
 
