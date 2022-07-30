@@ -1,4 +1,4 @@
-import AldousBroder from '../../mazes/AldousBroder.js';
+import AldousBroder from '../../mazes/algorithms/AldousBroder.js';
 import ColoredGrid from '../../mazes/ColoredGrid.js';
 
 const grid = new ColoredGrid(20)

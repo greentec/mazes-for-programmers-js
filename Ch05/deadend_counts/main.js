@@ -1,8 +1,8 @@
 import Grid from '../../mazes/Grid.js'
 import BinaryTree from '../../mazes/BinaryTree.js'
 import SideWinder from '../../mazes/SideWinder.js'
-import AldousBroder from '../../mazes/AldousBroder.js'
-import Wilsons from '../../mazes/Wilsons.js'
+import AldousBroder from '../../mazes/algorithms/AldousBroder.js'
+import Wilsons from '../../mazes/algorithms/Wilsons.js'
 import HuntAndKill from '../../mazes/HuntAndKill.js'
 import RecursiveBacktracker from '../../mazes/RecursiveBacktracker.js'
 
