@@ -1,5 +1,5 @@
 import Grid from '../../mazes/Grid.js'
-import SideWinder from '../../mazes/SideWinder.js'
+import SideWinder from '../../mazes/algorithms/SideWinder.js'
 
 const h = 8
 const w = 8

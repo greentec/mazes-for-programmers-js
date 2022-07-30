@@ -1,4 +1,4 @@
-import SideWinder from '../../mazes/SideWinder.js'
+import SideWinder from '../../mazes/algorithms/SideWinder.js'
 import Grid from '../../mazes/Grid.js'
 
 const grid = new Grid(8, 8)

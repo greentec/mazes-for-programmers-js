@@ -1,4 +1,4 @@
-import BinaryTree from '../../mazes/BinaryTree.js'
+import BinaryTree from '../../mazes/algorithms/BinaryTree.js'
 import Grid from '../../mazes/Grid.js'
 
 const grid = new Grid(8, 8)

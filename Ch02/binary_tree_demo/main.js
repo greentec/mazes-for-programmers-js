@@ -1,5 +1,5 @@
 import Grid from '../../mazes/Grid.js'
-import BinaryTree from '../../mazes/BinaryTree.js'
+import BinaryTree from '../../mazes/algorithms/BinaryTree.js'
 
 const h = 8
 const w = 8
