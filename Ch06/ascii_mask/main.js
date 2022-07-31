@@ -9,14 +9,7 @@ const mask = Mask.from_txt(s)
 const grid = new MaskedGrid(mask)
 RecursiveBacktracker.on(grid)
 
-console.log(grid.toString())
-
 // let start = grid.middle_cell;
 // grid.distances = start.distances;
 
-// let cellSize = 10;
-// let output = document.getElementById('output');
-// output.width = cellSize * w + 1;
-// output.height = cellSize * h + 1;
-// let ctx = output.getContext('2d');
-// grid.draw(cellSize);
+grid.draw()

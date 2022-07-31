@@ -39,10 +39,10 @@ export default class Mask {
   }
 
   static from_txt(string) {
-    const lines 	= string.split(' ')
-    const rows 	= lines.length
-    const columns	= lines[0].length
-    const mask 	= new Mask(rows, columns)
+    const lines = string.split(' ')
+    const rows = lines.length
+    const columns = lines[0].length
+    const mask = new Mask(rows, columns)
 
     for (let i = 0; i < rows; i += 1)
       for (let j = 0; j < columns; j += 1)
@@ -55,9 +55,9 @@ export default class Mask {
   }
 
   static from_img(imageData) {
-    const rows 	= imageData.height
+    const rows = imageData.height
     const columns = imageData.width
-    const mask 	= new Mask(rows, columns)
+    const mask = new Mask(rows, columns)
 
     for (let i = 0; i < rows; i += 1)
       for (let j = 0; j < columns; j += 1) {
