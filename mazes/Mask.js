@@ -52,17 +52,13 @@ export default class Mask {
   }
 
   static from_img(imageData) {
-    const rows = imageData.height
-    const columns = imageData.width
-    const mask = new Mask(rows, columns)
-
-    for (let i = 0; i < rows; i += 1)
-      for (let j = 0; j < columns; j += 1) {
-        const image_index = (i * imageData.width + j) * 4
-        if (imageData.data[image_index] == 0)
-          mask.set(i, j, false)
-        else
-          mask.set(i, j, true)
+    const { height } = imageData
+    const { width } = imageData
+    const mask = new Mask(height, width)
+    for (let i = 0; i < height; i += 1)
+      for (let j = 0; j < width; j += 1) {
+        const imgIndex = (i * width + j) * 4
+        mask.set(i, j, imageData.data[imgIndex] != 0)
       }
     return mask
   }
