@@ -2,7 +2,7 @@ export default class Mask {
   constructor(rows, columns = rows) {
     this.rows = rows
     this.columns = columns
-    //  matrix of Boolean values indicating cells on/off
+    //  bool matrix indicating cells on/off
     this.bits = new Array(this.rows)
     for (let i = 0; i < this.rows; i += 1) {
       this.bits[i] = new Array(this.columns)
@@ -46,10 +46,7 @@ export default class Mask {
 
     for (let i = 0; i < rows; i += 1)
       for (let j = 0; j < columns; j += 1)
-        if (lines[i][j] == 'X')
-          mask.set(i, j, false)
-        else
-          mask.set(i, j, true)
+        mask.set(i, j, lines[i][j] != 'X')
 
     return mask
   }

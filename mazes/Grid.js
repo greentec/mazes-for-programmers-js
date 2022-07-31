@@ -1,7 +1,8 @@
 import Cell from './Cell.js'
 
-const output = document.getElementById('output')
-const context = output.getContext('2d')
+const defaultOutput = document.getElementById('output')
+const defaultContext = defaultOutput.getContext('2d')
+defaultContext.strokeStyle = 'black'
 
 export default class Grid {
   constructor(rows, columns = rows) {
@@ -106,10 +107,12 @@ export default class Grid {
     return output
   }
 
-  draw(cellSize = 20, inset = 0, ctx = context) {
-    output.width = cellSize * this.rows + 1
-    output.height = cellSize * this.columns + 1
-    ctx.strokeStyle = 'black'
+  draw(cellSize = 20, inset = 0, ctx) {
+    if (!ctx) {
+      ctx = defaultContext
+      defaultOutput.width = cellSize * this.rows + 1
+      defaultOutput.height = cellSize * this.columns + 1
+    }
     inset = Math.floor(cellSize * inset)
     for (const cell of this.each_cell()) {
       const x = cell.column * cellSize

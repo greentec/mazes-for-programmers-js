@@ -11,12 +11,7 @@ const mask = Mask.from_img(ctx.getImageData(0, 0, image.width, image.height))
 const grid = new MaskedGrid(mask)
 RecursiveBacktracker.on(grid)
 
-console.log(grid.toString())
-
-// let start = grid.middle_cell;
-// grid.distances = start.distances;
-
-const cellSize = 5
+const cellSize = 10
 const output = document.getElementById('output')
 output.width = cellSize * image.width + 1
 output.height = cellSize * image.height + 1
