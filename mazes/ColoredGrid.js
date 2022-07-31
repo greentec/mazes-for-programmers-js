@@ -17,7 +17,6 @@ export default class ColoredGrid extends Grid {
   draw(cellSize = 20) {
     output.width = cellSize * this.rows + 1
     output.height = cellSize * this.columns + 1
-    ctx.strokeStyle = 'black'
 
     for (const cell of this.each_cell()) {
       const x1 = cell.column * cellSize
