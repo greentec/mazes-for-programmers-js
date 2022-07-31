@@ -16,21 +16,16 @@ export default class TriangleGrid extends Grid {
   }
 
   configure_cells() {
-    for (let i = 0; i < this.rows; i += 1)
-      for (let j = 0; j < this.columns; j += 1) {
-        const cell = this.cell(i, j)
-        if (cell == null) continue
-        const { row } = cell
-        const col = cell.column
+    for (const cell of this.each_cell()) {
+      const { row, column: col } = cell
 
-        cell.west = this.cell(row, col - 1)
-        cell.east = this.cell(row, col + 1)
-        if (cell.isUpright())
-          cell.south = this.cell(row + 1, col)
-
-        else
-          cell.north = this.cell(row - 1, col)
-      }
+      cell.west = this.cell(row, col - 1)
+      cell.east = this.cell(row, col + 1)
+      if (cell.isUpright())
+        cell.south = this.cell(row + 1, col)
+      else
+        cell.north = this.cell(row - 1, col)
+    }
   }
 
   draw(cellSize = 16) {
@@ -40,14 +35,7 @@ export default class TriangleGrid extends Grid {
     const height = cellSize * Math.sqrt(3) / 2.0
     const half_height = height / 2.0
 
-    const img_width = Math.floor(cellSize * (this.columns + 1) / 2.0)
-    const img_height = Math.floor(height * this.rows)
-
-    const cell_gen = this.each_cell()
-    while (true) {
-      const cell = cell_gen.next().value
-      if (!cell) break
-
+    for (const cell of this.each_cell()) {
       const cx = half_width + cell.column * half_width
       const cy = half_height + cell.row * height
 
