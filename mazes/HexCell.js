@@ -9,13 +9,13 @@ export default class HexCell extends Cell {
     this.southwest = null
   }
 
-  neighbors() {
+  get neighbors() {
     const list = []
     if (this.northwest) list.push(this.northwest)
-    if (this.north) 	list.push(this.north)
-    if (this.northeast)	list.push(this.northeast)
+    if (this.north) list.push(this.north)
+    if (this.northeast) list.push(this.northeast)
     if (this.southwest) list.push(this.southwest)
-    if (this.south) 	list.push(this.south)
+    if (this.south) list.push(this.south)
     if (this.southeast) list.push(this.southeast)
     return list
   }
