@@ -88,7 +88,7 @@ export default class PolarGrid extends Grid {
         ctx.lineTo(dx, dy)
         ctx.stroke()
       }
-    }
+    } // end for
 
     ctx.arc(center, center, this.rows * cellSize, 0, 2 * Math.PI)
     ctx.stroke()

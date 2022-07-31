@@ -81,6 +81,15 @@ export default class Grid {
     return this.cell(Math.floor(this.rows / 2), Math.floor(this.columns / 2))
   }
 
+  background_color_for(cell) {
+    if (!this.distances) return 'white'
+    const distance = this.distances.get(cell)
+    const intensity = (this.maximum - distance) / this.maximum
+    const dark = Math.floor(255 * intensity)
+    const bright = Math.floor(128 + 127 * intensity)
+    return `rgb(${dark},${bright},${dark})`
+  }
+
   contents_of(cell) {
     if (this.distances && this.distances.get(cell))
       return this.distances.get(cell).toString(36) // base-36 int, because we’re limited to one character
