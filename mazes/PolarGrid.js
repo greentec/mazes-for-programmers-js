@@ -5,7 +5,7 @@ const output = document.getElementById('output')
 const ctx = output.getContext('2d')
 
 export default class PolarGrid extends Grid {
-  constructor(rows, columns) {
+  constructor(rows) {
     super(rows, 1)
   }
 
@@ -27,25 +27,18 @@ export default class PolarGrid extends Grid {
       for (let j = 0; j < cells; j += 1)
         rows[i][j] = new PolarCell(i, j)
     }
-
     this.grid = rows
   }
 
   configure_cells() {
-    const cell_gen = this.each_cell()
-    while (true) {
-      const cell = cell_gen.next().value
-      if (!cell) break
-
-      const { row } = cell
-      const col = cell.column
+    for (const cell of this.each_cell()) {
+      const { row, column } = cell
 
       if (row > 0) {
-        cell.cw = this.cell(row, col + 1)
-        cell.ccw = this.cell(row, col - 1)
-
+        cell.cw = this.cell(row, column + 1)
+        cell.ccw = this.cell(row, column - 1)
         const ratio = this.grid[row].length / this.grid[row - 1].length
-        const parent = this.grid[row - 1][Math.floor(col / ratio)]
+        const parent = this.grid[row - 1][Math.floor(column / ratio)]
         parent.outward.push(cell)
         cell.inward = parent
       }
@@ -63,28 +56,22 @@ export default class PolarGrid extends Grid {
     return this.cell(row, col)
   }
 
-  draw(cellSize = 10) {
-    ctx.strokeStyle = 'black'
-
-    const img_size = 2 * this.rows * cellSize
+  draw(ring_height = 10) {
+    const img_size = 2 * this.rows * ring_height
     const center = img_size / 2
 
-    const cell_gen = this.each_cell()
-    while (true) {
-      const cell = cell_gen.next().value
-      if (!cell) break
+    for (const cell of this.each_cell()) {
       if (cell.row == 0) continue
 
-      const theta = 2 * Math.PI / this.grid[cell.row].length
-      const inner_radius = cell.row * cellSize
-      const outer_radius = (cell.row + 1) * cellSize
-      const theta_ccw = cell.column * theta
-      const theta_cw = (cell.column + 1) * theta
+      const cell_count = this.grid[cell.row].length
+      const theta = 2 * Math.PI / cell_count
+      const inner_radius = cell.row * ring_height
+      const outer_radius = (cell.row + 1) * ring_height
+      const theta_ccw = cell.column * theta // counter-clockwise wall
+      const theta_cw = (cell.column + 1) * theta // clockwise wall
 
       const ax = center + Math.floor(inner_radius * Math.cos(theta_ccw))
       const ay = center + Math.floor(inner_radius * Math.sin(theta_ccw))
-      const bx = center + Math.floor(outer_radius * Math.cos(theta_ccw))
-      const by = center + Math.floor(outer_radius * Math.sin(theta_ccw))
       const cx = center + Math.floor(inner_radius * Math.cos(theta_cw))
       const cy = center + Math.floor(inner_radius * Math.sin(theta_cw))
       const dx = center + Math.floor(outer_radius * Math.cos(theta_cw))
@@ -102,7 +89,7 @@ export default class PolarGrid extends Grid {
       }
     }
 
-    ctx.arc(center, center, this.rows * cellSize, 0, 2 * Math.PI)
+    ctx.arc(center, center, this.rows * ring_height, 0, 2 * Math.PI)
     ctx.stroke()
   }
 }
