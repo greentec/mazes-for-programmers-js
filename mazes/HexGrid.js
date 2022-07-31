@@ -15,34 +15,30 @@ export default class HexGrid extends Grid {
   }
 
   configure_cells() {
-    for (let i = 0; i < this.rows; i += 1)
-      for (let j = 0; j < this.columns; j += 1) {
-        const cell = this.cell(i, j)
-        if (cell == null) continue
-        const { row } = cell
-        const col = cell.column
-        let north_diagonal
-        let south_diagonal
+    for (const cell of this.each_cell()) {
+      const { row, column: col } = cell
+      let north_diagonal
+      let south_diagonal
 
-        if (col % 2 == 0) {
-          north_diagonal = row - 1
-          south_diagonal = row
-        } else {
-          north_diagonal = row
-          south_diagonal = row + 1
-        }
-
-        cell.northwest = this.cell(north_diagonal, col - 1)
-        cell.north = this.cell(row - 1, col)
-        cell.northeast = this.cell(north_diagonal, col + 1)
-        cell.southwest = this.cell(south_diagonal, col - 1)
-        cell.south = this.cell(row + 1, col)
-        cell.southeast = this.cell(south_diagonal, col + 1)
+      if (col % 2 == 0) {
+        north_diagonal = row - 1
+        south_diagonal = row
+      } else {
+        north_diagonal = row
+        south_diagonal = row + 1
       }
+
+      cell.northwest = this.cell(north_diagonal, col - 1)
+      cell.north = this.cell(row - 1, col)
+      cell.northeast = this.cell(north_diagonal, col + 1)
+      cell.southwest = this.cell(south_diagonal, col - 1)
+      cell.south = this.cell(row + 1, col)
+      cell.southeast = this.cell(south_diagonal, col + 1)
+    }
   }
 
   cell(row, column) {
-    if (row < 0 || row > this.rows - 1) 		 return null
+    if (row < 0 || row > this.rows - 1) return null
     if (column < 0 || column > this.columns - 1) return null
     return this.grid[row][column]
   }
@@ -52,16 +48,9 @@ export default class HexGrid extends Grid {
 
     const a_size = cellSize / 2.0
     const b_size = cellSize * Math.sqrt(3) / 2.0
-    const width = cellSize * 2
     const height = b_size * 2
-    const img_width = Math.floor(3 * a_size * this.columns + a_size + 0.5)
-    const img_height = Math.floor(height * this.rows + b_size + 0.5)
-    const cell_gen = this.each_cell()
 
-    while (true) {
-      const cell = cell_gen.next().value
-      if (!cell) break
-
+    for (const cell of this.each_cell()) {
       const cx = cellSize + 3 * cell.column * a_size
       let cy = b_size + cell.row * height
       if (cell.column % 2 == 1) cy += b_size
@@ -98,17 +87,17 @@ export default class HexGrid extends Grid {
         ctx.lineTo(x_ne, y_n)
         ctx.stroke()
       }
-      if ((cell.northeast && !cell.isLinked(cell.northeast)) || !cell.northeast) {
+      if (!cell.isLinked(cell.northeast)) {
         ctx.moveTo(x_ne, y_n)
         ctx.lineTo(x_fe, y_m)
         ctx.stroke()
       }
-      if ((cell.southeast && !cell.isLinked(cell.southeast)) || !cell.southeast) {
+      if (!cell.isLinked(cell.southeast)) {
         ctx.moveTo(x_fe, y_m)
         ctx.lineTo(x_ne, y_s)
         ctx.stroke()
       }
-      if ((cell.south && !cell.isLinked(cell.south)) || !cell.south) {
+      if (!cell.isLinked(cell.south)) {
         ctx.moveTo(x_ne, y_s)
         ctx.lineTo(x_nw, y_s)
         ctx.stroke()
