@@ -1,6 +1,6 @@
 import Grid from './Grid.js'
 import WeightedCell from './WeightedCell.js'
-import { darkGreenFill } from './utils.js'
+import { shadeOfYellow } from './utils.js'
 
 const defaultCanvas = document.getElementById('output')
 const defaultContext = defaultCanvas.getContext('2d')
@@ -20,7 +20,7 @@ export default class WeightedGrid extends Grid {
     if (!this.distances) return 'white'
     const distance = this.distances.get(cell)
     if (!distance) return 'white'
-    return darkGreenFill (this.maximum, distance)
+    return shadeOfYellow (this.maximum, distance)
   }
 
   draw(cellSize, ctx = defaultContext) {
