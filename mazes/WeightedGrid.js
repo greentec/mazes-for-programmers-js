@@ -1,5 +1,6 @@
 import Grid from './Grid.js'
 import WeightedCell from './WeightedCell.js'
+import { darkGreenFill } from './utils.js'
 
 const defaultCanvas = document.getElementById('output')
 const defaultContext = defaultCanvas.getContext('2d')
@@ -10,17 +11,16 @@ export default class WeightedGrid extends Grid {
     for (let i = 0; i < this.rows; i += 1) {
       this.grid[i] = new Array(this.columns)
       for (let j = 0; j < this.columns; j += 1)
-        this.grid[i][j] = new WeightedCell(i, j)
+        this.grid[i][j] = new WeightedCell(i, j) // istead of Cell
     }
   }
 
   background_color_for(cell) {
-    if (cell.weight > 1) return 'rgb(255,0,0)'
-    if (!this.distances) return 'rgb(255,255,255)'
+    if (cell.weight > 1) return 'red'
+    if (!this.distances) return 'white'
     const distance = this.distances.get(cell)
-    if (!distance) return 'rgb(255,255,255)'
-    const intensity = 64 + 191 * (this.maximum - distance) * 1.0 / this.maximum
-    return `rgb(${intensity},${intensity},0)`
+    if (!distance) return 'white'
+    return darkGreenFill (this.maximum, distance)
   }
 
   draw(cellSize, ctx = defaultContext) {

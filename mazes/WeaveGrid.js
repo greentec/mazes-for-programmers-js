@@ -31,7 +31,6 @@ export default class WeaveGrid extends Grid {
 
     for (let i = 0; i < this.under_cells.length; i += 1)
       if (this.under_cells[i]) yield this.under_cells[i]
-
   }
 
   draw(cellSize = 10, inset = 0) {

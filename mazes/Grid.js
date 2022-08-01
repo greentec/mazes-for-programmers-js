@@ -1,4 +1,5 @@
 import Cell from './Cell.js'
+import { lightGreenFill } from './utils.js'
 
 const defaultCanvas = document.getElementById('output')
 const defaultContext = defaultCanvas.getContext('2d')
@@ -91,10 +92,7 @@ export default class Grid {
   background_color_for(cell) {
     if (!this.distances) return 'white'
     const distance = this.distances.get(cell)
-    const intensity = (this.maximum - distance) / this.maximum
-    const dark = Math.floor(255 * intensity)
-    const bright = Math.floor(128 + 127 * intensity)
-    return `rgb(${dark},${bright},${dark})`
+    return lightGreenFill(this.maximum, distance)
   }
 
   contents_of(cell) {
