@@ -1,7 +1,7 @@
-import ColoredGrid from '../../mazes/ColoredGrid.js'
+import Grid from '../../mazes/Grid.js'
 import RecursiveBacktracker from '../../mazes/algorithms/RecursiveBacktracker.js'
 
-const grid = new ColoredGrid(20)
+const grid = new Grid(20)
 RecursiveBacktracker.on(grid)
 
-grid.draw()
+grid.drawDistance()

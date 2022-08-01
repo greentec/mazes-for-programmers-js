@@ -1,7 +1,7 @@
-import ColoredGrid from '../../mazes/ColoredGrid.js'
+import Grid from '../../mazes/Grid.js'
 import HuntAndKill from '../../mazes/algorithms/HuntAndKill.js'
 
-const grid = new ColoredGrid(20)
+const grid = new Grid(20)
 console.log(grid)
 HuntAndKill.on(grid)
 
@@ -10,4 +10,4 @@ console.log(grid.toString())
 const start = grid.middle_cell
 grid.distances = start.distances
 
-grid.draw()
+grid.drawDistance()

@@ -1,10 +1,10 @@
-import ColoredGrid from '../../mazes/ColoredGrid.js'
+import Grid from '../../mazes/Grid.js'
 import RecursiveDivision from '../../mazes/RecursiveDivision.js'
 
 const maze = new RecursiveDivision()
 const h = 20
 const w = 20
-const grid = new ColoredGrid(h, w)
+const grid = new Grid(h, w)
 maze.on(grid)
 // grid.braid(0.5);
 
@@ -18,4 +18,4 @@ const output = document.getElementById('output')
 output.width = cellSize * w + 1
 output.height = cellSize * h + 1
 const ctx = output.getContext('2d')
-grid.draw(cellSize)
+grid.drawDistance(cellSize)

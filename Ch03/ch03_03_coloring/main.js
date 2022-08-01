@@ -1,10 +1,10 @@
-import ColoredGrid from '../../mazes/ColoredGrid.js'
+import Grid from '../../mazes/Grid.js'
 import BinaryTree from '../../mazes/algorithms/BinaryTree.js'
 
-const grid = new ColoredGrid(25)
+const grid = new Grid(25)
 BinaryTree.on(grid)
 
 const start = grid.middle_cell
 grid.distances = start.distances
 
-grid.draw(20)
+grid.drawDistance(20)

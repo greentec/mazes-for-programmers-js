@@ -1,10 +1,10 @@
 import AldousBroder from '../../mazes/algorithms/AldousBroder.js';
-import ColoredGrid from '../../mazes/ColoredGrid.js';
+import Grid from '../../mazes/Grid.js';
 
-const grid = new ColoredGrid(20)
+const grid = new Grid(20)
 AldousBroder.on(grid)
 
 const start = grid.middle_cell
 grid.distances = start.distances
 
-grid.draw()
+grid.drawDistance()
