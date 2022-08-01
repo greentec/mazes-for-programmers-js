@@ -1,8 +1,9 @@
 import Grid from './Grid.js'
 import WeightedCell from './WeightedCell.js'
 
-const output = document.getElementById('output')
-const ctx = output.getContext('2d')
+const defaultCanvas = document.getElementById('output')
+const defaultContext = defaultCanvas.getContext('2d')
+defaultContext.strokeStyle = 'black'
 
 export default class WeightedGrid extends Grid {
   prepare_grid() {
@@ -23,14 +24,8 @@ export default class WeightedGrid extends Grid {
     return `rgb(${intensity},${intensity},0)`
   }
 
-  draw(cellSize) {
-    ctx.strokeStyle = 'black'
-    const cell_gen = this.each_cell()
-
-    while (true) {
-      const cell = cell_gen.next().value
-      if (!cell) break
-
+  draw(cellSize, ctx = defaultContext) {
+    for (const cell of this.each_cell()) {
       const x1 = cell.column * cellSize
       const y1 = cell.row * cellSize
       const x2 = (cell.column + 1) * cellSize
@@ -51,12 +46,12 @@ export default class WeightedGrid extends Grid {
         ctx.lineTo(x1, y2)
         ctx.stroke()
       }
-      if ((cell.east && !cell.isLinked(cell.east)) || !cell.east) {
+      if ((!cell.isLinked(cell.east))) {
         ctx.moveTo(x2, y1)
         ctx.lineTo(x2, y2)
         ctx.stroke()
       }
-      if ((cell.south && !cell.isLinked(cell.south)) || !cell.south) {
+      if ((!cell.isLinked(cell.south))) {
         ctx.moveTo(x1, y2)
         ctx.lineTo(x2, y2)
         ctx.stroke()

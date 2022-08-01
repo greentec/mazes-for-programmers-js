@@ -7,13 +7,11 @@ const grid = new WeightedGrid(h, w)
 RecursiveBacktracker.on(grid)
 grid.braid(1)
 
-console.log(grid.toString())
-
 const start = grid.cell(0, 0)
 const finish = grid.cell(grid.rows - 1, grid.columns - 1)
 grid.distances = start.distances.path_to(finish)
 
-const cellSize = 10
+const cellSize = 20
 const output = document.getElementById('output')
 output.width = cellSize * w + 1
 output.height = cellSize * h + 1
@@ -31,4 +29,4 @@ const output2 = document.getElementById('output2')
 output2.width = cellSize * w + 1
 output2.height = cellSize * h + 1
 const ctx2 = output2.getContext('2d')
-grid.draw(cellSize, 0, ctx2)
+grid.draw(cellSize, ctx2)

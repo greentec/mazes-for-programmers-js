@@ -11,7 +11,7 @@ export default class WeightedCell extends Cell {
     const weights = new Distances(this)
     const pending = [this]
 
-    while (pending.length > 0) {
+    while (pending.length) {
       pending.sort((a, b) => weights.get(a) - weights.get(b))
       const cell = pending.shift()
 
@@ -20,12 +20,12 @@ export default class WeightedCell extends Cell {
         const total_weight = weights.get(cell) + neighbor.weight
         if (!weights.get(neighbor) || total_weight < weights.get(neighbor)) {
           pending.push(neighbor)
-          weights.set_cell(neighbor, total_weight)
+          weights.set(neighbor, total_weight)
         }
       }
     }
 
-    weights.set_cell(this, 0)
+    weights.set(this, 0)
     return weights
   }
 }
