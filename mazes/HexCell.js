@@ -19,8 +19,4 @@ export default class HexCell extends Cell {
     if (this.southeast) list.push(this.southeast)
     return list
   }
-
-  get id() {
-    return this.row + '#' + this.column
-  }
 }

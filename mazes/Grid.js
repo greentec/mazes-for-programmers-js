@@ -242,12 +242,12 @@ export default class Grid {
     }
   }
 
-  braid(p = 1.0) {
+  braid(percent = 1.0) {
     const { deadends } = this
-    this.shuffle(deadends) // maybe could not mutate getter??
+    this.shuffle(deadends)
 
     deadends.forEach(cell => {
-      if (cell.links_length != 1 || Math.random() > p)
+      if (cell.links_length != 1 || Math.random() > percent)
         return
 
       const neighbors = cell.neighbors.filter(c => !c.isLinked(cell))
