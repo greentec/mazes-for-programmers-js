@@ -3,7 +3,6 @@ import WeightedCell from './WeightedCell.js'
 
 const defaultCanvas = document.getElementById('output')
 const defaultContext = defaultCanvas.getContext('2d')
-defaultContext.strokeStyle = 'black'
 
 export default class WeightedGrid extends Grid {
   prepare_grid() {
@@ -25,6 +24,9 @@ export default class WeightedGrid extends Grid {
   }
 
   draw(cellSize, ctx = defaultContext) {
+    ctx.canvas.width = cellSize * this.rows + 1
+    ctx.canvas.height = cellSize * this.columns + 1
+
     for (const cell of this.each_cell()) {
       const x1 = cell.column * cellSize
       const y1 = cell.row * cellSize

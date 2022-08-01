@@ -2,7 +2,6 @@ import Cell from './Cell.js'
 
 const defaultCanvas = document.getElementById('output')
 const defaultContext = defaultCanvas.getContext('2d')
-defaultContext.strokeStyle = 'black'
 
 export default class Grid {
   constructor(rows, columns = rows) {
@@ -116,12 +115,10 @@ export default class Grid {
     return output
   }
 
-  draw(cellSize = 20, inset = 0, ctx) {
-    if (!ctx) {
-      ctx = defaultContext
-      defaultCanvas.width = cellSize * this.rows + 1
-      defaultCanvas.height = cellSize * this.columns + 1
-    }
+  draw(cellSize = 20, inset = 0, ctx = defaultContext) {
+    ctx.canvas.width = cellSize * this.rows + 1
+    ctx.canvas.height = cellSize * this.columns + 1
+
     inset = Math.floor(cellSize * inset)
     for (const cell of this.each_cell()) {
       const x = cell.column * cellSize
