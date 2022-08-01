@@ -1,8 +1,8 @@
 export default class Distances {
   constructor(root) {
     this.root = root
-    this.cells = {}
-    this.cells[this.root.id] = 0
+    this.cells = {} // cell_id: distance
+    this.cells[root.id] = 0
   }
 
   get({ id }) {
@@ -13,8 +13,9 @@ export default class Distances {
     this.cells[cell.id] = distance
   }
 
-  get_cells() {
-    return Object.keys(this.cells)
+  get random_id() {
+    const cells = Object.keys(this.cells)
+    return cells[Math.floor(Math.random() * cells.length)]
   }
 
   path_to(goal) {

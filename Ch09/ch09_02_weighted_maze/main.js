@@ -11,10 +11,9 @@ grid.distances = first_cell.distances.path_to(last_cell)
 const cellSize = 20
 grid.draw(cellSize)
 
-const cells = grid.distances.get_cells()
-const [row, col] = cells[Math.floor(Math.random() * cells.length)].split('#')
-const lava = grid.cell(row, col)
-lava.weight = 50
+const { random_id } = grid.distances
+const lava_cell = grid.cell_by_id(random_id)
+lava_cell.weight = 50
 
 grid.distances = first_cell.distances.path_to(last_cell)
 
