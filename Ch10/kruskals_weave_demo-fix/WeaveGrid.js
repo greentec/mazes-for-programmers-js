@@ -1,6 +1,7 @@
-'use strict'
+import Grid from './Grid.js'
+import { OverCell, UnderCell, SimpleOverCell } from './WeaveCells.js'
 
-class WeaveGrid extends Grid {
+export default class WeaveGrid extends Grid {
   constructor(rows, columns) {
     super(rows, columns)
     this.under_cells = []
@@ -72,7 +73,7 @@ class WeaveGrid extends Grid {
   }
 }
 
-class PreconfiguredGrid extends WeaveGrid {
+export class PreconfiguredGrid extends WeaveGrid {
   prepare_grid() {
     this.grid = new Array(this.rows)
     for (let i = 0; i < this.rows; i += 1) {

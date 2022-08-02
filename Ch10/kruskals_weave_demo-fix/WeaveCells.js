@@ -1,6 +1,6 @@
-'use strict'
+import Cell from './Cell.js'
 
-class OverCell extends Cell {
+export class OverCell extends Cell {
   constructor(row, column, grid) {
     super(row, column)
     this.grid = grid
@@ -10,16 +10,16 @@ class OverCell extends Cell {
     let neighbor = null
     if (this.north && cell.south && this.north.get_id() == cell.south.get_id())
       neighbor = this.north
-		 else if (this.south && cell.north && this.south.get_id() == cell.north.get_id())
+    else if (this.south && cell.north && this.south.get_id() == cell.north.get_id())
       neighbor = this.south
-		 else if (this.east && cell.west && this.east.get_id() == cell.west.get_id())
+    else if (this.east && cell.west && this.east.get_id() == cell.west.get_id())
       neighbor = this.east
-		 else if (this.west && cell.east && this.west.get_id() == cell.east.get_id())
+    else if (this.west && cell.east && this.west.get_id() == cell.east.get_id())
       neighbor = this.west
 
     if (neighbor)
       this.grid.tunnel_under(neighbor)
-		 else
+    else
       super.link(cell, bidi)
 
   }
@@ -51,20 +51,20 @@ class OverCell extends Cell {
 
   is_horizontal_passage() {
     return (this.east && this.isLinked(this.east)) &&
-			   (this.west && this.isLinked(this.west)) &&
-			   (this.north && !this.isLinked(this.north)) &&
-			   (this.south && !this.isLinked(this.south))
+      (this.west && this.isLinked(this.west)) &&
+      (this.north && !this.isLinked(this.north)) &&
+      (this.south && !this.isLinked(this.south))
   }
 
   is_vertical_passage() {
     return (this.east && !this.isLinked(this.east)) &&
-			   (this.west && !this.isLinked(this.west)) &&
-			   (this.north && this.isLinked(this.north)) &&
-			   (this.south && this.isLinked(this.south))
+      (this.west && !this.isLinked(this.west)) &&
+      (this.north && this.isLinked(this.north)) &&
+      (this.south && this.isLinked(this.south))
   }
 }
 
-class UnderCell extends Cell {
+export class UnderCell extends Cell {
   constructor(over_cell) {
     super(over_cell.row, over_cell.column)
 
@@ -94,9 +94,9 @@ class UnderCell extends Cell {
   }
 }
 
-class SimpleOverCell extends OverCell {
+export class SimpleOverCell extends OverCell {
   neighbors() {
-    list = []
+    const list = []
     if (this.north) list.push(this.north)
     if (this.south) list.push(this.south)
     if (this.east) list.push(this.east)

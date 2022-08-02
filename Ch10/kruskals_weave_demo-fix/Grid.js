@@ -1,6 +1,6 @@
-'use strict'
+import Cell from './Cell.js'
 
-class Grid {
+export default class Grid {
   constructor(rows, columns) {
     this.rows = rows
     this.columns = columns
@@ -15,7 +15,6 @@ class Grid {
       this.grid[i] = new Array(this.columns)
       for (let j = 0; j < this.columns; j += 1)
         this.grid[i][j] = new Cell(i, j)
-
     }
   }
 
@@ -63,9 +62,7 @@ class Grid {
       const row = row_gen.next().value
       for (let j = 0; j < row.length; j += 1)
         if (row[j]) yield row[j]
-
     }
-
   }
 
   contents_of(cell) {
