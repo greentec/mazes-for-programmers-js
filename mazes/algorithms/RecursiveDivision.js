@@ -2,7 +2,7 @@ export default class RecursiveDivision {
   static on(grid) {
     this.grid = grid
     for (const cell of grid.each_cell())
-      cell.neighbors.forEach(c => cell.link(c, false))
+      cell.neighbors.forEach(c => cell.link(c, false)) // removing all interior walls
 
     this.divide(0, 0, this.grid.rows, this.grid.columns)
   }
