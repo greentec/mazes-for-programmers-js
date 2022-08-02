@@ -1,15 +1,16 @@
+import { sample } from '../utils.js'
+
 export default class GrowingTree {
-  on(grid, start_at = grid.random_cell, select_fn = null) {
+  static on(grid, start_at = grid.random_cell, select_fn = (c => c[Math.floor(Math.random() * c.length)])) {
     let active = []
     active.push(start_at)
-    select_fn = select_fn || (c => c[Math.floor(Math.random() * c.length)])
 
-    while (active.length > 0) {
+    while (active.length) {
       const cell = select_fn(active)
       const available_neighbors = cell.neighbors.filter(c => c.unvisited)
 
-      if (available_neighbors.length > 0) {
-        const neighbor = available_neighbors[Math.floor(Math.random() * available_neighbors.length)]
+      if (available_neighbors.length) {
+        const neighbor = sample(available_neighbors)
         cell.link(neighbor)
         active.push(neighbor)
       } else

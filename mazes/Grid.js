@@ -121,6 +121,7 @@ export default class Grid {
     return output
   }
 
+  // TODO: with inset
   drawDistance(cellSize = 20, ctx = defaultContext) {
     ctx.canvas.width = cellSize * this.rows + 1
     ctx.canvas.height = cellSize * this.columns + 1
