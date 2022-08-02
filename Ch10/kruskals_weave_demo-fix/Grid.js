@@ -1,4 +1,4 @@
-import Cell from './Cell.js'
+import Cell from '../../mazes/Cell.js'
 
 export default class Grid {
   constructor(rows, columns) {
@@ -85,10 +85,10 @@ export default class Grid {
         if (!cell) cell = new Cell(-1, -1)
 
         const body = '   '
-        const east_boundary = (cell.east && cell.isLinked(cell.east)) ? ' ' : '|'
+        const east_boundary = (cell.east && cell.linked(cell.east)) ? ' ' : '|'
         top += body + east_boundary
 
-        const south_boundary = (cell.south && cell.isLinked(cell.south)) ? '   ' : '---'
+        const south_boundary = (cell.south && cell.linked(cell.south)) ? '   ' : '---'
         const corner = '+'
         bottom += south_boundary + corner
       }
@@ -136,12 +136,12 @@ export default class Grid {
       ctx.lineTo(x1, y2)
       ctx.stroke()
     }
-    if ((cell.east && !cell.isLinked(cell.east)) || !cell.east) {
+    if ((cell.east && !cell.linked(cell.east)) || !cell.east) {
       ctx.moveTo(x2, y1)
       ctx.lineTo(x2, y2)
       ctx.stroke()
     }
-    if ((cell.south && !cell.isLinked(cell.south)) || !cell.south) {
+    if ((cell.south && !cell.linked(cell.south)) || !cell.south) {
       ctx.moveTo(x1, y2)
       ctx.lineTo(x2, y2)
       ctx.stroke()
@@ -166,7 +166,7 @@ export default class Grid {
     let x1, x2, x3, x4, y1, y2, y3, y4;
     [x1, x2, x3, x4, y1, y2, y3, y4] = this.cell_coordinates_with_inset(x, y, cellSize, inset)
 
-    if (cell.north && cell.isLinked(cell.north)) {
+    if (cell.north && cell.linked(cell.north)) {
       ctx.moveTo(x2, y1)
       ctx.lineTo(x2, y2)
       ctx.moveTo(x3, y1)
@@ -177,7 +177,7 @@ export default class Grid {
       ctx.lineTo(x3, y2)
       ctx.stroke()
     }
-    if (cell.south && cell.isLinked(cell.south)) {
+    if (cell.south && cell.linked(cell.south)) {
       ctx.moveTo(x2, y3)
       ctx.lineTo(x2, y4)
       ctx.moveTo(x3, y3)
@@ -188,7 +188,7 @@ export default class Grid {
       ctx.lineTo(x3, y3)
       ctx.stroke()
     }
-    if (cell.west && cell.isLinked(cell.west)) {
+    if (cell.west && cell.linked(cell.west)) {
       ctx.moveTo(x1, y2)
       ctx.lineTo(x2, y2)
       ctx.moveTo(x1, y3)
@@ -199,7 +199,7 @@ export default class Grid {
       ctx.lineTo(x2, y3)
       ctx.stroke()
     }
-    if (cell.east && cell.isLinked(cell.east)) {
+    if (cell.east && cell.linked(cell.east)) {
       ctx.moveTo(x3, y2)
       ctx.lineTo(x4, y2)
       ctx.moveTo(x3, y3)
@@ -243,7 +243,7 @@ export default class Grid {
       if (cell.get_links().length != 1 || Math.random() > p)
         return
 
-      const neighbors = cell.neighbors().filter(c => !c.isLinked(cell))
+      const neighbors = cell.neighbors().filter(c => !c.linked(cell))
       let best = neighbors.filter(c => c.get_links().length == 1)
       if (best.length == 0) best = neighbors
 

@@ -1,6 +1,5 @@
 import Kruskals, { State } from './Kruskals.js'
 import { PreconfiguredGrid } from './WeaveGrid.js'
-// import PreconfiguredGrid from '../../mazes/PreconfiguredGrid.js'
 
 const h = 20
 const w = 20
