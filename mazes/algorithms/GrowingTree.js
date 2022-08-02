@@ -1,7 +1,7 @@
 import { sample } from '../utils.js'
 
 export default class GrowingTree {
-  static on(grid, start_at = grid.random_cell, select_fn = (c => c[Math.floor(Math.random() * c.length)])) {
+  static on(grid, select_fn = sample, start_at = grid.random_cell) {
     let active = []
     active.push(start_at)
 
