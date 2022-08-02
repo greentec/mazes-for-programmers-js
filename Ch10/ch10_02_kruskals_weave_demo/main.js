@@ -1,6 +1,6 @@
-import Kruskals from '../../mazes/Kruskals.js'
+import Kruskals from '../../mazes/algorithms/Kruskals.js'
 import PreconfiguredGrid from '../../mazes/PreconfiguredGrid.js'
-import State from '../../mazes/State.js'
+import State from '../../mazes/algorithms/State.js'
 
 const h = 20
 const w = 20

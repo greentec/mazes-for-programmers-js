@@ -4,12 +4,8 @@ export default class State {
     this.neighbors = []
     this.set_for_cell = {}
     this.cells_in_set = {}
-    const cell_gen = grid.each_cell()
 
-    while (true) {
-      const cell = cell_gen.next().value
-      if (!cell) break
-
+    for (const cell of grid.each_cell()) {
       const set = Object.keys(this.set_for_cell).length
       this.set_for_cell[cell.id] = set
       this.cells_in_set[set] = [cell]
@@ -40,16 +36,12 @@ export default class State {
   }
 
   add_crossing(cell) {
-    if (cell.links_length > 0 ||
-      !this.can_merge(cell.east, cell.west) ||
-      !this.can_merge(cell.north, cell.south))
+    if (cell.links_length || !this.can_merge(cell.east, cell.west) || !this.can_merge(cell.north, cell.south))
       return false
 
     if (Math.random() < 0.5) {
-      if (cell.west.id == cell.id ||
-        cell.id == cell.east.id ||
-        cell.north.id == cell.north.south.id ||
-        cell.south.id == cell.south.north.id)
+      if (cell.west.id == cell.id || cell.id == cell.east.id ||
+        cell.north.id == cell.north.south.id || cell.south.id == cell.south.north.id)
         return false
 
       this.neighbors = this.neighbors.filter(c => c[0].id != cell.id && c[1].id != cell.id)
@@ -61,10 +53,8 @@ export default class State {
       this.merge(cell.north, cell.north.south)
       this.merge(cell.south, cell.south.north)
     } else {
-      if (cell.north.id == cell.id ||
-        cell.id == cell.south.id ||
-        cell.west.id == cell.west.east.id ||
-        cell.east.id == cell.east.west.id)
+      if (cell.north.id == cell.id || cell.id == cell.south.id ||
+        cell.west.id == cell.west.east.id || cell.east.id == cell.east.west.id)
         return false
 
       this.neighbors = this.neighbors.filter(c => c[0].id != cell.id && c[1].id != cell.id)
