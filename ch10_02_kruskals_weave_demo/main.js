@@ -1,5 +1,5 @@
-import Kruskals, { State } from '../../mazes/algorithms/Kruskals.js'
-import { PreconfiguredGrid } from '../../mazes/WeaveGrid.js'
+import Kruskals, { State } from '../mazes/algorithms/Kruskals.js'
+import { PreconfiguredGrid } from '../mazes/WeaveGrid.js'
 
 const h = 20
 const w = 20

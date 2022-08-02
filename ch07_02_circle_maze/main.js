@@ -1,5 +1,5 @@
-import PolarGrid from '../../mazes/PolarGrid.js'
-import RecursiveBacktracker from '../../mazes/algorithms/RecursiveBacktracker.js'
+import PolarGrid from '../mazes/PolarGrid.js'
+import RecursiveBacktracker from '../mazes/algorithms/RecursiveBacktracker.js'
 
 const grid = new PolarGrid(10)
 RecursiveBacktracker.on(grid)

@@ -1,5 +1,5 @@
-import RecursiveBacktracker from '../../mazes/algorithms/RecursiveBacktracker.js'
-import Grid3D from '../../mazes/Grid3D.js'
+import RecursiveBacktracker from '../mazes/algorithms/RecursiveBacktracker.js'
+import Grid3D from '../mazes/Grid3D.js'
 
 const level = 3
 const h = 5

@@ -1,5 +1,5 @@
-import Grid from '../../mazes/Grid.js'
-import HuntAndKill from '../../mazes/algorithms/HuntAndKill.js'
+import Grid from '../mazes/Grid.js'
+import HuntAndKill from '../mazes/algorithms/HuntAndKill.js'
 
 const grid = new Grid(20)
 console.log(grid)

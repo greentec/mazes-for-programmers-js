@@ -1,5 +1,5 @@
-import TriangleGrid from '../../mazes/TriangleGrid.js'
-import RecursiveBacktracker from '../../mazes/algorithms/RecursiveBacktracker.js'
+import TriangleGrid from '../mazes/TriangleGrid.js'
+import RecursiveBacktracker from '../mazes/algorithms/RecursiveBacktracker.js'
 
 const rows = 10
 const columns = 17

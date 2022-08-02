@@ -1,6 +1,6 @@
-import Mask from '../../mazes/Mask.js'
-import MaskedGrid from '../../mazes/MaskedGrid.js'
-import RecursiveBacktracker from '../../mazes/algorithms/RecursiveBacktracker.js'
+import Mask from '../mazes/Mask.js'
+import MaskedGrid from '../mazes/MaskedGrid.js'
+import RecursiveBacktracker from '../mazes/algorithms/RecursiveBacktracker.js'
 
 const s =
 'X........X ....XX.... ...XXXX... ....XX.... X........X X........X ....XX.... ...XXXX... ....XX.... X........X'

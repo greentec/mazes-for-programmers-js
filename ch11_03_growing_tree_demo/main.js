@@ -1,6 +1,6 @@
-import GrowingTree from '../../mazes/algorithms/GrowingTree.js'
-import Grid from '../../mazes/Grid.js'
-import { sample } from '../../mazes/utils.js'
+import GrowingTree from '../mazes/algorithms/GrowingTree.js'
+import Grid from '../mazes/Grid.js'
+import { sample } from '../mazes/utils.js'
 
 const last = arr => arr[arr.length - 1]
 

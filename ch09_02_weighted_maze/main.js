@@ -1,5 +1,5 @@
-import WeightedGrid from '../../mazes/WeightedGrid.js'
-import RecursiveBacktracker from '../../mazes/algorithms/RecursiveBacktracker.js'
+import WeightedGrid from '../mazes/WeightedGrid.js'
+import RecursiveBacktracker from '../mazes/algorithms/RecursiveBacktracker.js'
 
 const grid = new WeightedGrid(20)
 RecursiveBacktracker.on(grid)

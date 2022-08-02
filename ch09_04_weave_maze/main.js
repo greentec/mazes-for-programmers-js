@@ -1,5 +1,5 @@
-import WeaveGrid from '../../mazes/WeaveGrid.js'
-import RecursiveBacktracker from '../../mazes/algorithms/RecursiveBacktracker.js'
+import WeaveGrid from '../mazes/WeaveGrid.js'
+import RecursiveBacktracker from '../mazes/algorithms/RecursiveBacktracker.js'
 
 const grid = new WeaveGrid(20)
 RecursiveBacktracker.on(grid)
