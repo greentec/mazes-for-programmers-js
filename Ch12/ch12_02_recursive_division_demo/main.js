@@ -6,4 +6,4 @@ RecursiveDivision.on(grid)
 
 console.log(grid.toString())
 
-grid.drawDistance()
+grid.draw()

@@ -22,17 +22,13 @@ export default class Grid {
   }
 
   configure_cells() {
-    for (let i = 0; i < this.rows; i += 1)
-      for (let j = 0; j < this.columns; j += 1) {
-        const cell = this.cell(i, j)
-        if (cell == null) continue
-        const { row } = cell
-        const col = cell.column
-        if (row > 0) cell.north = this.cell(row - 1, col)
-        if (row < this.rows - 1) cell.south = this.cell(row + 1, col)
-        if (col > 0) cell.west = this.cell(row, col - 1)
-        if (col < this.columns - 1) cell.east = this.cell(row, col + 1)
-      }
+    for (const cell of this.each_cell()) {
+      const { row, column: col } = cell
+      if (row > 0) cell.north = this.cell(row - 1, col)
+      if (row < this.rows - 1) cell.south = this.cell(row + 1, col)
+      if (col > 0) cell.west = this.cell(row, col - 1)
+      if (col < this.columns - 1) cell.east = this.cell(row, col + 1)
+    }
   }
 
   cell(row, column) {
@@ -278,7 +274,6 @@ export default class Grid {
   braid(percent = 1.0) {
     const { deadends } = this
     shuffle(deadends)
-
     deadends.forEach(cell => {
       if (cell.links_length != 1 || Math.random() > percent)
         return

@@ -13,8 +13,6 @@ export default class Grid3D extends Grid {
   }
 
   prepare_grid() {
-    if (!this.levels) return
-
     this.grid = new Array(this.levels)
     for (let h = 0; h < this.levels; h += 1) {
       this.grid[h] = new Array(this.rows)
@@ -27,24 +25,18 @@ export default class Grid3D extends Grid {
   }
 
   configure_cells() {
-    if (!this.levels) return
+    for (const cell of this.each_cell()) {
+      const { level } = cell
+      const { row } = cell
+      const col = cell.column
 
-    for (let h = 0; h < this.levels; h += 1)
-      for (let i = 0; i < this.rows; i += 1)
-        for (let j = 0; j < this.columns; j += 1) {
-          const cell = this.cell(h, i, j)
-          if (cell == null) continue
-          const { level } = cell
-          const { row } = cell
-          const col = cell.column
-
-          cell.north = this.cell(level, row - 1, col)
-          cell.south = this.cell(level, row + 1, col)
-          cell.west = this.cell(level, row, col - 1)
-          cell.east = this.cell(level, row, col + 1)
-          cell.down = this.cell(level - 1, row, col)
-          cell.up = this.cell(level + 1, row, col)
-        }
+      cell.north = this.cell(level, row - 1, col)
+      cell.south = this.cell(level, row + 1, col)
+      cell.west = this.cell(level, row, col - 1)
+      cell.east = this.cell(level, row, col + 1)
+      cell.down = this.cell(level - 1, row, col)
+      cell.up = this.cell(level + 1, row, col)
+    }
   }
 
   cell(level, row, column) {
@@ -68,7 +60,6 @@ export default class Grid3D extends Grid {
   * each_level() {
     for (let h = 0; h < this.levels; h += 1)
       yield this.grid[h]
-
   }
 
   * each_row() {
