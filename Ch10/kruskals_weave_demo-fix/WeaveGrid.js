@@ -1,5 +1,5 @@
 import Grid from './Grid.js'
-import { OverCell, UnderCell, SimpleOverCell } from './WeaveCells.js'
+import { OverCell, UnderCell, SimpleOverCell } from '../../mazes/WeaveCells.js'
 
 export default class WeaveGrid extends Grid {
   constructor(rows, columns) {
@@ -43,11 +43,10 @@ export default class WeaveGrid extends Grid {
   to_img_with_inset(ctx, cell, cellSize, x, y, inset) {
     if (cell.constructor.name == 'OverCell' || cell.constructor.name == 'SimpleOverCell')
       super.to_img_with_inset(ctx, cell, cellSize, x, y, inset)
-		 else {
-      let x1, x2, x3, x4, y1, y2, y3, y4;
-      [x1, x2, x3, x4, y1, y2, y3, y4] = this.cell_coordinates_with_inset(x, y, cellSize, inset)
+    else {
+      const [x1, x2, x3, x4, y1, y2, y3, y4] = this.cell_coordinates_with_inset(x, y, cellSize, inset)
 
-      if (cell.is_vertical_passage()) {
+      if (cell.vertical_passage) {
         ctx.moveTo(x2, y1)
         ctx.lineTo(x2, y2)
         ctx.moveTo(x3, y1)
