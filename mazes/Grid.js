@@ -50,7 +50,7 @@ export default class Grid {
   * each_cell() {
     for (const row of this.grid)
       for (const cell of row)
-        if (cell) yield cell
+        yield cell
   }
 
   get random_cell() {

@@ -25,11 +25,10 @@ export default class Grid3D extends Grid {
   }
 
   configure_cells() {
-    for (const cell of this.each_cell()) {
-      const { level } = cell
-      const { row } = cell
-      const col = cell.column
+    if (!this.levels) return
 
+    for (const cell of this.each_cell()) {
+      const { level, row, column: col } = cell
       cell.north = this.cell(level, row - 1, col)
       cell.south = this.cell(level, row + 1, col)
       cell.west = this.cell(level, row, col - 1)
@@ -50,6 +49,7 @@ export default class Grid3D extends Grid {
     const level = Math.floor(Math.random() * this.levels)
     const row = Math.floor(Math.random() * this.grid[level].length)
     const column = Math.floor(Math.random() * this.grid[level][row].length)
+
     return this.cell(level, row, column)
   }
 
@@ -58,20 +58,20 @@ export default class Grid3D extends Grid {
   }
 
   * each_level() {
-    for (let h = 0; h < this.levels; h += 1)
-      yield this.grid[h]
+    for (const level of this.grid)
+      if (level) yield level
   }
 
   * each_row() {
     for (const level of this.each_level())
-      for (let i = 0; i < this.rows; i += 1)
-        if (level[i]) yield level[i]
+      for (const row of level)
+        yield row
   }
 
   * each_cell() {
     for (const row of this.each_row())
-      for (let j = 0; j < row.length; j += 1)
-        if (row[j]) yield row[j]
+      for (const cell of row)
+        yield cell
   }
 
   draw(cellSize = 10, inset = 0, margin = cellSize / 2) {
