@@ -63,41 +63,23 @@ export default class Grid3D extends Grid {
   }
 
   * each_row() {
-    const level_gen = this.each_level()
-    for (let h = 0; h < this.levels; h += 1) {
-      const level = level_gen.next().value
+    for (const level of this.each_level())
       for (let i = 0; i < this.rows; i += 1)
         if (level[i]) yield level[i]
-    }
   }
 
   * each_cell() {
-    const level_gen = this.each_level()
-    for (let h = 0; h < this.levels; h += 1) {
-      const level = level_gen.next().value
-      for (let i = 0; i < this.rows; i += 1) {
-        const row = level[i]
-        for (let j = 0; j < row.length; j += 1)
-          if (row[j]) yield row[j]
-      }
-    }
+    for (const row of this.each_row())
+      for (let j = 0; j < row.length; j += 1)
+        if (row[j]) yield row[j]
   }
 
   draw(cellSize = 10, inset = 0, margin = cellSize / 2) {
-    ctx.strokeStyle = 'black'
     inset = Math.floor(cellSize * inset)
 
     const grid_width = cellSize * this.columns
-    const grid_height = cellSize * this.rows
 
-    const img_width = grid_width * this.levels + (this.levels - 1) * margin
-    const img_height = grid_height
-
-    const cell_gen = this.each_cell()
-    while (true) {
-      const cell = cell_gen.next().value
-      if (!cell) break
-
+    for (const cell of this.each_cell()) {
       const x = cell.level * (grid_width + margin) + cell.column * cellSize
       const y = cell.row * cellSize
 
