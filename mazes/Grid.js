@@ -5,7 +5,7 @@ const defaultCanvas = document.getElementById('output')
 const defaultContext = defaultCanvas.getContext('2d')
 
 export default class Grid {
-  constructor(rows, columns = rows) {
+  constructor(rows = 20, columns = rows) {
     this.rows = rows
     this.columns = columns
     this.prepare_grid()

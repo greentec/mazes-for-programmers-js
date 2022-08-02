@@ -1,15 +1,12 @@
-import RowState from './RowState.js'
-import { shuffle } from './utils.js'
+import RowState from '../RowState.js'
+import { shuffle } from '../utils.js'
 
 export default class Ellers {
-  on(grid) {
+  static on(grid) {
     let row_state = new RowState()
-    const row_gen = grid.each_row()
 
-    for (let i = 0; i < grid.rows; i += 1) {
-      const row = row_gen.next().value
-      for (let j = 0; j < row.length; j += 1) {
-        const cell = row[j]
+    for (const row of grid.each_row()) {
+      for (const cell of row) {
         if (!cell.west) continue
 
         const set = row_state.set_for(cell)
@@ -27,14 +24,14 @@ export default class Ellers {
         const each_set_gen = row_state.each_set()
 
         while (true) {
-          let set, list
           const next = each_set_gen.next()
-          if (next.done == true) break;
-          [set, list] = next.value
+          if (next.done == true) break
+          const [set, list] = next.value
           if (!set) break
           if (!list || list.length == 0) break
 
           shuffle(list)
+
           for (let index = 0; index < list.length; index += 1) {
             const cell = list[index]
             if (index == 0 || Math.random() < 0.33) {
