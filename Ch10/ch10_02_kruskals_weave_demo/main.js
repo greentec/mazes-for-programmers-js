@@ -12,19 +12,13 @@ for (let i = 0; i < grid.size; i += 1) {
   state.add_crossing(grid.cell(row, column))
 }
 
-// console.log(grid)
-
 Kruskals.on(grid, state)
-// grid.braid(0.5);
+// grid.braid(0.5)
+
+const start = grid.middle_cell
+grid.distances = start.distances
 
 console.log(grid.toString())
 
-// let start = grid.middle_cell;
-// grid.distances = start.distances;
-
 const cellSize = 30
-const output = document.getElementById('output')
-output.width = cellSize * w + 1
-output.height = cellSize * h + 1
-const ctx = output.getContext('2d')
-grid.draw(cellSize, 0.2)
+grid.draw(cellSize, 0.3)

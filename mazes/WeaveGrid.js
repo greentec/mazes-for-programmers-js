@@ -33,8 +33,7 @@ export default class WeaveGrid extends Grid {
       if (this.under_cells[i]) yield this.under_cells[i]
   }
 
-  draw(cellSize = 10, inset = 0, ctx) {
-    inset = (inset || 0.1)
+  draw(cellSize = 10, inset = 0.1, ctx) {
     super.draw(cellSize, inset, ctx)
   }
 

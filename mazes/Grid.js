@@ -1,5 +1,5 @@
 import Cell from './Cell.js'
-import { shadeOfGreen } from './utils.js'
+import { shadeOfGreen, shuffle } from './utils.js'
 
 const defaultCanvas = document.getElementById('output')
 const defaultContext = defaultCanvas.getContext('2d')
@@ -160,8 +160,8 @@ export default class Grid {
   draw(cellSize = 20, inset = 0, ctx = defaultContext) {
     ctx.canvas.width = cellSize * this.rows + 1
     ctx.canvas.height = cellSize * this.columns + 1
-
     inset = Math.floor(cellSize * inset)
+
     for (const cell of this.each_cell()) {
       const x = cell.column * cellSize
       const y = cell.row * cellSize
@@ -272,18 +272,9 @@ export default class Grid {
     return list
   }
 
-  shuffle(array) {
-    for (let i = array.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1))
-      const temp = array[i]
-      array[i] = array[j]
-      array[j] = temp
-    }
-  }
-
   braid(percent = 1.0) {
     const { deadends } = this
-    this.shuffle(deadends)
+    shuffle(deadends)
 
     deadends.forEach(cell => {
       if (cell.links_length != 1 || Math.random() > percent)

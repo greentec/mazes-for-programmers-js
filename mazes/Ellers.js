@@ -1,4 +1,5 @@
 import RowState from './RowState.js'
+import { shuffle } from './utils.js'
 
 export default class Ellers {
   on(grid) {
@@ -33,7 +34,7 @@ export default class Ellers {
           if (!set) break
           if (!list || list.length == 0) break
 
-          this.shuffle(list)
+          shuffle(list)
           for (let index = 0; index < list.length; index += 1) {
             const cell = list[index]
             if (index == 0 || Math.random() < 0.33) {
@@ -44,15 +45,6 @@ export default class Ellers {
         }
         row_state = next_row
       }
-    }
-  }
-
-  shuffle(array) {
-    for (let i = array.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1))
-      const temp = array[i]
-      array[i] = array[j]
-      array[j] = temp
     }
   }
 }
