@@ -13,7 +13,6 @@ export default class WeaveGrid extends Grid {
       this.grid[i] = new Array(this.columns)
       for (let j = 0; j < this.columns; j += 1)
         this.grid[i][j] = new OverCell(i, j, this)
-
     }
   }
 
@@ -36,9 +35,9 @@ export default class WeaveGrid extends Grid {
 
   }
 
-  to_img(ctx, cellSize = 10, inset = 0) {
+  draw(ctx, cellSize = 10, inset = 0) {
     inset = (inset || 0.1)
-    super.to_img(ctx, cellSize, inset)
+    super.draw(ctx, cellSize, inset)
   }
 
   to_img_with_inset(ctx, cell, cellSize, x, y, inset) {
@@ -80,7 +79,6 @@ export class PreconfiguredGrid extends WeaveGrid {
       this.grid[i] = new Array(this.columns)
       for (let j = 0; j < this.columns; j += 1)
         this.grid[i][j] = new SimpleOverCell(i, j, this)
-
     }
   }
 }

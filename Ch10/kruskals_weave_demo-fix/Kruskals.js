@@ -49,7 +49,7 @@ export class State {
   }
 
   add_crossing(cell) {
-    if (cell.get_links().length > 0 ||
+    if (cell.links.length > 0 ||
 			!this.can_merge(cell.east, cell.west) ||
 			!this.can_merge(cell.north, cell.south))
       return false
