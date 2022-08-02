@@ -16,3 +16,5 @@ export const shuffle = array => {
     ;[array[i], array[j]] = [array[j], array[i]]
   }
 }
+
+export const sample = arr => arr[Math.floor(Math.random() * arr.length)]

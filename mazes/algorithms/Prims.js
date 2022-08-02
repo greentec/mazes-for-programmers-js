@@ -1,14 +1,16 @@
+import { sample } from '../utils.js'
+
 export class SimplifiedPrims {
   static on(grid, start_at = grid.random_cell) {
     let active = []
     active.push(start_at)
 
-    while (active.length > 0) {
-      const cell = active[Math.floor(Math.random() * active.length)]
+    while (active.length) {
+      const cell = sample(active)
       const available_neighbors = cell.neighbors.filter(c => c.unvisited)
 
-      if (available_neighbors.length > 0) {
-        const neighbor = available_neighbors[Math.floor(Math.random() * available_neighbors.length)]
+      if (available_neighbors.length) {
+        const neighbor = sample(available_neighbors)
         cell.link(neighbor)
         active.push(neighbor)
       } else
@@ -22,19 +24,15 @@ export class TruePrims {
     let active = []
     active.push(start_at)
     const costs = {}
-    const cell_gen = grid.each_cell()
 
-    while (true) {
-      const cell = cell_gen.next().value
-      if (!cell) break
+    for (const cell of grid.each_cell())
       costs[cell.id] = Math.floor(Math.random() * 100)
-    }
 
-    while (active.length > 0) {
+    while (active.length) {
       active.sort((a, b) => costs[a.id] - costs[b.id])
       const cell = active[0]
       const available_neighbors = cell.neighbors.filter(c => c.unvisited)
-      if (available_neighbors.length > 0) {
+      if (available_neighbors.length) {
         available_neighbors.sort((a, b) => costs[a.id] - costs[b.id])
         const neighbor = available_neighbors[0]
         cell.link(neighbor)

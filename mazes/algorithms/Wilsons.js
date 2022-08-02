@@ -1,4 +1,4 @@
-const sample = arr => arr[Math.floor(Math.random() * arr.length)]
+import { sample } from '../utils.js'
 
 export default class Wilsons {
   static on(grid) {
