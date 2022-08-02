@@ -22,14 +22,11 @@ export default class WeaveGrid extends Grid {
   }
 
   * each_cell() {
-    const row_gen = this.each_row()
-    for (let i = 0; i < this.rows; i += 1) {
-      const row = row_gen.next().value
-      for (let j = 0; j < row.length; j += 1)
-        if (row[j]) yield row[j]
-    }
+    for (const row of this.grid)
+      for (const cell of row)
+        if (cell) yield cell
 
-    for (let i = 0; i < this.under_cells.length; i += 1)
+    for (let i = 0; i < this.under_cells?.length; i += 1)
       if (this.under_cells[i]) yield this.under_cells[i]
   }
 
