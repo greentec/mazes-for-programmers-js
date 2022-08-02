@@ -1,4 +1,4 @@
-import Grid from './Grid.js'
+import Grid from '../../mazes/Grid.js'
 import { OverCell, UnderCell, SimpleOverCell } from '../../mazes/WeaveCells.js'
 
 export default class WeaveGrid extends Grid {
@@ -27,12 +27,10 @@ export default class WeaveGrid extends Grid {
       const row = row_gen.next().value
       for (let j = 0; j < row.length; j += 1)
         if (row[j]) yield row[j]
-
     }
 
     for (let i = 0; i < this.under_cells.length; i += 1)
       if (this.under_cells[i]) yield this.under_cells[i]
-
   }
 
   draw(ctx, cellSize = 10, inset = 0) {

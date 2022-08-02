@@ -1,5 +1,5 @@
 import Grid from './Grid.js'
-import { OverCell, UnderCell } from './WeaveCells.js'
+import { OverCell, UnderCell, SimpleOverCell } from './WeaveCells.js'
 
 export default class WeaveGrid extends Grid {
   constructor(rows, columns) {
@@ -65,6 +65,17 @@ export default class WeaveGrid extends Grid {
         ctx.lineTo(x4, y3)
         ctx.stroke()
       }
+    }
+  }
+}
+
+export class PreconfiguredGrid extends WeaveGrid {
+  prepare_grid() {
+    this.grid = new Array(this.rows)
+    for (let i = 0; i < this.rows; i += 1) {
+      this.grid[i] = new Array(this.columns)
+      for (let j = 0; j < this.columns; j += 1)
+        this.grid[i][j] = new SimpleOverCell(i, j, this)
     }
   }
 }

@@ -23,4 +23,4 @@ const output = document.getElementById('output')
 output.width = cellSize * w + 1
 output.height = cellSize * h + 1
 const ctx = output.getContext('2d')
-grid.draw(ctx, cellSize, 0.2)
+grid.draw(cellSize, 0.2, ctx)
