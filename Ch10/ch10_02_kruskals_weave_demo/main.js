@@ -14,11 +14,10 @@ for (let i = 0; i < grid.size; i += 1) {
 
 Kruskals.on(grid, state)
 // grid.braid(0.5)
-
-const start = grid.middle_cell
-grid.distances = start.distances
-
-console.log(grid.toString())
-
 const cellSize = 30
 grid.draw(cellSize, 0.3)
+
+const { middle_cell } = grid
+grid.distances = middle_cell.distances
+
+console.log(grid.toString())
