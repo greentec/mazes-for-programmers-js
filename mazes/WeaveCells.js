@@ -90,6 +90,7 @@ export class UnderCell extends Cell {
 }
 
 export class SimpleOverCell extends OverCell {
+  // the same as Cell
   get neighbors() {
     const list = []
     if (this.north) list.push(this.north)
