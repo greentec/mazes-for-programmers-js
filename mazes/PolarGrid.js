@@ -62,7 +62,7 @@ export default class PolarGrid extends Grid {
     const center = img_size / 2
 
     for (const cell of this.each_cell()) {
-      if (cell.row == 0) continue
+      if (cell.row == 0) continue // center cell is empty
 
       const cell_count = this.grid[cell.row].length
       const theta = 2 * Math.PI / cell_count

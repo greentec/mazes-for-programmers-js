@@ -2,7 +2,6 @@ import Kruskals from '../../mazes/Kruskals.js'
 import PreconfiguredGrid from '../../mazes/PreconfiguredGrid.js'
 import State from '../../mazes/State.js'
 
-const maze = new Kruskals()
 const h = 20
 const w = 20
 const grid = new PreconfiguredGrid(h, w)
@@ -16,7 +15,7 @@ for (let i = 0; i < grid.size; i += 1) {
 
 // console.log(grid)
 
-maze.on(grid, state)
+Kruskals.on(grid, state)
 // grid.braid(0.5);
 
 console.log(grid.toString())

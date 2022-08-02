@@ -3,7 +3,7 @@ import RecursiveBacktracker from '../../mazes/algorithms/RecursiveBacktracker.js
 
 const grid = new WeightedGrid(20)
 RecursiveBacktracker.on(grid)
-grid.braid(1) // no braid no weight
+grid.braid(1) // if not braided there's only one path
 
 const { first_cell, last_cell } = grid
 grid.distances = first_cell.distances.path_to(last_cell)
