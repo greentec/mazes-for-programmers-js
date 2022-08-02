@@ -19,7 +19,7 @@ export class State {
       if (!cell) break
 
       const set = Object.keys(this.set_for_cell).length
-      this.set_for_cell[cell.get_id()] = set
+      this.set_for_cell[cell.id] = set
       this.cells_in_set[set] = [cell]
 
       if (cell.south) this.neighbors.push([cell, cell.south])
@@ -28,21 +28,21 @@ export class State {
   }
 
   can_merge(left, right) {
-    return this.set_for_cell[left.get_id()] != this.set_for_cell[right.get_id()]
+    return this.set_for_cell[left.id] != this.set_for_cell[right.id]
   }
 
   merge(left, right) {
     left.link(right)
 
-    const winner = this.set_for_cell[left.get_id()]
-    const loser = this.set_for_cell[right.get_id()]
+    const winner = this.set_for_cell[left.id]
+    const loser = this.set_for_cell[right.id]
     const losers = this.cells_in_set[loser] || [right]
     if (winner == loser) return
 
     for (let i = 0; i < losers.length; i += 1) {
       const cell = losers[i]
       this.cells_in_set[winner].push(cell)
-      this.set_for_cell[cell.get_id()] = winner
+      this.set_for_cell[cell.id] = winner
     }
 
     delete this.cells_in_set[loser]
@@ -54,16 +54,16 @@ export class State {
 			!this.can_merge(cell.north, cell.south))
       return false
 
-    // this.neighbors = this.neighbors.filter(c => c[0].get_id() != cell.get_id() && c[1].get_id() != cell.get_id() )
+    // this.neighbors = this.neighbors.filter(c => c[0].id != cell.id && c[1].id != cell.id )
 
     if (Math.random() < 0.5) {
-      if (cell.west.get_id() == cell.get_id() ||
-				cell.get_id() == cell.east.get_id() ||
-				cell.north.get_id() == cell.north.south.get_id() ||
-				cell.south.get_id() == cell.south.north.get_id())
+      if (cell.west.id == cell.id ||
+				cell.id == cell.east.id ||
+				cell.north.id == cell.north.south.id ||
+				cell.south.id == cell.south.north.id)
         return false
 
-      this.neighbors = this.neighbors.filter(c => c[0].get_id() != cell.get_id() && c[1].get_id() != cell.get_id())
+      this.neighbors = this.neighbors.filter(c => c[0].id != cell.id && c[1].id != cell.id)
 
       this.merge(cell.west, cell)
       this.merge(cell, cell.east)
@@ -72,13 +72,13 @@ export class State {
       this.merge(cell.north, cell.north.south)
       this.merge(cell.south, cell.south.north)
     } else {
-      if (cell.north.get_id() == cell.get_id() ||
-				cell.get_id() == cell.south.get_id() ||
-				cell.west.get_id() == cell.west.east.get_id() ||
-				cell.east.get_id() == cell.east.west.get_id())
+      if (cell.north.id == cell.id ||
+				cell.id == cell.south.id ||
+				cell.west.id == cell.west.east.id ||
+				cell.east.id == cell.east.west.id)
         return false
 
-      this.neighbors = this.neighbors.filter(c => c[0].get_id() != cell.get_id() && c[1].get_id() != cell.get_id())
+      this.neighbors = this.neighbors.filter(c => c[0].id != cell.id && c[1].id != cell.id)
 
       this.merge(cell.north, cell)
       this.merge(cell, cell.south)

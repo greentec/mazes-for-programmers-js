@@ -10,12 +10,12 @@ export default class Cell {
   }
 
   link(cell, bidi = true) {
-    this.links[cell.get_id()] = cell
+    this.links[cell.id] = cell
     if (bidi) cell.link(this, false)
   }
 
   unlink(cell, bidi = true) {
-    delete this.links[cell.get_id()]
+    delete this.links[cell.id]
     if (bidi) cell.unlink(this, false)
   }
 
@@ -24,7 +24,7 @@ export default class Cell {
   }
 
   isLinked(cell) {
-    return this.links.hasOwnProperty(cell.get_id())
+    return this.links.hasOwnProperty(cell.id)
   }
 
   neighbors() {
@@ -36,7 +36,7 @@ export default class Cell {
     return list
   }
 
-  get_id() {
+  get id() {
     return this.row + '#' + this.column
   }
 

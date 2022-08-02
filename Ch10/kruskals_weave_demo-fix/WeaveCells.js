@@ -8,13 +8,13 @@ export class OverCell extends Cell {
 
   link(cell, bidi = true) {
     let neighbor = null
-    if (this.north && cell.south && this.north.get_id() == cell.south.get_id())
+    if (this.north && cell.south && this.north.id == cell.south.id)
       neighbor = this.north
-    else if (this.south && cell.north && this.south.get_id() == cell.north.get_id())
+    else if (this.south && cell.north && this.south.id == cell.north.id)
       neighbor = this.south
-    else if (this.east && cell.west && this.east.get_id() == cell.west.get_id())
+    else if (this.east && cell.west && this.east.id == cell.west.id)
       neighbor = this.east
-    else if (this.west && cell.east && this.west.get_id() == cell.east.get_id())
+    else if (this.west && cell.east && this.west.id == cell.east.id)
       neighbor = this.west
 
     if (neighbor)

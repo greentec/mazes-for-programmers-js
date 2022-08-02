@@ -12,7 +12,12 @@ export class State {
     this.set_for_cell = {}
     this.cells_in_set = {}
 
-    for (const cell of grid.each_cell()) {
+    const cell_gen = grid.each_cell()
+
+    while (true) {
+      const cell = cell_gen.next().value
+      if (!cell) break
+
       const set = Object.keys(this.set_for_cell).length
       this.set_for_cell[cell.id] = set
       this.cells_in_set[set] = [cell]
@@ -28,6 +33,7 @@ export class State {
 
   merge(left, right) {
     left.link(right)
+
     const winner = this.set_for_cell[left.id]
     const loser = this.set_for_cell[right.id]
     const losers = this.cells_in_set[loser] || [right]
@@ -43,12 +49,18 @@ export class State {
   }
 
   add_crossing(cell) {
-    if (cell.links_length || !this.can_merge(cell.east, cell.west) || !this.can_merge(cell.north, cell.south))
+    if (cell.links_length > 0 ||
+			!this.can_merge(cell.east, cell.west) ||
+			!this.can_merge(cell.north, cell.south))
       return false
 
+    // this.neighbors = this.neighbors.filter(c => c[0].id != cell.id && c[1].id != cell.id )
+
     if (Math.random() < 0.5) {
-      if (cell.west.id == cell.id || cell.id == cell.east.id ||
-        cell.north.id == cell.north.south.id || cell.south.id == cell.south.north.id)
+      if (cell.west.id == cell.id ||
+				cell.id == cell.east.id ||
+				cell.north.id == cell.north.south.id ||
+				cell.south.id == cell.south.north.id)
         return false
 
       this.neighbors = this.neighbors.filter(c => c[0].id != cell.id && c[1].id != cell.id)
@@ -60,8 +72,10 @@ export class State {
       this.merge(cell.north, cell.north.south)
       this.merge(cell.south, cell.south.north)
     } else {
-      if (cell.north.id == cell.id || cell.id == cell.south.id ||
-        cell.west.id == cell.west.east.id || cell.east.id == cell.east.west.id)
+      if (cell.north.id == cell.id ||
+				cell.id == cell.south.id ||
+				cell.west.id == cell.west.east.id ||
+				cell.east.id == cell.east.west.id)
         return false
 
       this.neighbors = this.neighbors.filter(c => c[0].id != cell.id && c[1].id != cell.id)
@@ -80,10 +94,11 @@ export class State {
 
 export default class Kruskals {
   static on(grid, state = new State(grid)) {
-    shuffle(state.neighbors)
+    const { neighbors } = state
+    shuffle(neighbors)
 
-    while (state.neighbors.length) {
-      const [left, right] = state.neighbors.pop()
+    while (neighbors.length > 0) {
+      const [left, right] = neighbors.pop()
       if (state.can_merge(left, right)) state.merge(left, right)
     }
   }
