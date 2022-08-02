@@ -29,7 +29,7 @@ export default class Cell {
     return this.links_length === 0
   }
 
-  isLinked(cell) {
+  linked(cell) {
     if (!cell) return false
     return this.links.hasOwnProperty(cell.id)
   }

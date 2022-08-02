@@ -118,7 +118,7 @@ export default class Grid3D extends Grid {
       const mid_x = x + cellSize / 2
       const mid_y = y + cellSize / 2
 
-      if (cell.down && cell.isLinked(cell.down)) {
+      if (cell.down && cell.linked(cell.down)) {
         ctx.beginPath()
         ctx.strokeStyle = 'yellow'
         ctx.moveTo(mid_x - 3, mid_y)
@@ -129,7 +129,7 @@ export default class Grid3D extends Grid {
         ctx.closePath()
       }
 
-      if (cell.up && cell.isLinked(cell.up)) {
+      if (cell.up && cell.linked(cell.up)) {
         ctx.beginPath()
         ctx.strokeStyle = 'yellow'
         ctx.moveTo(mid_x + 3, mid_y)
@@ -160,12 +160,12 @@ export default class Grid3D extends Grid {
       ctx.lineTo(x1, y2)
       ctx.stroke()
     }
-    if ((cell.east && !cell.isLinked(cell.east)) || !cell.east) {
+    if ((cell.east && !cell.linked(cell.east)) || !cell.east) {
       ctx.moveTo(x2, y1)
       ctx.lineTo(x2, y2)
       ctx.stroke()
     }
-    if ((cell.south && !cell.isLinked(cell.south)) || !cell.south) {
+    if ((cell.south && !cell.linked(cell.south)) || !cell.south) {
       ctx.moveTo(x1, y2)
       ctx.lineTo(x2, y2)
       ctx.stroke()
@@ -178,7 +178,7 @@ export default class Grid3D extends Grid {
 
     ctx.strokeStyle = 'black'
 
-    if (cell.north && cell.isLinked(cell.north)) {
+    if (cell.north && cell.linked(cell.north)) {
       ctx.moveTo(x2, y1)
       ctx.lineTo(x2, y2)
       ctx.moveTo(x3, y1)
@@ -189,7 +189,7 @@ export default class Grid3D extends Grid {
       ctx.lineTo(x3, y2)
       ctx.stroke()
     }
-    if (cell.south && cell.isLinked(cell.south)) {
+    if (cell.south && cell.linked(cell.south)) {
       ctx.moveTo(x2, y3)
       ctx.lineTo(x2, y4)
       ctx.moveTo(x3, y3)
@@ -200,7 +200,7 @@ export default class Grid3D extends Grid {
       ctx.lineTo(x3, y3)
       ctx.stroke()
     }
-    if (cell.west && cell.isLinked(cell.west)) {
+    if (cell.west && cell.linked(cell.west)) {
       ctx.moveTo(x1, y2)
       ctx.lineTo(x2, y2)
       ctx.moveTo(x1, y3)
@@ -211,7 +211,7 @@ export default class Grid3D extends Grid {
       ctx.lineTo(x2, y3)
       ctx.stroke()
     }
-    if (cell.east && cell.isLinked(cell.east)) {
+    if (cell.east && cell.linked(cell.east)) {
       ctx.moveTo(x3, y2)
       ctx.lineTo(x4, y2)
       ctx.moveTo(x3, y3)

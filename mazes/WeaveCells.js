@@ -25,41 +25,37 @@ export class OverCell extends Cell {
 
   get neighbors() {
     const list = super.neighbors
-    if (this.can_tunnel_north()) list.push(this.north.north)
-    if (this.can_tunnel_south()) list.push(this.south.south)
-    if (this.can_tunnel_east()) list.push(this.east.east)
-    if (this.can_tunnel_west()) list.push(this.west.west)
+    if (this.can_tunnel_north) list.push(this.north.north)
+    if (this.can_tunnel_south) list.push(this.south.south)
+    if (this.can_tunnel_east) list.push(this.east.east)
+    if (this.can_tunnel_west) list.push(this.west.west)
     return list
   }
 
-  can_tunnel_north() {
-    return this.north && this.north.north && this.north.is_horizontal_passage()
+  get can_tunnel_north() {
+    return this.north?.north && this.north.horizontal_passage
   }
 
-  can_tunnel_south() {
-    return this.south && this.south.south && this.south.is_horizontal_passage()
+  get can_tunnel_south() {
+    return this.south?.south && this.south.horizontal_passage
   }
 
-  can_tunnel_east() {
-    return this.east && this.east.east && this.east.is_vertical_passage()
+  get can_tunnel_east() {
+    return this.east?.east && this.east.vertical_passage
   }
 
-  can_tunnel_west() {
-    return this.west && this.west.west && this.west.is_vertical_passage()
+  get can_tunnel_west() {
+    return this.west?.west && this.west.vertical_passage
   }
 
-  is_horizontal_passage() {
-    return (this.east && this.isLinked(this.east)) &&
-      (this.west && this.isLinked(this.west)) &&
-      (this.north && !this.isLinked(this.north)) &&
-      (this.south && !this.isLinked(this.south))
+  get horizontal_passage() {
+    return this.linked(this.east) && this.linked(this.west) &&
+      !this.linked(this.north) && !this.linked(this.south)
   }
 
-  is_vertical_passage() {
-    return (this.east && !this.isLinked(this.east)) &&
-      (this.west && !this.isLinked(this.west)) &&
-      (this.north && this.isLinked(this.north)) &&
-      (this.south && this.isLinked(this.south))
+  get vertical_passage() {
+    return !this.linked(this.east) && !this.linked(this.west) &&
+      this.linked(this.north) && this.linked(this.south)
   }
 }
 
@@ -67,7 +63,7 @@ export class UnderCell extends Cell {
   constructor(over_cell) {
     super(over_cell.row, over_cell.column)
 
-    if (over_cell.is_horizontal_passage()) {
+    if (over_cell.horizontal_passage) {
       this.north = over_cell.north
       over_cell.north.south = this
       this.south = over_cell.south
@@ -84,17 +80,17 @@ export class UnderCell extends Cell {
     }
   }
 
-  is_horizontal_passage() {
+  get horizontal_passage() {
     return this.east || this.west
   }
 
-  is_vertical_passage() {
+  get vertical_passage() {
     return this.north || this.south
   }
 }
 
 export class SimpleOverCell extends OverCell {
-  neighbors() {
+  get neighbors() {
     const list = []
     if (this.north) list.push(this.north)
     if (this.south) list.push(this.south)

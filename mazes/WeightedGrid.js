@@ -48,12 +48,12 @@ export default class WeightedGrid extends Grid {
         ctx.lineTo(x1, y2)
         ctx.stroke()
       }
-      if (!cell.isLinked(cell.east)) {
+      if (!cell.linked(cell.east)) {
         ctx.moveTo(x2, y1)
         ctx.lineTo(x2, y2)
         ctx.stroke()
       }
-      if (!cell.isLinked(cell.south)) {
+      if (!cell.linked(cell.south)) {
         ctx.moveTo(x1, y2)
         ctx.lineTo(x2, y2)
         ctx.stroke()

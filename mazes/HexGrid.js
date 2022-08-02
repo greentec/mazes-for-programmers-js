@@ -87,17 +87,17 @@ export default class HexGrid extends Grid {
         ctx.lineTo(x_ne, y_n)
         ctx.stroke()
       }
-      if (!cell.isLinked(cell.northeast)) {
+      if (!cell.linked(cell.northeast)) {
         ctx.moveTo(x_ne, y_n)
         ctx.lineTo(x_fe, y_m)
         ctx.stroke()
       }
-      if (!cell.isLinked(cell.southeast)) {
+      if (!cell.linked(cell.southeast)) {
         ctx.moveTo(x_fe, y_m)
         ctx.lineTo(x_ne, y_s)
         ctx.stroke()
       }
-      if (!cell.isLinked(cell.south)) {
+      if (!cell.linked(cell.south)) {
         ctx.moveTo(x_ne, y_s)
         ctx.lineTo(x_nw, y_s)
         ctx.stroke()

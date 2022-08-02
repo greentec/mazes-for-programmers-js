@@ -67,14 +67,14 @@ export default class TriangleGrid extends Grid {
         ctx.lineTo(mid_x, apex_y)
         ctx.stroke()
       }
-      if ((cell.east && !cell.isLinked(cell.east)) || !cell.east) {
+      if ((cell.east && !cell.linked(cell.east)) || !cell.east) {
         ctx.moveTo(east_x, base_y)
         ctx.lineTo(mid_x, apex_y)
         ctx.stroke()
       }
 
       const no_south = cell.isUpright() && cell.south == null
-      const not_linked = !cell.isUpright() && ((cell.north && !cell.isLinked(cell.north)) || !cell.north)
+      const not_linked = !cell.isUpright() && ((cell.north && !cell.linked(cell.north)) || !cell.north)
 
       if (no_south || not_linked) {
         ctx.moveTo(east_x, base_y)
