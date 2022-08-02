@@ -1,18 +1,13 @@
 export default class RecursiveDivision {
-  on(grid) {
+  static on(grid) {
     this.grid = grid
-    const cell_gen = this.grid.each_cell()
-
-    while (true) {
-      const cell = cell_gen.next().value
-      if (!cell) break
+    for (const cell of grid.each_cell())
       cell.neighbors.forEach(c => cell.link(c, false))
-    }
 
     this.divide(0, 0, this.grid.rows, this.grid.columns)
   }
 
-  divide(row, column, height, width) {
+  static divide(row, column, height, width) {
     if (height <= 1 || width <= 1 || height < 5 && width < 5 && Math.random() < 0.25) return
 
     if (height > width)
@@ -21,7 +16,7 @@ export default class RecursiveDivision {
       this.divide_vertically(row, column, height, width)
   }
 
-  divide_horizontally(row, column, height, width) {
+  static divide_horizontally(row, column, height, width) {
     const divide_south_of = Math.floor(Math.random() * (height - 1))
     const passage_at = Math.floor(Math.random() * width)
 
@@ -36,7 +31,7 @@ export default class RecursiveDivision {
     this.divide(row + divide_south_of + 1, column, height - divide_south_of - 1, width)
   }
 
-  divide_vertically(row, column, height, width) {
+  static divide_vertically(row, column, height, width) {
     const divide_east_of = Math.floor(Math.random() * (width - 1))
     const passage_at = Math.floor(Math.random() * height)
 
